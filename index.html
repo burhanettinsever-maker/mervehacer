@@ -6,14 +6,17 @@
   <meta name="theme-color" content="#047857">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Din Kültürü">
-  <title>Rebii Karatekin Ortaokulu | Din Kültürü ve Ahlak Bilgisi - Merve Hacer SEVER</title>
+  <meta name="apple-mobile-web-app-title" content="Din Kültürü & Siyer">
+  <title>Rebii Karatekin Ortaokulu | Din Kültürü ve Peygamberimizin Hayatı - Merve Hacer SEVER</title>
   <style>
     :root {
       --primary: #059669;
       --primary-dark: #047857;
       --primary-light: #ecfdf5;
       --primary-border: #a7f3d0;
+      --sidebar-bg: #064e3b;
+      --sidebar-hover: #065f46;
+      --sidebar-active: #047857;
       --accent: #0284c7;
       --bg: #f8fafc;
       --surface: #ffffff;
@@ -48,8 +51,6 @@
       color: var(--text);
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      padding-bottom: 70px;
     }
 
     /* LOGIN SCREEN STYLES */
@@ -73,10 +74,10 @@
     }
 
     .login-card {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(16px);
       width: 100%;
-      max-width: 420px;
+      max-width: 430px;
       border-radius: 24px;
       padding: 32px 26px 28px;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
@@ -104,7 +105,7 @@
     }
 
     .login-title {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 800;
       color: #064e3b;
       line-height: 1.25;
@@ -112,10 +113,10 @@
     }
 
     .login-subtitle {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--text-muted);
       font-weight: 600;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .login-teacher-box {
@@ -126,7 +127,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       text-align: left;
     }
 
@@ -258,7 +259,6 @@
 
     .btn-login:active {
       transform: scale(0.98);
-      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
     }
 
     .login-error {
@@ -280,167 +280,329 @@
       75% { transform: translateX(6px); }
     }
 
-    .security-notice {
-      margin-top: 18px;
-      font-size: 11.5px;
-      color: var(--text-muted);
-      line-height: 1.4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
+    /* APP LAYOUT & SIDEBAR */
+    #appContainer {
+      display: none;
+      width: 100%;
+      min-height: 100vh;
+      flex-direction: row;
     }
 
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, #065f46 0%, #047857 50%, #0d9488 100%);
+    /* SIDEBAR (DESKTOP) */
+    aside.sidebar {
+      width: 270px;
+      min-width: 270px;
+      background: var(--sidebar-bg);
       color: white;
-      padding: 16px 16px 12px;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 0;
-      z-index: 40;
-    }
-
-    .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    .school-info {
-      flex: 1;
-    }
-
-    .school-name {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      opacity: 0.9;
-      font-weight: 600;
-    }
-
-    .lesson-title {
-      font-size: 17px;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-top: 2px;
-    }
-
-    .teacher-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(4px);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 4px;
-    }
-
-    .header-right {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
+      z-index: 60;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+      height: 100vh;
+      position: sticky;
+      top: 0;
     }
 
-    .quick-stats-pill {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 6px 10px;
-      border-radius: var(--radius-sm);
-      text-align: right;
-      font-size: 11px;
-      min-width: 80px;
+    .sidebar-header {
+      padding: 20px 18px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.15);
     }
 
-    .quick-stats-pill strong {
-      font-size: 14px;
-      display: block;
+    .sidebar-school {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       color: #a7f3d0;
+      font-weight: 700;
     }
 
-    .logout-btn {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 12px;
-      cursor: pointer;
+    .sidebar-app-name {
+      font-size: 15px;
+      font-weight: 800;
+      margin-top: 2px;
+      line-height: 1.25;
+      color: #ffffff;
+    }
+
+    .sidebar-teacher-badge {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: background 0.15s;
-    }
-    .logout-btn:hover {
-      background: rgba(239, 68, 68, 0.8);
-      border-color: transparent;
-    }
-
-    /* NAVIGATION TABS */
-    nav.tab-bar {
-      display: flex;
       gap: 6px;
-      overflow-x: auto;
-      padding: 4px 0 2px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    nav.tab-bar::-webkit-scrollbar {
-      display: none;
+      margin-top: 8px;
+      font-size: 11.5px;
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 3px 8px;
+      border-radius: 12px;
     }
 
-    .tab-btn {
+    .sidebar-nav {
       flex: 1;
-      min-width: 78px;
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: none;
-      background: rgba(255, 255, 255, 0.15);
-      color: white;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
+      overflow-y: auto;
+      padding: 12px 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.2) transparent;
+    }
+
+    .nav-group-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #6ee7b7;
+      font-weight: 800;
+      padding: 10px 12px 4px;
+    }
+
+    .nav-item {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.2s;
-      white-space: nowrap;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: #e2e8f0;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      margin-bottom: 2px;
+      user-select: none;
     }
 
-    .tab-btn.active {
-      background: var(--surface);
-      color: var(--primary-dark);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    .nav-item:hover {
+      background: var(--sidebar-hover);
+      color: white;
     }
 
-    .tab-badge {
+    .nav-item.active {
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-item .icon {
+      font-size: 18px;
+      width: 22px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .nav-item .badge {
+      margin-left: auto;
       font-size: 10px;
       padding: 2px 6px;
       border-radius: 10px;
-      background: rgba(0,0,0,0.2);
-    }
-    .tab-btn.active .tab-badge {
-      background: var(--primary-light);
-      color: var(--primary-dark);
+      background: rgba(255, 255, 255, 0.2);
+      font-weight: 700;
     }
 
-    /* CONTROLS BAR (SEARCH & ACTIONS) */
+    /* ACCORDION MENU FOR LESSONS */
+    .nav-accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 12px;
+      border-radius: 10px;
+      color: #f1f5f9;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+      margin-bottom: 2px;
+    }
+
+    .nav-accordion-header:hover {
+      background: var(--sidebar-hover);
+    }
+
+    .nav-accordion-header.open {
+      background: rgba(255, 255, 255, 0.1);
+      color: #a7f3d0;
+    }
+
+    .nav-accordion-header .arrow {
+      font-size: 10px;
+      transition: transform 0.2s;
+    }
+
+    .nav-accordion-header.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .nav-sub-items {
+      display: none;
+      padding-left: 24px;
+      margin-bottom: 6px;
+    }
+
+    .nav-sub-items.open {
+      display: block;
+    }
+
+    .nav-sub-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-bottom: 2px;
+    }
+
+    .nav-sub-item:hover {
+      background: var(--sidebar-hover);
+      color: white;
+    }
+
+    .nav-sub-item.active {
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+    }
+
+    .sidebar-footer {
+      padding: 12px 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sidebar-logout-btn {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .sidebar-logout-btn:hover {
+      background: #ef4444;
+      color: white;
+    }
+
+    /* BACKDROP FOR MOBILE DRAWER */
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+      z-index: 55;
+    }
+
+    .sidebar-backdrop.active {
+      display: block;
+    }
+
+    /* MAIN APP BODY */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 100vh;
+    }
+
+    /* TOP BAR (MOBILE & DESKTOP) */
+    .top-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .hamburger-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .current-view-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .current-view-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cloud-pill {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #047857;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 9px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    /* CONTROLS BAR (SEARCH & ACTIONS FOR CLASSES) */
     .controls-bar {
       background: var(--surface);
-      padding: 12px 16px;
+      padding: 10px 16px;
       border-bottom: 1px solid var(--border);
       position: sticky;
-      top: 102px;
+      top: 59px;
       z-index: 30;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
     .search-row {
@@ -456,13 +618,13 @@
 
     .search-box input {
       width: 100%;
-      height: 42px;
+      height: 40px;
       padding: 0 38px 0 36px;
       border: 1.5px solid var(--border);
       border-radius: var(--radius-sm);
-      font-size: 14px;
+      font-size: 13.5px;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: all 0.2s;
       background: var(--bg);
     }
 
@@ -497,14 +659,14 @@
     }
 
     .view-toggle-btn {
-      height: 42px;
+      height: 40px;
       padding: 0 12px;
       border: 1.5px solid var(--border);
       border-radius: var(--radius-sm);
       background: var(--surface);
       color: var(--text);
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 12.5px;
+      font-weight: 700;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -546,24 +708,218 @@
       color: var(--primary-dark);
     }
 
-    /* MAIN CONTENT CONTAINER */
-    main {
+    /* MAIN CONTENT SCROLL AREA */
+    main.content-area {
       flex: 1;
-      padding: 12px 16px;
+      padding: 16px;
       max-width: 1400px;
       width: 100%;
       margin: 0 auto;
     }
 
-    /* SECTION / TAB PANELS */
-    .tab-panel {
+    /* SECTION / PANELS */
+    .view-panel {
       display: none;
     }
-    .tab-panel.active {
+    .view-panel.active {
       display: block;
     }
 
-    /* STATS SUMMARY BAR */
+    /* DASHBOARD / HOME PANEL */
+    .dashboard-welcome-banner {
+      background: linear-gradient(135deg, #065f46 0%, #047857 50%, #0d9488 100%);
+      color: white;
+      border-radius: 18px;
+      padding: 22px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 20px -5px rgba(5, 150, 105, 0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .dashboard-welcome-banner h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .dashboard-welcome-banner p {
+      font-size: 13px;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+
+    /* DASHBOARD STATS GRID */
+    .dashboard-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .dashboard-metrics-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 14px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .metric-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .metric-card.m-blue .metric-icon-box { background: #e0f2fe; color: #0284c7; }
+    .metric-card.m-green .metric-icon-box { background: #d1fae5; color: #059669; }
+    .metric-card.m-amber .metric-icon-box { background: #fef3c7; color: #d97706; }
+    .metric-card.m-purple .metric-icon-box { background: #f3e8ff; color: #7c3aed; }
+
+    .metric-val {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .metric-lbl {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* COURSE QUICK CARDS IN DASHBOARD */
+    .section-heading {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 840px) {
+      .courses-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .course-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .course-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .course-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .course-icon-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .course-card-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .course-card-sub {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .course-classes-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .class-quick-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .class-quick-btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    .class-quick-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .class-quick-stats {
+      font-size: 10.5px;
+      font-weight: 700;
+      margin-top: 4px;
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    /* SUMMARY STATS CARD FOR CLASS VIEW */
     .summary-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -678,7 +1034,6 @@
       background: #f8fafc;
     }
 
-    /* WEEK HEADERS & CELLS */
     .col-week {
       width: 36px;
       min-width: 36px;
@@ -717,7 +1072,6 @@
       color: #991b1b;
     }
 
-    /* TOTALS COLUMN */
     .col-total {
       min-width: 76px;
       background: #fdfdfd;
@@ -834,7 +1188,6 @@
       gap: 4px;
     }
 
-    /* 24-GRID IN CARD */
     .card-weeks-grid {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
@@ -866,7 +1219,7 @@
       font-size: 16px;
     }
 
-    /* CLUB LIST DESIGN */
+    /* CLUBS TAB */
     .club-header-banner {
       background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
       color: white;
@@ -955,7 +1308,7 @@
       border-radius: 4px;
     }
 
-    /* ACTION MODAL (BOTTOM SHEET ON MOBILE, CENTERED DIALOG ON DESKTOP) */
+    /* ACTION MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -1122,7 +1475,7 @@
       background: var(--primary-light);
     }
 
-    /* BACKUP & SETTINGS PANEL */
+    /* SETTINGS CARDS */
     .settings-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -1221,6 +1574,21 @@
       opacity: 1;
     }
 
+    /* MOBILE RESPONSIVE BEHAVIOR */
+    @media (max-width: 900px) {
+      aside.sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+      }
+
+      aside.sidebar.mobile-open {
+        transform: translateX(0);
+      }
+    }
+
     /* ANIMATIONS */
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -1237,13 +1605,17 @@
 
     /* PRINT STYLES */
     @media print {
-      #loginScreen, header, .controls-bar, .modal-overlay, .tab-bar, .btn-group, .settings-card, .toast {
+      #loginScreen, aside.sidebar, .top-bar, .controls-bar, .modal-overlay, .btn-group, .settings-card, .toast {
         display: none !important;
       }
       body {
         background: white;
         color: black;
         padding: 0;
+      }
+      .main-wrapper, main.content-area {
+        margin: 0 !important;
+        padding: 0 !important;
       }
       .table-container {
         border: 1px solid #000;
@@ -1261,8 +1633,6 @@
         border: 1px solid #ccc;
         font-size: 11px;
       }
-      .cell-btn.status-plus { background: #eee !important; color: #000 !important; }
-      .cell-btn.status-minus { background: #ddd !important; color: #000 !important; }
     }
   </style>
 </head>
@@ -1273,7 +1643,7 @@
     <div class="login-card">
       <div class="login-badge">T.C. KONYA VALİLİĞİ</div>
       <h1 class="login-title">Selçuklu Rebii Karatekin Ortaokulu</h1>
-      <div class="login-subtitle">Din Kültürü ve Ahlak Bilgisi Dersi Takip Portalı</div>
+      <div class="login-subtitle">Din Kültürü & Peygamberimizin Hayatı Dersi Takip Portalı</div>
 
       <div class="login-teacher-box">
         <div class="login-teacher-avatar">👩‍🏫</div>
@@ -1326,218 +1696,405 @@
     </div>
   </div>
 
-  <!-- MAIN APPLICATION CONTENT (VISIBLE AFTER LOGIN) -->
-  <div id="appContainer" style="display: none; flex-direction: column; min-height: 100vh;">
-    <!-- TOP HEADER -->
-    <header>
-      <div class="header-top">
-        <div class="school-info">
-          <div class="school-name">Selçuklu Rebii Karatekin Ortaokulu</div>
-          <div class="lesson-title">Din Kültürü ve Ahlak Bilgisi</div>
-          <div class="teacher-badge">
-            <span>👩‍🏫</span>
-            <span>Öğretmen: Merve Hacer SEVER</span>
-          </div>
-        </div>
-        <div class="header-right">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <div class="cloud-pill" id="cloudBadge" onclick="syncFromCloud(true)" title="Google Firebase Canlı Bulut Durumu (Yenilemek için tıklayın)" style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); color: #a7f3d0; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
-              🟢 ☁️ Bulut: Bağlı
-            </div>
-            <button class="logout-btn" onclick="handleLogout()" title="Oturumu Kapat">
-              <span>🚪</span>
-              <span>Çıkış</span>
-            </button>
-          </div>
-          <div class="quick-stats-pill">
-            <span id="activeClassName">7/İ Sınıfı</span>
-            <strong id="activeClassStats">0 + / 0 -</strong>
-          </div>
+  <!-- MAIN APPLICATION CONTAINER -->
+  <div id="appContainer">
+
+    <!-- MOBILE SIDEBAR BACKDROP -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-school">Selçuklu Rebii Karatekin OO</div>
+        <div class="sidebar-app-name">Öğretmen Takip Sistemi</div>
+        <div class="sidebar-teacher-badge">
+          <span>👩‍🏫</span>
+          <span>Merve Hacer SEVER</span>
         </div>
       </div>
 
-      <!-- TABS -->
-      <nav class="tab-bar">
-        <button class="tab-btn active" onclick="switchTab('7-i')">
-          <span>7/İ</span>
-          <span class="tab-badge" id="badge-7-i">32</span>
-        </button>
-        <button class="tab-btn" onclick="switchTab('7-j')">
-          <span>7/J</span>
-          <span class="tab-badge" id="badge-7-j">33</span>
-        </button>
-        <button class="tab-btn" onclick="switchTab('7-k')">
-          <span>7/K</span>
-          <span class="tab-badge" id="badge-7-k">33</span>
-        </button>
-        <button class="tab-btn" onclick="switchTab('clubs')">
-          <span>🏆 Kulüpler</span>
-          <span class="tab-badge">20</span>
-        </button>
-        <button class="tab-btn" onclick="switchTab('settings')">
-          <span>⚙️ Ayar / Güvenlik</span>
-        </button>
+      <nav class="sidebar-nav">
+        <!-- 1. ANA SAYFA -->
+        <div class="nav-item active" id="nav-dashboard" onclick="navigateTo('dashboard')">
+          <span class="icon">🏠</span>
+          <span>Ana Sayfa</span>
+        </div>
+
+        <!-- 2. DİN KÜLTÜRÜ VE AHLAK BİLGİSİ -->
+        <div class="nav-group-title">DERSLER</div>
+
+        <div class="nav-accordion-header open" id="acc-header-dkab" onclick="toggleAccordion('dkab')">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 17px;">📖</span>
+            <span>Din Kültürü ve Ahl.</span>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="nav-sub-items open" id="acc-sub-dkab">
+          <div class="nav-sub-item" id="nav-dkab-7-i" onclick="navigateToClass('dkab', '7-i')">
+            <span>📋 7/İ Sınıfı</span>
+            <span class="badge">32</span>
+          </div>
+          <div class="nav-sub-item" id="nav-dkab-7-j" onclick="navigateToClass('dkab', '7-j')">
+            <span>📋 7/J Sınıfı</span>
+            <span class="badge">33</span>
+          </div>
+          <div class="nav-sub-item" id="nav-dkab-7-k" onclick="navigateToClass('dkab', '7-k')">
+            <span>📋 7/K Sınıfı</span>
+            <span class="badge">33</span>
+          </div>
+        </div>
+
+        <!-- 3. PEYGAMBER EFENDİMİZİN HAYATI -->
+        <div class="nav-accordion-header open" id="acc-header-peh" onclick="toggleAccordion('peh')">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 17px;">🕌</span>
+            <span>Peygamberimizin Hay.</span>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="nav-sub-items open" id="acc-sub-peh">
+          <div class="nav-sub-item" id="nav-peh-7-i" onclick="navigateToClass('peh', '7-i')">
+            <span>📋 7/İ Sınıfı</span>
+            <span class="badge">32</span>
+          </div>
+          <div class="nav-sub-item" id="nav-peh-7-j" onclick="navigateToClass('peh', '7-j')">
+            <span>📋 7/J Sınıfı</span>
+            <span class="badge">33</span>
+          </div>
+          <div class="nav-sub-item" id="nav-peh-7-k" onclick="navigateToClass('peh', '7-k')">
+            <span>📋 7/K Sınıfı</span>
+            <span class="badge">33</span>
+          </div>
+        </div>
+
+        <!-- 4. KULÜPLER -->
+        <div class="nav-group-title">ETKİNLİKLER</div>
+
+        <div class="nav-item" id="nav-clubs" onclick="navigateTo('clubs')">
+          <span class="icon">🏆</span>
+          <span>Sosyal Kulüpler</span>
+          <span class="badge">20</span>
+        </div>
+
+        <!-- 5. AYARLAR & GÜVENLİK -->
+        <div class="nav-group-title">SİSTEM</div>
+
+        <div class="nav-item" id="nav-settings" onclick="navigateTo('settings')">
+          <span class="icon">⚙️</span>
+          <span>Ayar & Güvenlik</span>
+        </div>
       </nav>
-    </header>
 
-    <!-- CONTROLS & SEARCH BAR -->
-    <div class="controls-bar" id="controlsBar">
-      <div class="search-row">
-        <div class="search-box">
-          <span class="search-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
-          <input type="text" id="searchInput" placeholder="Öğrenci adı, soyadı veya okul no ile ara..." oninput="handleSearch(this.value)">
-          <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
-        </div>
-        <button class="view-toggle-btn" id="viewToggleBtn" onclick="toggleViewMode()" title="Görünüm Değiştir">
-          <span id="viewIcon">📱</span>
-          <span id="viewLabel">Kartlar</span>
+      <div class="sidebar-footer">
+        <button class="sidebar-logout-btn" onclick="handleLogout()">
+          <span>🚪</span>
+          <span>Güvenli Çıkış</span>
         </button>
       </div>
+    </aside>
 
-      <div class="sub-controls" id="subControls">
-        <div class="filter-pills">
-          <button class="filter-pill active" onclick="setFilter('all', this)">Tümü (<span id="count-all">0</span>)</button>
-          <button class="filter-pill" onclick="setFilter('plus', this)">Artı Alanlar (<span id="count-plus">0</span>)</button>
-          <button class="filter-pill" onclick="setFilter('minus', this)">Eksi Alanlar (<span id="count-minus">0</span>)</button>
-          <button class="filter-pill" onclick="setFilter('empty', this)">Notu Olmayanlar (<span id="count-empty">0</span>)</button>
-        </div>
-        <div style="font-weight: 600; white-space: nowrap;" id="showingCount">32 öğrenci</div>
-      </div>
-    </div>
-
-    <!-- MAIN VIEW CONTAINER -->
-    <main>
-      <!-- TAB: 7/İ -->
-      <section id="panel-7-i" class="tab-panel active">
-        <div class="summary-card" id="summary-7-i"></div>
-        <div id="content-7-i"></div>
-      </section>
-
-      <!-- TAB: 7/J -->
-      <section id="panel-7-j" class="tab-panel">
-        <div class="summary-card" id="summary-7-j"></div>
-        <div id="content-7-j"></div>
-      </section>
-
-      <!-- TAB: 7/K -->
-      <section id="panel-7-k" class="tab-panel">
-        <div class="summary-card" id="summary-7-k"></div>
-        <div id="content-7-k"></div>
-      </section>
-
-      <!-- TAB: KULÜP LİSTESİ -->
-      <section id="panel-clubs" class="tab-panel">
-        <div class="club-header-banner">
+    <!-- MAIN APP CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <!-- TOP BAR -->
+      <header class="top-bar">
+        <div class="top-left">
+          <button class="hamburger-btn" onclick="toggleSidebar()" title="Menüyü Aç/Kapat">
+            <span>☰</span>
+          </button>
           <div>
-            <h2 style="font-size: 17px; font-weight: 800; margin-bottom: 2px;">7/İ Şubesi Öğrenci Sosyal Kulüp Dağılımı</h2>
-            <p style="font-size: 12px; opacity: 0.9;">Rebii Karatekin Ortaokulu Sosyal Etkinlik ve Kulüp Listesi</p>
-          </div>
-          <div style="text-align: right; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 10px;">
-            <span style="font-size: 11px; display: block;">Toplam Kulüp</span>
-            <strong style="font-size: 18px;">20</strong>
+            <div class="current-view-title" id="pageTitle">Ana Sayfa</div>
+            <div class="current-view-subtitle" id="pageSubtitle">Genel Değerlendirme & İstatistik Paneli</div>
           </div>
         </div>
-        <div class="club-cards-container" id="clubCardsContainer"></div>
-      </section>
 
-      <!-- TAB: AYARLAR & GÜVENLİK & YEDEKLEME -->
-      <section id="panel-settings" class="tab-panel">
-        <div class="settings-card">
-          <div class="settings-title">
-            <span>🔐</span>
-            <span>Giriş Şifresi ve Kullanıcı Adı Ayarları</span>
+        <div class="top-right">
+          <div class="cloud-pill" id="cloudBadge" onclick="syncFromCloud(true)" title="Google Firebase Canlı Bulut Durumu (Yenilemek için tıklayın)">
+            🟢 ☁️ Bulut: Bağlı
           </div>
-          <p class="settings-desc">
-            Sisteme giriş yaparken kullanılan kullanıcı adı ve şifreyi buradan istediğiniz zaman değiştirebilirsiniz.
-          </p>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 500px; margin-bottom: 12px;">
-            <div>
-              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">YENİ KULLANICI ADI</label>
-              <input type="text" id="newUsername" class="form-input" style="height: 38px; font-size: 13px;" placeholder="Yeni kullanıcı adı">
-            </div>
-            <div>
-              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">YENİ ŞİFRE</label>
-              <input type="password" id="newPassword" class="form-input" style="height: 38px; font-size: 13px;" placeholder="Yeni şifre">
-            </div>
+        </div>
+      </header>
+
+      <!-- SEARCH & CONTROLS BAR (ONLY VISIBLE IN CLASS VIEW) -->
+      <div class="controls-bar" id="classControlsBar" style="display: none;">
+        <div class="search-row">
+          <div class="search-box">
+            <span class="search-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input type="text" id="searchInput" placeholder="Öğrenci adı, soyadı veya okul no ile ara..." oninput="handleSearch(this.value)">
+            <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
           </div>
-          <button class="btn btn-primary" onclick="updateCredentials()">
-            <span>💾</span> Şifreyi Güncelle ve Kaydet
+          <button class="view-toggle-btn" id="viewToggleBtn" onclick="toggleViewMode()" title="Görünüm Değiştir">
+            <span id="viewIcon">📱</span>
+            <span id="viewLabel">Kartlar</span>
           </button>
         </div>
 
-        <div class="settings-card">
-          <div class="settings-title">
-            <span>📊</span>
-            <span>Excel (CSV) Olarak İndir</span>
+        <div class="sub-controls" id="subControls">
+          <div class="filter-pills">
+            <button class="filter-pill active" onclick="setFilter('all', this)">Tümü (<span id="count-all">0</span>)</button>
+            <button class="filter-pill" onclick="setFilter('plus', this)">Artı Alanlar (<span id="count-plus">0</span>)</button>
+            <button class="filter-pill" onclick="setFilter('minus', this)">Eksi Alanlar (<span id="count-minus">0</span>)</button>
+            <button class="filter-pill" onclick="setFilter('empty', this)">Notu Olmayanlar (<span id="count-empty">0</span>)</button>
           </div>
-          <p class="settings-desc">
-            Tüm sınıfların 24 haftalık artı/eksi değerlendirmelerini ve toplam skorlarını Excel'de açılabilir CSV dosyası olarak cihazınıza kaydedin.
-          </p>
-          <div class="btn-group">
-            <button class="btn btn-primary" onclick="exportToCSV('current')">
-              <span>📥</span> Bu Sınıfı Excel'e Aktar
-            </button>
-            <button class="btn btn-secondary" onclick="exportToCSV('all')">
-              <span>📁</span> Tüm Sınıfları Tek Excel'e Aktar
-            </button>
-          </div>
+          <div style="font-weight: 600; white-space: nowrap;" id="showingCount">32 öğrenci</div>
         </div>
+      </div>
 
-        <div class="settings-card">
-          <div class="settings-title">
-            <span>💾</span>
-            <span>Veri Yedekleme ve Geri Yükleme</span>
-          </div>
-          <p class="settings-desc">
-            Telefonunuzu değiştirirseniz veya verilerinizi yedeklemek isterseniz tek tıkla yedek dosyası (.json) indirebilir ve dilediğiniz zaman geri yükleyebilirsiniz.
-          </p>
-          <div class="btn-group">
-            <button class="btn btn-secondary" onclick="downloadBackup()">
-              <span>⬇️</span> Yedeği Telefona İndir
-            </button>
-            <label class="btn btn-secondary" style="cursor: pointer;">
-              <span>⬆️</span> Yedekten Geri Yükle
-              <input type="file" id="backupFileInput" accept=".json" style="display: none;" onchange="restoreBackup(event)">
-            </label>
-          </div>
-        </div>
+      <!-- MAIN CONTENT AREA -->
+      <main class="content-area">
 
-        <div class="settings-card">
-          <div class="settings-title">
-            <span>🖨️</span>
-            <span>Yazdır / PDF Olarak Kaydet</span>
+        <!-- 1. DASHBOARD / HOME PANEL -->
+        <section id="panel-dashboard" class="view-panel active">
+          <div class="dashboard-welcome-banner">
+            <div>
+              <h2>Hoş Geldiniz, Merve Hacer SEVER 👋</h2>
+              <p>Rebii Karatekin Ortaokulu Din Kültürü & Peygamber Efendimizin Hayatı dersi öğrenci takip ve değerlendirme paneli.</p>
+            </div>
+            <div style="background: rgba(0,0,0,0.2); padding: 8px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; white-space: nowrap;">
+              📅 2026-2027 Eğitim Öğretim Yılı
+            </div>
           </div>
-          <p class="settings-desc">
-            Mevcut sınıfın artı/eksi listesini resmi okul evrakı formatında temiz ve düzenli bir şekilde yazıcıya gönderebilir veya PDF yapabilirsiniz.
-          </p>
-          <div class="btn-group">
-            <button class="btn btn-secondary" onclick="window.print()">
-              <span>🖨️</span> Bu Sınıfı Yazdır / PDF Yap
-            </button>
-          </div>
-        </div>
 
-        <div class="settings-card" style="border-color: #fca5a5;">
-          <div class="settings-title" style="color: #b91c1c;">
-            <span>⚠️</span>
-            <span>Sınıf Verilerini Sıfırla</span>
+          <!-- KEY METRICS -->
+          <div class="dashboard-metrics-grid">
+            <div class="metric-card m-blue">
+              <div class="metric-icon-box">📚</div>
+              <div>
+                <div class="metric-val">2</div>
+                <div class="metric-lbl">Aktif Ders</div>
+              </div>
+            </div>
+            <div class="metric-card m-green">
+              <div class="metric-icon-box">🏫</div>
+              <div>
+                <div class="metric-val">3</div>
+                <div class="metric-lbl">Toplam Şube (7. Sınıf)</div>
+              </div>
+            </div>
+            <div class="metric-card m-amber">
+              <div class="metric-icon-box">👥</div>
+              <div>
+                <div class="metric-val">98</div>
+                <div class="metric-lbl">Toplam Öğrenci</div>
+              </div>
+            </div>
+            <div class="metric-card m-purple">
+              <div class="metric-icon-box">🏆</div>
+              <div>
+                <div class="metric-val">20</div>
+                <div class="metric-lbl">Sosyal Kulüp (7/İ)</div>
+              </div>
+            </div>
           </div>
-          <p class="settings-desc">
-            Sadece bu sınıfa ait tüm haftalık artı ve eksileri temizlemek isterseniz kullanabilirsiniz. Bu işlem geri alınamaz.
-          </p>
-          <div class="btn-group">
-            <button class="btn btn-danger" onclick="resetCurrentClassData()">
-              <span>🗑️</span> Bu Sınıfın Notlarını Sıfırla
+
+          <!-- OVERALL PLUSSES & MINUSES -->
+          <div class="summary-card" style="margin-bottom: 24px;">
+            <div class="stat-item">
+              <div class="stat-val green" id="dashTotalPlus">+0</div>
+              <div class="stat-lbl">Toplam Verilen Artı</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val red" id="dashTotalMinus">-0</div>
+              <div class="stat-lbl">Toplam Verilen Eksi</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val" id="dashTotalEval">0</div>
+              <div class="stat-lbl">Toplam Değerlendirme</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-val" style="color: var(--primary);">24</div>
+              <div class="stat-lbl">Haftalık Bölme Sayısı</div>
+            </div>
+          </div>
+
+          <!-- LESSONS DIRECT ACCESS -->
+          <div class="section-heading">
+            <span>⚡</span>
+            <span>Dersler ve Hızlı Sınıf Seçimi</span>
+          </div>
+
+          <div class="courses-grid">
+            <!-- DIN KULTURU CARD -->
+            <div class="course-card">
+              <div class="course-card-top">
+                <div class="course-title-group">
+                  <div class="course-icon-badge">📖</div>
+                  <div>
+                    <div class="course-card-name">Din Kültürü ve Ahlak Bilgisi</div>
+                    <div class="course-card-sub">7. Sınıf Şubeleri (7/İ, 7/J, 7/K)</div>
+                  </div>
+                </div>
+                <span class="badge-count plus" id="dkabTotalBadge">+0 / -0</span>
+              </div>
+              <div class="course-classes-row">
+                <div class="class-quick-btn" onclick="navigateToClass('dkab', '7-i')">
+                  <div class="class-quick-name">7/İ Sınıfı</div>
+                  <div class="class-quick-stats" id="dkab-stat-7-i">0+ / 0-</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToClass('dkab', '7-j')">
+                  <div class="class-quick-name">7/J Sınıfı</div>
+                  <div class="class-quick-stats" id="dkab-stat-7-j">0+ / 0-</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToClass('dkab', '7-k')">
+                  <div class="class-quick-name">7/K Sınıfı</div>
+                  <div class="class-quick-stats" id="dkab-stat-7-k">0+ / 0-</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PEYGAMBERIMIZIN HAYATI CARD -->
+            <div class="course-card">
+              <div class="course-card-top">
+                <div class="course-title-group">
+                  <div class="course-icon-badge" style="background: #fef3c7; color: #b45309;">🕌</div>
+                  <div>
+                    <div class="course-card-name">Peygamber Efendimizin Hayatı</div>
+                    <div class="course-card-sub">7. Sınıf Şubeleri (7/İ, 7/J, 7/K)</div>
+                  </div>
+                </div>
+                <span class="badge-count plus" id="pehTotalBadge">+0 / -0</span>
+              </div>
+              <div class="course-classes-row">
+                <div class="class-quick-btn" onclick="navigateToClass('peh', '7-i')">
+                  <div class="class-quick-name">7/İ Sınıfı</div>
+                  <div class="class-quick-stats" id="peh-stat-7-i">0+ / 0-</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToClass('peh', '7-j')">
+                  <div class="class-quick-name">7/J Sınıfı</div>
+                  <div class="class-quick-stats" id="peh-stat-7-j">0+ / 0-</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToClass('peh', '7-k')">
+                  <div class="class-quick-name">7/K Sınıfı</div>
+                  <div class="class-quick-stats" id="peh-stat-7-k">0+ / 0-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. DYNAMIC CLASS EVALUATION PANEL (FOR BOTH COURSES) -->
+        <section id="panel-class-view" class="view-panel">
+          <div class="summary-card" id="currentClassSummary"></div>
+          <div id="classContentArea"></div>
+        </section>
+
+        <!-- 3. KULÜPLER PANEL -->
+        <section id="panel-clubs" class="view-panel">
+          <div class="club-header-banner">
+            <div>
+              <h2 style="font-size: 17px; font-weight: 800; margin-bottom: 2px;">7/İ Şubesi Sosyal Kulüp Dağılımı</h2>
+              <p style="font-size: 12px; opacity: 0.9;">Rebii Karatekin Ortaokulu Sosyal Etkinlik ve Kulüp Listesi</p>
+            </div>
+            <div style="text-align: right; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 10px;">
+              <span style="font-size: 11px; display: block;">Toplam Kulüp</span>
+              <strong style="font-size: 18px;">20</strong>
+            </div>
+          </div>
+          <div class="club-cards-container" id="clubCardsContainer"></div>
+        </section>
+
+        <!-- 4. SETTINGS & BACKUP PANEL -->
+        <section id="panel-settings" class="view-panel">
+          <div class="settings-card">
+            <div class="settings-title">
+              <span>🔐</span>
+              <span>Giriş Şifresi ve Kullanıcı Adı Ayarları</span>
+            </div>
+            <p class="settings-desc">
+              Sisteme giriş yaparken kullanılan kullanıcı adı ve şifreyi buradan istediğiniz zaman değiştirebilirsiniz.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 500px; margin-bottom: 12px;">
+              <div>
+                <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">YENİ KULLANICI ADI</label>
+                <input type="text" id="newUsername" class="form-input" style="height: 38px; font-size: 13px;" placeholder="Yeni kullanıcı adı">
+              </div>
+              <div>
+                <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">YENİ ŞİFRE</label>
+                <input type="password" id="newPassword" class="form-input" style="height: 38px; font-size: 13px;" placeholder="Yeni şifre">
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="updateCredentials()">
+              <span>💾</span> Şifreyi Güncelle ve Kaydet
             </button>
           </div>
-        </div>
-      </section>
-    </main>
+
+          <div class="settings-card">
+            <div class="settings-title">
+              <span>📊</span>
+              <span>Excel (CSV) Olarak İndir</span>
+            </div>
+            <p class="settings-desc">
+              Haftalık artı/eksi değerlendirmelerini ve toplam skorları Excel'de açılabilir CSV dosyası olarak cihazınıza kaydedin.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-primary" onclick="exportToCSV('dkab')">
+                <span>📥</span> Din Kültürü Sınıflarını Excel'e İndir
+              </button>
+              <button class="btn btn-secondary" onclick="exportToCSV('peh')">
+                <span>📥</span> Peygamberimizin Hayatı Sınıflarını Excel'e İndir
+              </button>
+              <button class="btn btn-secondary" onclick="exportToCSV('all')">
+                <span>📁</span> Her İki Dersi Birlikte Excel'e İndir
+              </button>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <div class="settings-title">
+              <span>💾</span>
+              <span>Veri Yedekleme ve Geri Yükleme</span>
+            </div>
+            <p class="settings-desc">
+              İki dersin tüm notlarını yedek dosyası (.json) olarak cihazınıza indirebilir veya daha önce aldığınız yedeği geri yükleyebilirsiniz.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-secondary" onclick="downloadBackup()">
+                <span>⬇️</span> Tüm Notların Yedeğini İndir
+              </button>
+              <label class="btn btn-secondary" style="cursor: pointer;">
+                <span>⬆️</span> Yedekten Geri Yükle
+                <input type="file" id="backupFileInput" accept=".json" style="display: none;" onchange="restoreBackup(event)">
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <div class="settings-title">
+              <span>🖨️</span>
+              <span>Yazdır / PDF Olarak Kaydet</span>
+            </div>
+            <p class="settings-desc">
+              Mevcut sınıfın artı/eksi listesini resmi okul evrakı formatında temiz ve düzenli bir şekilde yazıcıya gönderebilir veya PDF yapabilirsiniz.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-secondary" onclick="window.print()">
+                <span>🖨️</span> Bu Sınıfı Yazdır / PDF Yap
+              </button>
+            </div>
+          </div>
+
+          <div class="settings-card" style="border-color: #fca5a5;">
+            <div class="settings-title" style="color: #b91c1c;">
+              <span>⚠️</span>
+              <span>Sınıf Notlarını Sıfırla</span>
+            </div>
+            <p class="settings-desc">
+              Şu anda seçili olan ders ve sınıfa ait tüm haftalık artı ve eksileri temizlemek isterseniz kullanabilirsiniz.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn-danger" onclick="resetCurrentClassData()">
+                <span>🗑️</span> Bu Dersin Bu Sınıfını Sıfırla
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   </div>
 
   <!-- POPUP EVALUATION MODAL -->
@@ -1580,107 +2137,23 @@
 
   <!-- JAVASCRIPT APPLICATION LOGIC -->
   <script>
-    // AUTHENTICATION CONFIGURATION
-    const DEFAULT_AUTH = {
-      username: "mervehacer",
-      password: "123"
+    // 1. LESSONS CONFIGURATION
+    const LESSONS = {
+      'dkab': {
+        id: 'dkab',
+        name: 'Din Kültürü ve Ahlak Bilgisi',
+        shortName: 'Din Kültürü',
+        icon: '📖'
+      },
+      'peh': {
+        id: 'peh',
+        name: 'Peygamber Efendimizin Hayatı',
+        shortName: 'Peygamberimizin Hayatı',
+        icon: '🕌'
+      }
     };
 
-    const AUTH_KEY = "mervehacer_auth_cfg_v1";
-    const SESSION_KEY = "mervehacer_session_active_v1";
-
-    function getAuthCredentials() {
-      try {
-        const stored = localStorage.getItem(AUTH_KEY);
-        if (stored) return JSON.parse(stored);
-      } catch (e) {}
-      return DEFAULT_AUTH;
-    }
-
-    function checkExistingSession() {
-      const active = localStorage.getItem(SESSION_KEY);
-      if (active === "true") {
-        unlockPortal();
-      }
-    }
-
-    function handleLogin(e) {
-      e.preventDefault();
-      const uInput = document.getElementById('usernameInput').value.trim().toLowerCase();
-      const pInput = document.getElementById('passwordInput').value.trim();
-      const remember = document.getElementById('rememberMe').checked;
-      const errorElem = document.getElementById('loginError');
-
-      const creds = getAuthCredentials();
-
-      if (uInput === creds.username.toLowerCase() && pInput === creds.password) {
-        errorElem.style.display = 'none';
-        if (remember) {
-          localStorage.setItem(SESSION_KEY, "true");
-        }
-        showToast("Giriş başarılı! Hoş geldiniz.");
-        unlockPortal();
-      } else {
-        errorElem.style.display = 'block';
-        if (window.navigator && window.navigator.vibrate) window.navigator.vibrate([60, 50, 60]);
-      }
-    }
-
-    function unlockPortal() {
-      const loginScreen = document.getElementById('loginScreen');
-      const appContainer = document.getElementById('appContainer');
-
-      loginScreen.classList.add('hidden');
-      appContainer.style.display = 'flex';
-
-      // Load app data
-      loadGradesFromStorage();
-      updateViewToggleUI();
-      renderAllClasses();
-      renderClubsList();
-      updateHeaderStats();
-      syncFromCloud(false);
-    }
-
-    window.addEventListener('focus', () => {
-      if (localStorage.getItem(SESSION_KEY) === "true") {
-        syncFromCloud(false);
-      }
-    });
-
-    function handleLogout() {
-      const confirmed = confirm("Oturumu kapatmak istediğinize emin misiniz?");
-      if (confirmed) {
-        localStorage.removeItem(SESSION_KEY);
-        document.getElementById('passwordInput').value = '';
-        document.getElementById('appContainer').style.display = 'none';
-        document.getElementById('loginScreen').classList.remove('hidden');
-        showToast("Çıkış yapıldı.");
-      }
-    }
-
-    function togglePasswordVisibility() {
-      const input = document.getElementById('passwordInput');
-      input.type = input.type === 'password' ? 'text' : 'password';
-    }
-
-    function updateCredentials() {
-      const newU = document.getElementById('newUsername').value.trim();
-      const newP = document.getElementById('newPassword').value.trim();
-
-      if (!newU || !newP) {
-        alert("Lütfen hem yeni kullanıcı adı hem de yeni şifre giriniz!");
-        return;
-      }
-
-      const creds = { username: newU, password: newP };
-      localStorage.setItem(AUTH_KEY, JSON.stringify(creds));
-      document.getElementById('newUsername').value = '';
-      document.getElementById('newPassword').value = '';
-      showToast("Kullanıcı adı ve şifre güncellendi!");
-    }
-
-    // 1. DATA DEFINITIONS
+    // 2. STUDENTS DATA (100% PRECISELY EXTRACTED)
     const STUDENTS_DATA = {
       '7-i': {
         name: "7/İ",
@@ -1824,52 +2297,166 @@
     ];
 
     const TOTAL_WEEKS = 24;
-    const STORAGE_KEY = "mervehacer_grading_data_v1";
+    const STORAGE_KEY = "mervehacer_grading_data_v2"; // v2 supports both lessons!
+    const LEGACY_STORAGE_KEY = "mervehacer_grading_data_v1";
+    const FIREBASE_DB_URL = "https://mervehacer-default-rtdb.firebaseio.com";
 
-    // 2. STATE MANAGEMENT
-    let currentTab = '7-i';
+    // AUTHENTICATION CONFIGURATION
+    const DEFAULT_AUTH = { username: "mervehacer", password: "123" };
+    const AUTH_KEY = "mervehacer_auth_cfg_v1";
+    const SESSION_KEY = "mervehacer_session_active_v1";
+
+    // 3. APPLICATION STATE
+    let currentView = 'dashboard'; // 'dashboard', 'class-view', 'clubs', 'settings'
+    let currentLesson = 'dkab'; // 'dkab', 'peh'
+    let currentClass = '7-i'; // '7-i', '7-j', '7-k'
     let viewMode = window.innerWidth < 768 ? 'cards' : 'table';
     let searchQuery = '';
     let currentFilter = 'all';
-    let gradesData = {};
+
+    // Grades Structure: { dkab: { '7-i': { ... } }, peh: { '7-i': { ... } } }
+    let gradesData = {
+      dkab: { '7-i': {}, '7-j': {}, '7-k': {} },
+      peh: { '7-i': {}, '7-j': {}, '7-k': {} }
+    };
 
     let activeModalTarget = {
+      lessonId: null,
       classId: null,
       studentNo: null,
       studentIndex: null,
       weekIndex: null
     };
 
-    // 3. INITIALIZATION
+    let isCloudSyncing = false;
+
+    // 4. INITIALIZATION & AUTH
     window.addEventListener('DOMContentLoaded', () => {
       checkExistingSession();
     });
 
+    function getAuthCredentials() {
+      try {
+        const stored = localStorage.getItem(AUTH_KEY);
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return DEFAULT_AUTH;
+    }
+
+    function checkExistingSession() {
+      const active = localStorage.getItem(SESSION_KEY);
+      if (active === "true") {
+        unlockPortal();
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const uInput = document.getElementById('usernameInput').value.trim().toLowerCase();
+      const pInput = document.getElementById('passwordInput').value.trim();
+      const remember = document.getElementById('rememberMe').checked;
+      const errorElem = document.getElementById('loginError');
+
+      const creds = getAuthCredentials();
+
+      if (uInput === creds.username.toLowerCase() && pInput === creds.password) {
+        errorElem.style.display = 'none';
+        if (remember) {
+          localStorage.setItem(SESSION_KEY, "true");
+        }
+        showToast("Giriş başarılı! Hoş geldiniz.");
+        unlockPortal();
+      } else {
+        errorElem.style.display = 'block';
+        if (window.navigator && window.navigator.vibrate) window.navigator.vibrate([60, 50, 60]);
+      }
+    }
+
+    function unlockPortal() {
+      const loginScreen = document.getElementById('loginScreen');
+      const appContainer = document.getElementById('appContainer');
+
+      loginScreen.classList.add('hidden');
+      appContainer.style.display = 'flex';
+
+      loadGradesFromStorage();
+      updateViewToggleUI();
+      renderDashboard();
+      renderClubsList();
+      syncFromCloud(false);
+    }
+
+    function handleLogout() {
+      const confirmed = confirm("Oturumu kapatmak istediğinize emin misiniz?");
+      if (confirmed) {
+        localStorage.removeItem(SESSION_KEY);
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('appContainer').style.display = 'none';
+        document.getElementById('loginScreen').classList.remove('hidden');
+        showToast("Çıkış yapıldı.");
+      }
+    }
+
+    function togglePasswordVisibility() {
+      const input = document.getElementById('passwordInput');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    function updateCredentials() {
+      const newU = document.getElementById('newUsername').value.trim();
+      const newP = document.getElementById('newPassword').value.trim();
+
+      if (!newU || !newP) {
+        alert("Lütfen hem yeni kullanıcı adı hem de yeni şifre giriniz!");
+        return;
+      }
+
+      const creds = { username: newU, password: newP };
+      localStorage.setItem(AUTH_KEY, JSON.stringify(creds));
+      document.getElementById('newUsername').value = '';
+      document.getElementById('newPassword').value = '';
+      showToast("Kullanıcı adı ve şifre güncellendi!");
+    }
+
+    // 5. STORAGE & CLOUD DATA MANAGEMENT
+    function ensureDataStructure() {
+      if (!gradesData || typeof gradesData !== 'object') gradesData = {};
+      if (!gradesData.dkab) gradesData.dkab = {};
+      if (!gradesData.peh) gradesData.peh = {};
+      ['7-i', '7-j', '7-k'].forEach(cId => {
+        if (!gradesData.dkab[cId]) gradesData.dkab[cId] = {};
+        if (!gradesData.peh[cId]) gradesData.peh[cId] = {};
+      });
+    }
+
     function loadGradesFromStorage() {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          gradesData = JSON.parse(saved);
+        const savedV2 = localStorage.getItem(STORAGE_KEY);
+        if (savedV2) {
+          gradesData = JSON.parse(savedV2);
+        } else {
+          // Check legacy v1 and migrate to dkab!
+          const savedV1 = localStorage.getItem(LEGACY_STORAGE_KEY);
+          if (savedV1) {
+            const oldData = JSON.parse(savedV1);
+            gradesData = { dkab: oldData, peh: {} };
+            saveGradesToStorage();
+          }
         }
       } catch (e) {
         console.error("Local storage okuma hatası:", e);
       }
-      ['7-i', '7-j', '7-k'].forEach(cId => {
-        if (!gradesData[cId]) gradesData[cId] = {};
-      });
+      ensureDataStructure();
     }
 
     function saveGradesToStorage() {
       try {
+        ensureDataStructure();
         localStorage.setItem(STORAGE_KEY, JSON.stringify(gradesData));
       } catch (e) {
         console.error("Local storage kayıt hatası:", e);
       }
     }
-
-    // FIREBASE REALTIME CLOUD DATABASE INTEGRATION
-    const FIREBASE_DB_URL = "https://mervehacer-default-rtdb.firebaseio.com";
-    let isCloudSyncing = false;
 
     async function syncFromCloud(showNotification = false) {
       if (isCloudSyncing) return;
@@ -1881,17 +2468,20 @@
         if (res.ok) {
           const cloudData = await res.json();
           if (cloudData && typeof cloudData === 'object') {
-            gradesData = cloudData;
-            ['7-i', '7-j', '7-k'].forEach(cId => {
-              if (!gradesData[cId]) gradesData[cId] = {};
-            });
+            // Check if cloud data is v1 or v2 format
+            if (cloudData['7-i'] && !cloudData.dkab) {
+              gradesData = { dkab: cloudData, peh: {} };
+              await pushAllToCloud();
+            } else {
+              gradesData = cloudData;
+            }
+            ensureDataStructure();
             saveGradesToStorage();
-            renderCurrentClass();
-            updateHeaderStats();
+            if (currentView === 'dashboard') renderDashboard();
+            else if (currentView === 'class-view') renderCurrentClass();
             updateCloudBadge('online');
             if (showNotification) showToast("Bulutla eşitlendi ☁️");
           } else {
-            // Cloud is empty, push local data to cloud if exists
             await pushAllToCloud();
             updateCloudBadge('online');
           }
@@ -1906,9 +2496,9 @@
       }
     }
 
-    async function saveGradeToCloud(classId, studentNo, weekIndex, value) {
+    async function saveGradeToCloud(lessonId, classId, studentNo, weekIndex, value) {
       try {
-        const url = `${FIREBASE_DB_URL}/grades/${classId}/${studentNo}/${weekIndex}.json`;
+        const url = `${FIREBASE_DB_URL}/grades/${lessonId}/${classId}/${studentNo}/${weekIndex}.json`;
         if (value === null) {
           await fetch(url, { method: 'DELETE' });
         } else {
@@ -1927,6 +2517,7 @@
 
     async function pushAllToCloud() {
       try {
+        ensureDataStructure();
         await fetch(`${FIREBASE_DB_URL}/grades.json`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -1944,46 +2535,175 @@
       if (!badge) return;
       if (status === 'online') {
         badge.innerHTML = '🟢 ☁️ Bulut: Bağlı';
-        badge.style.background = 'rgba(16, 185, 129, 0.2)';
-        badge.style.color = '#a7f3d0';
+        badge.style.background = 'rgba(16, 185, 129, 0.15)';
+        badge.style.color = '#047857';
       } else if (status === 'syncing') {
         badge.innerHTML = '🔄 ☁️ Eşitleniyor...';
-        badge.style.background = 'rgba(234, 179, 8, 0.2)';
-        badge.style.color = '#fde047';
+        badge.style.background = 'rgba(234, 179, 8, 0.15)';
+        badge.style.color = '#b45309';
       } else {
         badge.innerHTML = '⚪ ☁️ Çevrimdışı';
-        badge.style.background = 'rgba(255, 255, 255, 0.15)';
-        badge.style.color = '#cbd5e1';
+        badge.style.background = '#f1f5f9';
+        badge.style.color = '#64748b';
       }
     }
 
-    // 4. TAB & VIEW NAVIGATION
-    function switchTab(tabId) {
-      currentTab = tabId;
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-
-      const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
-      if (activeBtn) activeBtn.classList.add('active');
-
-      const targetPanel = document.getElementById(`panel-${tabId}`);
-      if (targetPanel) targetPanel.classList.add('active');
-
-      const controlsBar = document.getElementById('controlsBar');
-      if (tabId === 'settings' || tabId === 'clubs') {
-        controlsBar.style.display = tabId === 'clubs' ? 'block' : 'none';
-        document.getElementById('viewToggleBtn').style.display = 'none';
-        document.getElementById('subControls').style.display = 'none';
-      } else {
-        controlsBar.style.display = 'block';
-        document.getElementById('viewToggleBtn').style.display = 'flex';
-        document.getElementById('subControls').style.display = 'flex';
+    window.addEventListener('focus', () => {
+      if (localStorage.getItem(SESSION_KEY) === "true") {
+        syncFromCloud(false);
       }
+    });
 
-      updateHeaderStats();
+    // 6. NAVIGATION & SIDEBAR LOGIC
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      sidebar.classList.toggle('mobile-open');
+      backdrop.classList.toggle('active');
+    }
+
+    function closeSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      sidebar.classList.remove('mobile-open');
+      backdrop.classList.remove('active');
+    }
+
+    function toggleAccordion(lessonId) {
+      const header = document.getElementById(`acc-header-${lessonId}`);
+      const subItems = document.getElementById(`acc-sub-${lessonId}`);
+      header.classList.toggle('open');
+      subItems.classList.toggle('open');
+    }
+
+    function clearActiveNavStyles() {
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-sub-item').forEach(el => el.classList.remove('active'));
+    }
+
+    function navigateTo(viewName) {
+      currentView = viewName;
+      closeSidebar();
+
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      clearActiveNavStyles();
+
+      const controlsBar = document.getElementById('classControlsBar');
+
+      if (viewName === 'dashboard') {
+        document.getElementById('panel-dashboard').classList.add('active');
+        document.getElementById('nav-dashboard').classList.add('active');
+        document.getElementById('pageTitle').textContent = "Ana Sayfa";
+        document.getElementById('pageSubtitle').textContent = "Genel Değerlendirme & İstatistik Paneli";
+        controlsBar.style.display = 'none';
+        renderDashboard();
+      } else if (viewName === 'clubs') {
+        document.getElementById('panel-clubs').classList.add('active');
+        document.getElementById('nav-clubs').classList.add('active');
+        document.getElementById('pageTitle').textContent = "🏆 Sosyal Kulüpler (7/İ)";
+        document.getElementById('pageSubtitle').textContent = "Rebii Karatekin Ortaokulu 20 Kulüp Dağılımı";
+        controlsBar.style.display = 'none';
+        renderClubsList();
+      } else if (viewName === 'settings') {
+        document.getElementById('panel-settings').classList.add('active');
+        document.getElementById('nav-settings').classList.add('active');
+        document.getElementById('pageTitle').textContent = "⚙️ Ayarlar & Güvenlik";
+        document.getElementById('pageSubtitle').textContent = "Şifre, Excel, Yedekleme ve Sıfırlama";
+        controlsBar.style.display = 'none';
+      }
+    }
+
+    function navigateToClass(lessonId, classId) {
+      currentView = 'class-view';
+      currentLesson = lessonId;
+      currentClass = classId;
+      closeSidebar();
+
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      clearActiveNavStyles();
+
+      document.getElementById('panel-class-view').classList.add('active');
+      const activeNav = document.getElementById(`nav-${lessonId}-${classId}`);
+      if (activeNav) activeNav.classList.add('active');
+
+      const lesson = LESSONS[lessonId];
+      const cData = STUDENTS_DATA[classId];
+
+      document.getElementById('pageTitle').textContent = `${lesson.icon} ${lesson.shortName} • ${cData.name} Sınıfı`;
+      document.getElementById('pageSubtitle').textContent = `Öğretmen: Merve Hacer SEVER • 24 Hafta Artı/Eksi`;
+
+      document.getElementById('classControlsBar').style.display = 'block';
+
       clearSearch();
+      renderCurrentClass();
     }
 
+    // 7. STATS CALCULATION
+    function getStudentStats(lessonId, classId, studentNo) {
+      ensureDataStructure();
+      const stdGrades = (gradesData[lessonId] && gradesData[lessonId][classId] && gradesData[lessonId][classId][studentNo]) || {};
+      let plus = 0;
+      let minus = 0;
+      for (let w = 1; w <= TOTAL_WEEKS; w++) {
+        if (stdGrades[w] === '+') plus++;
+        else if (stdGrades[w] === '-') minus++;
+      }
+      return { plus, minus, totalEvaluations: plus + minus };
+    }
+
+    function getLessonTotalStats(lessonId) {
+      ensureDataStructure();
+      let plus = 0;
+      let minus = 0;
+      ['7-i', '7-j', '7-k'].forEach(cId => {
+        const cData = STUDENTS_DATA[cId];
+        cData.students.forEach(std => {
+          const s = getStudentStats(lessonId, cId, std.no);
+          plus += s.plus;
+          minus += s.minus;
+        });
+      });
+      return { plus, minus, total: plus + minus };
+    }
+
+    function getClassStats(lessonId, classId) {
+      ensureDataStructure();
+      let plus = 0;
+      let minus = 0;
+      const cData = STUDENTS_DATA[classId];
+      cData.students.forEach(std => {
+        const s = getStudentStats(lessonId, classId, std.no);
+        plus += s.plus;
+        minus += s.minus;
+      });
+      return { plus, minus };
+    }
+
+    // 8. DASHBOARD RENDERING
+    function renderDashboard() {
+      const dkabStats = getLessonTotalStats('dkab');
+      const pehStats = getLessonTotalStats('peh');
+
+      const totalPlus = dkabStats.plus + pehStats.plus;
+      const totalMinus = dkabStats.minus + pehStats.minus;
+      const totalEval = totalPlus + totalMinus;
+
+      document.getElementById('dashTotalPlus').textContent = `+${totalPlus}`;
+      document.getElementById('dashTotalMinus').textContent = `-${totalMinus}`;
+      document.getElementById('dashTotalEval').textContent = `${totalEval}`;
+
+      document.getElementById('dkabTotalBadge').textContent = `+${dkabStats.plus} / -${dkabStats.minus}`;
+      document.getElementById('pehTotalBadge').textContent = `+${pehStats.plus} / -${pehStats.minus}`;
+
+      ['7-i', '7-j', '7-k'].forEach(cId => {
+        const dStat = getClassStats('dkab', cId);
+        const pStat = getClassStats('peh', cId);
+        document.getElementById(`dkab-stat-${cId}`).innerHTML = `<span style="color:#047857;">+${dStat.plus}</span> / <span style="color:#b91c1c;">-${dStat.minus}</span>`;
+        document.getElementById(`peh-stat-${cId}`).innerHTML = `<span style="color:#047857;">+${pStat.plus}</span> / <span style="color:#b91c1c;">-${pStat.minus}</span>`;
+      });
+    }
+
+    // 9. CLASS EVALUATION RENDERING
     function toggleViewMode() {
       viewMode = viewMode === 'table' ? 'cards' : 'table';
       updateViewToggleUI();
@@ -2002,51 +2722,10 @@
       }
     }
 
-    function updateHeaderStats() {
-      const activeNameElem = document.getElementById('activeClassName');
-      const activeStatsElem = document.getElementById('activeClassStats');
-
-      if (currentTab === 'clubs') {
-        activeNameElem.textContent = "Sosyal Kulüpler";
-        activeStatsElem.textContent = "20 Kulüp (7/İ)";
-        return;
-      }
-      if (currentTab === 'settings') {
-        activeNameElem.textContent = "Ayar & Güvenlik";
-        activeStatsElem.textContent = "Merve Hacer SEVER";
-        return;
-      }
-
-      const cData = STUDENTS_DATA[currentTab];
-      if (!cData) return;
-
-      activeNameElem.textContent = `${cData.name} Sınıfı`;
-
-      let totalPlus = 0;
-      let totalMinus = 0;
-      const classGrades = gradesData[currentTab] || {};
-
-      cData.students.forEach(std => {
-        const stdGrades = classGrades[std.no] || {};
-        for (let w = 1; w <= TOTAL_WEEKS; w++) {
-          if (stdGrades[w] === '+') totalPlus++;
-          else if (stdGrades[w] === '-') totalMinus++;
-        }
-      });
-
-      activeStatsElem.innerHTML = `<span style="color: #a7f3d0;">+${totalPlus}</span> / <span style="color: #fca5a5;">-${totalMinus}</span>`;
-    }
-
-    // 5. SEARCH & FILTERING
     function handleSearch(query) {
       searchQuery = query.trim().toLowerCase();
       document.getElementById('clearSearchBtn').style.display = searchQuery ? 'block' : 'none';
-
-      if (currentTab === 'clubs') {
-        renderClubsList();
-      } else {
-        renderCurrentClass();
-      }
+      renderCurrentClass();
     }
 
     function clearSearch() {
@@ -2054,11 +2733,7 @@
       const input = document.getElementById('searchInput');
       if (input) input.value = '';
       document.getElementById('clearSearchBtn').style.display = 'none';
-      if (currentTab === 'clubs') {
-        renderClubsList();
-      } else {
-        renderCurrentClass();
-      }
+      renderCurrentClass();
     }
 
     function setFilter(filterType, elem) {
@@ -2068,35 +2743,14 @@
       renderCurrentClass();
     }
 
-    // 6. RENDER LOGIC
-    function renderAllClasses() {
-      ['7-i', '7-j', '7-k'].forEach(cId => {
-        renderClassContent(cId);
-      });
-    }
-
     function renderCurrentClass() {
-      if (['7-i', '7-j', '7-k'].includes(currentTab)) {
-        renderClassContent(currentTab);
-      }
-    }
+      const cData = STUDENTS_DATA[currentClass];
+      const lesson = LESSONS[currentLesson];
+      if (!cData || !lesson) return;
 
-    function getStudentStats(classId, studentNo) {
-      const stdGrades = (gradesData[classId] && gradesData[classId][studentNo]) || {};
-      let plus = 0;
-      let minus = 0;
-      for (let w = 1; w <= TOTAL_WEEKS; w++) {
-        if (stdGrades[w] === '+') plus++;
-        else if (stdGrades[w] === '-') minus++;
-      }
-      return { plus, minus, totalEvaluations: plus + minus };
-    }
+      ensureDataStructure();
+      const classGrades = gradesData[currentLesson][currentClass] || {};
 
-    function renderClassContent(classId) {
-      const cData = STUDENTS_DATA[classId];
-      if (!cData) return;
-
-      const classGrades = gradesData[classId] || {};
       let totalPlus = 0;
       let totalMinus = 0;
       let countWithPlus = 0;
@@ -2104,7 +2758,7 @@
       let countEmpty = 0;
 
       const filteredStudents = cData.students.filter(std => {
-        const stats = getStudentStats(classId, std.no);
+        const stats = getStudentStats(currentLesson, currentClass, std.no);
         totalPlus += stats.plus;
         totalMinus += stats.minus;
 
@@ -2124,60 +2778,54 @@
         return true;
       });
 
-      if (classId === currentTab) {
-        document.getElementById('count-all').textContent = cData.students.length;
-        document.getElementById('count-plus').textContent = countWithPlus;
-        document.getElementById('count-minus').textContent = countWithMinus;
-        document.getElementById('count-empty').textContent = countEmpty;
-        document.getElementById('showingCount').textContent = `${filteredStudents.length} / ${cData.students.length} öğrenci`;
-      }
+      document.getElementById('count-all').textContent = cData.students.length;
+      document.getElementById('count-plus').textContent = countWithPlus;
+      document.getElementById('count-minus').textContent = countWithMinus;
+      document.getElementById('count-empty').textContent = countEmpty;
+      document.getElementById('showingCount').textContent = `${filteredStudents.length} / ${cData.students.length} öğrenci`;
 
-      const summaryElem = document.getElementById(`summary-${classId}`);
-      if (summaryElem) {
-        summaryElem.innerHTML = `
-          <div class="stat-item">
-            <div class="stat-val">${cData.students.length}</div>
-            <div class="stat-lbl">Öğrenci Sayısı</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-val green">+${totalPlus}</div>
-            <div class="stat-lbl">Toplam Artı</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-val red">-${totalMinus}</div>
-            <div class="stat-lbl">Toplam Eksi</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-val">${TOTAL_WEEKS}</div>
-            <div class="stat-lbl">Değerlendirme Bölmesi</div>
-          </div>
-        `;
-      }
+      // Summary Card
+      const summaryElem = document.getElementById('currentClassSummary');
+      summaryElem.innerHTML = `
+        <div class="stat-item">
+          <div class="stat-val">${cData.students.length}</div>
+          <div class="stat-lbl">${cData.name} Mevcudu</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val green">+${totalPlus}</div>
+          <div class="stat-lbl">Toplam Artı (${lesson.shortName})</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val red">-${totalMinus}</div>
+          <div class="stat-lbl">Toplam Eksi (${lesson.shortName})</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">${TOTAL_WEEKS}</div>
+          <div class="stat-lbl">Değerlendirme Bölmesi</div>
+        </div>
+      `;
 
-      const containerElem = document.getElementById(`content-${classId}`);
-      if (!containerElem) return;
+      const contentElem = document.getElementById('classContentArea');
 
       if (filteredStudents.length === 0) {
-        containerElem.innerHTML = `
+        contentElem.innerHTML = `
           <div style="text-align: center; padding: 40px 16px; background: white; border-radius: 12px; border: 1px solid var(--border);">
             <div style="font-size: 36px; margin-bottom: 8px;">🔍</div>
             <div style="font-size: 16px; font-weight: 700; color: var(--text);">Aramaya Uygun Öğrenci Bulunamadı</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Filtreleri veya arama terimini temizleyip tekrar deneyin.</div>
-            <button class="btn btn-secondary" style="margin-top: 12px;" onclick="clearSearch()">Filtreyi Temizle</button>
+            <button class="btn btn-secondary" style="margin-top: 12px;" onclick="clearSearch()">Aramayı Temizle</button>
           </div>
         `;
         return;
       }
 
       if (viewMode === 'table') {
-        containerElem.innerHTML = renderTableView(classId, filteredStudents, classGrades);
+        contentElem.innerHTML = renderTableView(currentLesson, currentClass, filteredStudents, classGrades);
       } else {
-        containerElem.innerHTML = renderCardsView(classId, filteredStudents, classGrades);
+        contentElem.innerHTML = renderCardsView(currentLesson, currentClass, filteredStudents, classGrades);
       }
     }
 
-    // TABLE VIEW GENERATION
-    function renderTableView(classId, students, classGrades) {
+    function renderTableView(lessonId, classId, students, classGrades) {
       let html = `
         <div class="table-container">
           <table class="grade-table">
@@ -2199,7 +2847,7 @@
       `;
 
       students.forEach(std => {
-        const stats = getStudentStats(classId, std.no);
+        const stats = getStudentStats(lessonId, classId, std.no);
         const stdGrades = classGrades[std.no] || {};
 
         html += `
@@ -2217,7 +2865,7 @@
 
           html += `
             <td class="col-week">
-              <button class="cell-btn ${statusClass}" onclick="openEvalModal('${classId}', ${std.no}, ${w})" title="${std.ad} ${std.soyad} - Bölme ${w}">
+              <button class="cell-btn ${statusClass}" onclick="openEvalModal('${lessonId}', '${classId}', ${std.no}, ${w})">
                 ${text}
               </button>
             </td>
@@ -2243,12 +2891,11 @@
       return html;
     }
 
-    // CARDS VIEW GENERATION
-    function renderCardsView(classId, students, classGrades) {
+    function renderCardsView(lessonId, classId, students, classGrades) {
       let html = `<div class="cards-grid">`;
 
       students.forEach(std => {
-        const stats = getStudentStats(classId, std.no);
+        const stats = getStudentStats(lessonId, classId, std.no);
         const stdGrades = classGrades[std.no] || {};
         const initials = (std.ad[0] || '') + (std.soyad[0] || '');
 
@@ -2281,7 +2928,7 @@
           html += `
             <div class="card-week-box">
               <span class="w-lbl">${w}</span>
-              <button class="cell-btn ${statusClass}" onclick="openEvalModal('${classId}', ${std.no}, ${w})">
+              <button class="cell-btn ${statusClass}" onclick="openEvalModal('${lessonId}', '${classId}', ${std.no}, ${w})">
                 ${text}
               </button>
             </div>
@@ -2298,34 +2945,13 @@
       return html;
     }
 
-    // 7. CLUBS MODULE
+    // 10. CLUBS LIST
     function renderClubsList() {
       const container = document.getElementById('clubCardsContainer');
       if (!container) return;
 
-      const query = searchQuery;
-      let filteredClubs = CLUBS_DATA;
-
-      if (query) {
-        filteredClubs = CLUBS_DATA.filter(club => {
-          const clubMatch = club.name.toLowerCase().includes(query);
-          const studentMatch = club.students.some(s => s.name.toLowerCase().includes(query) || s.no.toString().includes(query));
-          return clubMatch || studentMatch;
-        });
-      }
-
-      if (filteredClubs.length === 0) {
-        container.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: white; border-radius: 12px; border: 1px solid var(--border);">
-            <div style="font-size: 32px;">🔍</div>
-            <div style="font-weight: 700; margin-top: 8px;">Aramaya Uygun Kulüp veya Öğrenci Bulunamadı</div>
-          </div>
-        `;
-        return;
-      }
-
       let html = '';
-      filteredClubs.forEach(club => {
+      CLUBS_DATA.forEach(club => {
         html += `
           <div class="club-card">
             <div class="club-card-title">
@@ -2353,10 +2979,11 @@
       container.innerHTML = html;
     }
 
-    // 8. MODAL EVALUATION ACTIONS
-    function openEvalModal(classId, studentNo, weekIndex) {
+    // 11. EVALUATION MODAL ACTIONS
+    function openEvalModal(lessonId, classId, studentNo, weekIndex) {
       const cData = STUDENTS_DATA[classId];
-      if (!cData) return;
+      const lesson = LESSONS[lessonId];
+      if (!cData || !lesson) return;
 
       const stdIdx = cData.students.findIndex(s => s.no === studentNo);
       if (stdIdx === -1) return;
@@ -2364,17 +2991,19 @@
       const student = cData.students[stdIdx];
 
       activeModalTarget = {
+        lessonId,
         classId,
         studentNo,
         studentIndex: stdIdx,
         weekIndex
       };
 
-      const stdGrades = (gradesData[classId] && gradesData[classId][studentNo]) || {};
+      ensureDataStructure();
+      const stdGrades = (gradesData[lessonId] && gradesData[lessonId][classId] && gradesData[lessonId][classId][studentNo]) || {};
       const currentVal = stdGrades[weekIndex];
 
       document.getElementById('modalStudentName').textContent = `${student.ad} ${student.soyad}`;
-      document.getElementById('modalMeta').textContent = `${cData.name} Sınıfı • Okul No: ${student.no} • Hafta / Bölme ${weekIndex}`;
+      document.getElementById('modalMeta').textContent = `${lesson.icon} ${lesson.shortName} • ${cData.name} Sınıfı • No: ${student.no} • Hafta ${weekIndex}`;
 
       const stateBadge = document.getElementById('modalCurrentStateBadge');
       if (currentVal === '+') {
@@ -2385,8 +3014,7 @@
         stateBadge.innerHTML = `<span style="background: #f1f5f9; color: var(--text-muted); padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">Şu anki Durum: Not Verilmedi (Boş)</span>`;
       }
 
-      const modal = document.getElementById('evalModal');
-      modal.classList.add('active');
+      document.getElementById('evalModal').classList.add('active');
     }
 
     function handleModalOverlayClick(e) {
@@ -2400,17 +3028,18 @@
     }
 
     function setStudentGrade(value) {
-      const { classId, studentNo, weekIndex } = activeModalTarget;
-      if (!classId || !studentNo || !weekIndex) return;
+      const { lessonId, classId, studentNo, weekIndex } = activeModalTarget;
+      if (!lessonId || !classId || !studentNo || !weekIndex) return;
 
-      if (!gradesData[classId]) gradesData[classId] = {};
-      if (!gradesData[classId][studentNo]) gradesData[classId][studentNo] = {};
+      ensureDataStructure();
+      if (!gradesData[lessonId][classId]) gradesData[lessonId][classId] = {};
+      if (!gradesData[lessonId][classId][studentNo]) gradesData[lessonId][classId][studentNo] = {};
 
       if (value === null) {
-        delete gradesData[classId][studentNo][weekIndex];
+        delete gradesData[lessonId][classId][studentNo][weekIndex];
         showToast("Not temizlendi");
       } else {
-        gradesData[classId][studentNo][weekIndex] = value;
+        gradesData[lessonId][classId][studentNo][weekIndex] = value;
         showToast(value === '+' ? "Artı (+) verildi" : "Eksi (-) verildi");
       }
 
@@ -2419,14 +3048,13 @@
       }
 
       saveGradesToStorage();
-      saveGradeToCloud(classId, studentNo, weekIndex, value);
+      saveGradeToCloud(lessonId, classId, studentNo, weekIndex, value);
       renderCurrentClass();
-      updateHeaderStats();
       closeEvalModal();
     }
 
     function navigateStudent(direction) {
-      const { classId, studentIndex, weekIndex } = activeModalTarget;
+      const { lessonId, classId, studentIndex, weekIndex } = activeModalTarget;
       const cData = STUDENTS_DATA[classId];
       if (!cData) return;
 
@@ -2435,7 +3063,7 @@
       if (newIdx >= cData.students.length) newIdx = 0;
 
       const nextStudent = cData.students[newIdx];
-      openEvalModal(classId, nextStudent.no, weekIndex);
+      openEvalModal(lessonId, classId, nextStudent.no, weekIndex);
     }
 
     // Modal Keyboard Shortcuts
@@ -2464,7 +3092,7 @@
       }
     });
 
-    // 9. TOAST NOTIFICATIONS
+    // 12. TOAST NOTIFICATIONS
     function showToast(text) {
       const toast = document.getElementById('toastMessage');
       const toastText = document.getElementById('toastText');
@@ -2475,33 +3103,40 @@
       }, 1600);
     }
 
-    // 10. EXPORT / BACKUP / RESTORE
+    // 13. EXPORT / BACKUP / RESTORE
     function exportToCSV(scope) {
-      const classesToExport = scope === 'all' ? ['7-i', '7-j', '7-k'] : [currentTab];
-      let csvContent = "\uFEFF";
+      ensureDataStructure();
+      let lessonsToExport = [];
+      if (scope === 'dkab') lessonsToExport = ['dkab'];
+      else if (scope === 'peh') lessonsToExport = ['peh'];
+      else lessonsToExport = ['dkab', 'peh'];
 
-      csvContent += "Sınıf;Okul No;Adı;Soyadı;";
+      let csvContent = "\uFEFF"; // UTF-8 BOM
+      csvContent += "Ders;Sınıf;Okul No;Adı;Soyadı;";
       for (let w = 1; w <= TOTAL_WEEKS; w++) {
         csvContent += `Hafta ${w};`;
       }
       csvContent += "Toplam Artı;Toplam Eksi;Net Skor\n";
 
-      classesToExport.forEach(cId => {
-        const cData = STUDENTS_DATA[cId];
-        const classGrades = gradesData[cId] || {};
+      lessonsToExport.forEach(lId => {
+        const lesson = LESSONS[lId];
+        ['7-i', '7-j', '7-k'].forEach(cId => {
+          const cData = STUDENTS_DATA[cId];
+          const classGrades = (gradesData[lId] && gradesData[lId][cId]) || {};
 
-        cData.students.forEach(std => {
-          const stats = getStudentStats(cId, std.no);
-          const stdGrades = classGrades[std.no] || {};
+          cData.students.forEach(std => {
+            const stats = getStudentStats(lId, cId, std.no);
+            const stdGrades = classGrades[std.no] || {};
 
-          let row = `${cData.name};${std.no};"${std.ad}";"${std.soyad}";`;
-          for (let w = 1; w <= TOTAL_WEEKS; w++) {
-            const val = stdGrades[w] || '';
-            row += `${val};`;
-          }
-          const net = stats.plus - stats.minus;
-          row += `${stats.plus};${stats.minus};${net}\n`;
-          csvContent += row;
+            let row = `"${lesson.name}";${cData.name};${std.no};"${std.ad}";"${std.soyad}";`;
+            for (let w = 1; w <= TOTAL_WEEKS; w++) {
+              const val = stdGrades[w] || '';
+              row += `${val};`;
+            }
+            const net = stats.plus - stats.minus;
+            row += `${stats.plus};${stats.minus};${net}\n`;
+            csvContent += row;
+          });
         });
       });
 
@@ -2509,19 +3144,18 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      const fileName = scope === 'all' 
-        ? `Rebii_Karatekin_Din_Kulturu_Tum_Siniflar_${new Date().toISOString().slice(0,10)}.csv`
-        : `Rebii_Karatekin_Din_Kulturu_${STUDENTS_DATA[currentTab].name}_${new Date().toISOString().slice(0,10)}.csv`;
-      a.download = fileName;
+      a.download = `Rebii_Karatekin_${scope}_${new Date().toISOString().slice(0,10)}.csv`;
       a.click();
       URL.revokeObjectURL(url);
       showToast("Excel (CSV) dosyası indirildi");
     }
 
     function downloadBackup() {
+      ensureDataStructure();
       const backupData = {
-        app: "Rebii Karatekin Ortaokulu Din Kültürü Takip Sistemi",
+        app: "Rebii Karatekin Ortaokulu Din Kültürü & Peygamberimizin Hayatı Takip Sistemi",
         teacher: "Merve Hacer SEVER",
+        version: "2.0",
         exportedAt: new Date().toISOString(),
         grades: gradesData
       };
@@ -2530,7 +3164,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `Merve_Hacer_Sever_Din_Kulturu_Yedek_${new Date().toISOString().slice(0,10)}.json`;
+      a.download = `Merve_Hacer_Sever_Tum_Dersler_Yedek_${new Date().toISOString().slice(0,10)}.json`;
       a.click();
       URL.revokeObjectURL(url);
       showToast("Yedek dosyası indirildi");
@@ -2541,16 +3175,22 @@
       if (!file) return;
 
       const reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = async function(e) {
         try {
           const data = JSON.parse(e.target.result);
           if (data && data.grades) {
-            gradesData = data.grades;
+            // Check if v1 or v2
+            if (data.grades['7-i'] && !data.grades.dkab) {
+              gradesData = { dkab: data.grades, peh: {} };
+            } else {
+              gradesData = data.grades;
+            }
+            ensureDataStructure();
             saveGradesToStorage();
-            pushAllToCloud();
-            renderAllClasses();
-            updateHeaderStats();
-            showToast("Yedek başarıyla yüklendi ve buluta eşitlendi!");
+            await pushAllToCloud();
+            if (currentView === 'dashboard') renderDashboard();
+            else if (currentView === 'class-view') renderCurrentClass();
+            showToast("Yedek yüklendi ve buluta eşitlendi!");
           } else {
             alert("Geçersiz yedek dosyası formatı!");
           }
@@ -2562,18 +3202,19 @@
       event.target.value = '';
     }
 
-    function resetCurrentClassData() {
-      const cData = STUDENTS_DATA[currentTab];
-      if (!cData) return;
+    async function resetCurrentClassData() {
+      const cData = STUDENTS_DATA[currentClass];
+      const lesson = LESSONS[currentLesson];
+      if (!cData || !lesson) return;
 
-      const confirmed = confirm(`${cData.name} sınıfının tüm artı ve eksi notlarını silmek istediğinize emin misiniz? Bu işlem geri alınamaz.`);
+      const confirmed = confirm(`${lesson.name} dersi, ${cData.name} sınıfının tüm artı ve eksi notlarını silmek istediğinize emin misiniz? Bu işlem geri alınamaz.`);
       if (confirmed) {
-        gradesData[currentTab] = {};
+        ensureDataStructure();
+        gradesData[currentLesson][currentClass] = {};
         saveGradesToStorage();
-        pushAllToCloud();
+        await pushAllToCloud();
         renderCurrentClass();
-        updateHeaderStats();
-        showToast(`${cData.name} sınıfı verileri sıfırlandı`);
+        showToast(`${lesson.shortName} - ${cData.name} verileri sıfırlandı`);
       }
     }
   </script>
