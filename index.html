@@ -1340,14 +1340,19 @@
           </div>
         </div>
         <div class="header-right">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <div class="cloud-pill" id="cloudBadge" onclick="syncFromCloud(true)" title="Google Firebase Canlı Bulut Durumu (Yenilemek için tıklayın)" style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); color: #a7f3d0; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+              🟢 ☁️ Bulut: Bağlı
+            </div>
+            <button class="logout-btn" onclick="handleLogout()" title="Oturumu Kapat">
+              <span>🚪</span>
+              <span>Çıkış</span>
+            </button>
+          </div>
           <div class="quick-stats-pill">
             <span id="activeClassName">7/İ Sınıfı</span>
             <strong id="activeClassStats">0 + / 0 -</strong>
           </div>
-          <button class="logout-btn" onclick="handleLogout()" title="Oturumu Kapat">
-            <span>🚪</span>
-            <span>Çıkış</span>
-          </button>
         </div>
       </div>
 
@@ -1634,7 +1639,14 @@
       renderAllClasses();
       renderClubsList();
       updateHeaderStats();
+      syncFromCloud(false);
     }
+
+    window.addEventListener('focus', () => {
+      if (localStorage.getItem(SESSION_KEY) === "true") {
+        syncFromCloud(false);
+      }
+    });
 
     function handleLogout() {
       const confirmed = confirm("Oturumu kapatmak istediğinize emin misiniz?");
@@ -1852,6 +1864,96 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify(gradesData));
       } catch (e) {
         console.error("Local storage kayıt hatası:", e);
+      }
+    }
+
+    // FIREBASE REALTIME CLOUD DATABASE INTEGRATION
+    const FIREBASE_DB_URL = "https://mervehacer-default-rtdb.firebaseio.com";
+    let isCloudSyncing = false;
+
+    async function syncFromCloud(showNotification = false) {
+      if (isCloudSyncing) return;
+      isCloudSyncing = true;
+      updateCloudBadge('syncing');
+
+      try {
+        const res = await fetch(`${FIREBASE_DB_URL}/grades.json`);
+        if (res.ok) {
+          const cloudData = await res.json();
+          if (cloudData && typeof cloudData === 'object') {
+            gradesData = cloudData;
+            ['7-i', '7-j', '7-k'].forEach(cId => {
+              if (!gradesData[cId]) gradesData[cId] = {};
+            });
+            saveGradesToStorage();
+            renderCurrentClass();
+            updateHeaderStats();
+            updateCloudBadge('online');
+            if (showNotification) showToast("Bulutla eşitlendi ☁️");
+          } else {
+            // Cloud is empty, push local data to cloud if exists
+            await pushAllToCloud();
+            updateCloudBadge('online');
+          }
+        } else {
+          updateCloudBadge('offline');
+        }
+      } catch (err) {
+        console.warn("Bulut senkronizasyon çevrimdışı:", err);
+        updateCloudBadge('offline');
+      } finally {
+        isCloudSyncing = false;
+      }
+    }
+
+    async function saveGradeToCloud(classId, studentNo, weekIndex, value) {
+      try {
+        const url = `${FIREBASE_DB_URL}/grades/${classId}/${studentNo}/${weekIndex}.json`;
+        if (value === null) {
+          await fetch(url, { method: 'DELETE' });
+        } else {
+          await fetch(url, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(value)
+          });
+        }
+        updateCloudBadge('online');
+      } catch (e) {
+        console.warn("Buluta kaydedilemedi (çevrimdışı):", e);
+        updateCloudBadge('offline');
+      }
+    }
+
+    async function pushAllToCloud() {
+      try {
+        await fetch(`${FIREBASE_DB_URL}/grades.json`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(gradesData)
+        });
+        updateCloudBadge('online');
+      } catch (e) {
+        console.warn("Buluta toplu yükleme hatası:", e);
+        updateCloudBadge('offline');
+      }
+    }
+
+    function updateCloudBadge(status) {
+      const badge = document.getElementById('cloudBadge');
+      if (!badge) return;
+      if (status === 'online') {
+        badge.innerHTML = '🟢 ☁️ Bulut: Bağlı';
+        badge.style.background = 'rgba(16, 185, 129, 0.2)';
+        badge.style.color = '#a7f3d0';
+      } else if (status === 'syncing') {
+        badge.innerHTML = '🔄 ☁️ Eşitleniyor...';
+        badge.style.background = 'rgba(234, 179, 8, 0.2)';
+        badge.style.color = '#fde047';
+      } else {
+        badge.innerHTML = '⚪ ☁️ Çevrimdışı';
+        badge.style.background = 'rgba(255, 255, 255, 0.15)';
+        badge.style.color = '#cbd5e1';
       }
     }
 
@@ -2317,6 +2419,7 @@
       }
 
       saveGradesToStorage();
+      saveGradeToCloud(classId, studentNo, weekIndex, value);
       renderCurrentClass();
       updateHeaderStats();
       closeEvalModal();
@@ -2444,9 +2547,10 @@
           if (data && data.grades) {
             gradesData = data.grades;
             saveGradesToStorage();
+            pushAllToCloud();
             renderAllClasses();
             updateHeaderStats();
-            showToast("Yedek başarıyla yüklendi!");
+            showToast("Yedek başarıyla yüklendi ve buluta eşitlendi!");
           } else {
             alert("Geçersiz yedek dosyası formatı!");
           }
@@ -2466,6 +2570,7 @@
       if (confirmed) {
         gradesData[currentTab] = {};
         saveGradesToStorage();
+        pushAllToCloud();
         renderCurrentClass();
         updateHeaderStats();
         showToast(`${cData.name} sınıfı verileri sıfırlandı`);
