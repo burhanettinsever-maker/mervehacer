@@ -2944,9 +2944,9 @@
     const FIREBASE_DB_URL = "https://mervehacer-default-rtdb.firebaseio.com";
 
     // AUTHENTICATION CONFIGURATION
-    const DEFAULT_AUTH = { username: "mervehacer", password: "123" };
-    const AUTH_KEY = "mervehacer_auth_cfg_v1";
-    const SESSION_KEY = "mervehacer_session_active_v1";
+    const DEFAULT_AUTH = { username: "mervehacer", password: "1303" };
+    const AUTH_KEY = "mervehacer_auth_cfg_v2";
+    const SESSION_KEY = "mervehacer_session_active_v2";
 
     // 3. APPLICATION STATE
     let currentView = 'dashboard'; // 'dashboard', 'class-view', 'clubs', 'settings'
@@ -2974,8 +2974,25 @@
 
     // 4. INITIALIZATION & AUTH
     window.addEventListener('DOMContentLoaded', () => {
+      try {
+        localStorage.removeItem("mervehacer_auth_cfg_v1");
+        localStorage.removeItem("mervehacer_session_active_v1");
+      } catch (e) {}
+      syncAuthFromCloud();
       checkExistingSession();
     });
+
+    async function syncAuthFromCloud() {
+      try {
+        const res = await fetch(`${FIREBASE_DB_URL}/auth.json`);
+        if (res.ok) {
+          const cloudAuth = await res.json();
+          if (cloudAuth && cloudAuth.username && cloudAuth.password) {
+            localStorage.setItem(AUTH_KEY, JSON.stringify(cloudAuth));
+          }
+        }
+      } catch (e) {}
+    }
 
     function getAuthCredentials() {
       try {
@@ -2992,14 +3009,30 @@
       }
     }
 
-    function handleLogin(e) {
+    async function handleLogin(e) {
       e.preventDefault();
       const uInput = document.getElementById('usernameInput').value.trim().toLowerCase();
       const pInput = document.getElementById('passwordInput').value.trim();
       const remember = document.getElementById('rememberMe').checked;
       const errorElem = document.getElementById('loginError');
 
-      const creds = getAuthCredentials();
+      let creds = getAuthCredentials();
+
+      if (uInput !== creds.username.toLowerCase() || pInput !== creds.password) {
+        try {
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 2500);
+          const res = await fetch(`${FIREBASE_DB_URL}/auth.json`, { signal: controller.signal });
+          clearTimeout(timer);
+          if (res.ok) {
+            const cloudAuth = await res.json();
+            if (cloudAuth && cloudAuth.username && cloudAuth.password) {
+              creds = cloudAuth;
+              localStorage.setItem(AUTH_KEY, JSON.stringify(cloudAuth));
+            }
+          }
+        } catch (err) {}
+      }
 
       if (uInput === creds.username.toLowerCase() && pInput === creds.password) {
         errorElem.style.display = 'none';
@@ -3044,7 +3077,7 @@
       input.type = input.type === 'password' ? 'text' : 'password';
     }
 
-    function updateCredentials() {
+    async function updateCredentials() {
       const newU = document.getElementById('newUsername').value.trim();
       const newP = document.getElementById('newPassword').value.trim();
 
@@ -3055,9 +3088,20 @@
 
       const creds = { username: newU, password: newP };
       localStorage.setItem(AUTH_KEY, JSON.stringify(creds));
+
+      try {
+        await fetch(`${FIREBASE_DB_URL}/auth.json`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(creds)
+        });
+      } catch (e) {
+        console.warn("Buluta şifre kaydedilemedi:", e);
+      }
+
       document.getElementById('newUsername').value = '';
       document.getElementById('newPassword').value = '';
-      showToast("Kullanıcı adı ve şifre güncellendi!");
+      showToast("Kullanıcı adı ve şifre güncellendi (Tüm cihazlarla eşitlendi ☁️)!");
     }
 
     // 5. STORAGE & CLOUD DATA MANAGEMENT
