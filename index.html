@@ -52,6 +52,245 @@
       padding-bottom: 70px;
     }
 
+    /* LOGIN SCREEN STYLES */
+    #loginScreen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #022c22 0%, #064e3b 35%, #065f46 70%, #0f766e 100%);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #loginScreen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      width: 100%;
+      max-width: 420px;
+      border-radius: 24px;
+      padding: 32px 26px 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      text-align: center;
+      animation: cardEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes cardEntrance {
+      from { transform: translateY(20px) scale(0.96); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .login-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--primary-border);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .login-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #064e3b;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .login-subtitle {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .login-teacher-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .login-teacher-avatar {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: white;
+      box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+      flex-shrink: 0;
+    }
+
+    .login-teacher-info h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #065f46;
+    }
+
+    .login-teacher-info p {
+      font-size: 11.5px;
+      color: #047857;
+      font-weight: 600;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 12px;
+      font-size: 16px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 46px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      padding: 0 42px 0 38px;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.2s;
+      background: white;
+      color: var(--text);
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    .toggle-pass-btn {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .remember-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 14px 0 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .remember-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .remember-label input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .btn-login {
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: white;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+      transition: transform 0.1s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-login:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+    }
+
+    .login-error {
+      margin-top: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #b91c1c;
+      font-size: 12.5px;
+      font-weight: 600;
+      display: none;
+      animation: shake 0.25s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    .security-notice {
+      margin-top: 18px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
     /* HEADER */
     header {
       background: linear-gradient(135deg, #065f46 0%, #047857 50%, #0d9488 100%);
@@ -103,6 +342,13 @@
       margin-top: 4px;
     }
 
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
     .quick-stats-pill {
       background: rgba(0, 0, 0, 0.2);
       padding: 6px 10px;
@@ -116,6 +362,25 @@
       font-size: 14px;
       display: block;
       color: #a7f3d0;
+    }
+
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+    }
+    .logout-btn:hover {
+      background: rgba(239, 68, 68, 0.8);
+      border-color: transparent;
     }
 
     /* NAVIGATION TABS */
@@ -972,7 +1237,7 @@
 
     /* PRINT STYLES */
     @media print {
-      header, .controls-bar, .modal-overlay, .tab-bar, .btn-group, .settings-card, .toast {
+      #loginScreen, header, .controls-bar, .modal-overlay, .tab-bar, .btn-group, .settings-card, .toast {
         display: none !important;
       }
       body {
@@ -1003,182 +1268,272 @@
 </head>
 <body>
 
-  <!-- TOP HEADER -->
-  <header>
-    <div class="header-top">
-      <div class="school-info">
-        <div class="school-name">Selçuklu Rebii Karatekin Ortaokulu</div>
-        <div class="lesson-title">Din Kültürü ve Ahlak Bilgisi</div>
-        <div class="teacher-badge">
-          <span>👩‍🏫</span>
-          <span>Öğretmen: Merve Hacer SEVER</span>
+  <!-- ELEGANT LOGIN SCREEN -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <div class="login-badge">T.C. KONYA VALİLİĞİ</div>
+      <h1 class="login-title">Selçuklu Rebii Karatekin Ortaokulu</h1>
+      <div class="login-subtitle">Din Kültürü ve Ahlak Bilgisi Dersi Takip Portalı</div>
+
+      <div class="login-teacher-box">
+        <div class="login-teacher-avatar">👩‍🏫</div>
+        <div class="login-teacher-info">
+          <h4>Merve Hacer SEVER</h4>
+          <p>Öğretmen Giriş Paneli</p>
         </div>
       </div>
-      <div class="quick-stats-pill">
-        <span id="activeClassName">7/İ Sınıfı</span>
-        <strong id="activeClassStats">0 + / 0 -</strong>
-      </div>
-    </div>
 
-    <!-- TABS -->
-    <nav class="tab-bar">
-      <button class="tab-btn active" onclick="switchTab('7-i')">
-        <span>7/İ</span>
-        <span class="tab-badge" id="badge-7-i">32</span>
-      </button>
-      <button class="tab-btn" onclick="switchTab('7-j')">
-        <span>7/J</span>
-        <span class="tab-badge" id="badge-7-j">33</span>
-      </button>
-      <button class="tab-btn" onclick="switchTab('7-k')">
-        <span>7/K</span>
-        <span class="tab-badge" id="badge-7-k">33</span>
-      </button>
-      <button class="tab-btn" onclick="switchTab('clubs')">
-        <span>🏆 Kulüpler</span>
-        <span class="tab-badge">20</span>
-      </button>
-      <button class="tab-btn" onclick="switchTab('settings')">
-        <span>⚙️ Ayar / Yedek</span>
-      </button>
-    </nav>
-  </header>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="usernameInput">Kullanıcı Adı</label>
+          <div class="input-wrapper">
+            <span class="input-icon">👤</span>
+            <input type="text" id="usernameInput" class="form-input" placeholder="Kullanıcı adınızı girin" required autocomplete="username">
+          </div>
+        </div>
 
-  <!-- CONTROLS & SEARCH BAR -->
-  <div class="controls-bar" id="controlsBar">
-    <div class="search-row">
-      <div class="search-box">
-        <span class="search-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </span>
-        <input type="text" id="searchInput" placeholder="Öğrenci adı, soyadı veya okul no ile ara..." oninput="handleSearch(this.value)">
-        <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
-      </div>
-      <button class="view-toggle-btn" id="viewToggleBtn" onclick="toggleViewMode()" title="Görünüm Değiştir">
-        <span id="viewIcon">📱</span>
-        <span id="viewLabel">Kartlar</span>
-      </button>
-    </div>
+        <div class="form-group">
+          <label class="form-label" for="passwordInput">Giriş Şifresi</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="passwordInput" class="form-input" placeholder="Şifrenizi girin" required autocomplete="current-password">
+            <button type="button" class="toggle-pass-btn" onclick="togglePasswordVisibility()" title="Şifreyi Göster/Gizle">👁️</button>
+          </div>
+        </div>
 
-    <div class="sub-controls" id="subControls">
-      <div class="filter-pills">
-        <button class="filter-pill active" onclick="setFilter('all', this)">Tümü (<span id="count-all">0</span>)</button>
-        <button class="filter-pill" onclick="setFilter('plus', this)">Artı Alanlar (<span id="count-plus">0</span>)</button>
-        <button class="filter-pill" onclick="setFilter('minus', this)">Eksi Alanlar (<span id="count-minus">0</span>)</button>
-        <button class="filter-pill" onclick="setFilter('empty', this)">Notu Olmayanlar (<span id="count-empty">0</span>)</button>
-      </div>
-      <div style="font-weight: 600; white-space: nowrap;" id="showingCount">32 öğrenci</div>
+        <div class="remember-row">
+          <label class="remember-label">
+            <input type="checkbox" id="rememberMe" checked>
+            <span>Beni Hatırla (Oto-Giriş)</span>
+          </label>
+          <span style="font-size: 11px; color: var(--text-light);">Güvenli Bağlantı</span>
+        </div>
+
+        <button type="submit" class="btn-login">
+          <span>🚀</span>
+          <span>Sisteme Giriş Yap</span>
+        </button>
+
+        <div class="login-error" id="loginError">
+          Hatalı kullanıcı adı veya şifre girdiniz!
+        </div>
+
+        <div class="security-notice">
+          <span>🛡️</span>
+          <span>Bu sistem yetkisiz erişimlere karşı korumalıdır.</span>
+        </div>
+      </form>
     </div>
   </div>
 
-  <!-- MAIN VIEW CONTAINER -->
-  <main>
-    <!-- TAB: 7/İ -->
-    <section id="panel-7-i" class="tab-panel active">
-      <div class="summary-card" id="summary-7-i"></div>
-      <div id="content-7-i"></div>
-    </section>
-
-    <!-- TAB: 7/J -->
-    <section id="panel-7-j" class="tab-panel">
-      <div class="summary-card" id="summary-7-j"></div>
-      <div id="content-7-j"></div>
-    </section>
-
-    <!-- TAB: 7/K -->
-    <section id="panel-7-k" class="tab-panel">
-      <div class="summary-card" id="summary-7-k"></div>
-      <div id="content-7-k"></div>
-    </section>
-
-    <!-- TAB: KULÜP LİSTESİ -->
-    <section id="panel-clubs" class="tab-panel">
-      <div class="club-header-banner">
-        <div>
-          <h2 style="font-size: 17px; font-weight: 800; margin-bottom: 2px;">7/İ Şubesi Öğrenci Sosyal Kulüp Dağılımı</h2>
-          <p style="font-size: 12px; opacity: 0.9;">Rebii Karatekin Ortaokulu Sosyal Etkinlik ve Kulüp Listesi</p>
+  <!-- MAIN APPLICATION CONTENT (VISIBLE AFTER LOGIN) -->
+  <div id="appContainer" style="display: none; flex-direction: column; min-height: 100vh;">
+    <!-- TOP HEADER -->
+    <header>
+      <div class="header-top">
+        <div class="school-info">
+          <div class="school-name">Selçuklu Rebii Karatekin Ortaokulu</div>
+          <div class="lesson-title">Din Kültürü ve Ahlak Bilgisi</div>
+          <div class="teacher-badge">
+            <span>👩‍🏫</span>
+            <span>Öğretmen: Merve Hacer SEVER</span>
+          </div>
         </div>
-        <div style="text-align: right; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 10px;">
-          <span style="font-size: 11px; display: block;">Toplam Kulüp</span>
-          <strong style="font-size: 18px;">20</strong>
-        </div>
-      </div>
-      <div class="club-cards-container" id="clubCardsContainer"></div>
-    </section>
-
-    <!-- TAB: AYARLAR & YEDEKLEME -->
-    <section id="panel-settings" class="tab-panel">
-      <div class="settings-card">
-        <div class="settings-title">
-          <span>📊</span>
-          <span>Excel (CSV) Olarak İndir</span>
-        </div>
-        <p class="settings-desc">
-          Tüm sınıfların 24 haftalık artı/eksi değerlendirmelerini ve toplam skorlarını Excel'de açılabilir CSV dosyası olarak cihazınıza kaydedin.
-        </p>
-        <div class="btn-group">
-          <button class="btn btn-primary" onclick="exportToCSV('current')">
-            <span>📥</span> Bu Sınıfı Excel'e Aktar
-          </button>
-          <button class="btn btn-secondary" onclick="exportToCSV('all')">
-            <span>📁</span> Tüm Sınıfları Tek Excel'e Aktar
+        <div class="header-right">
+          <div class="quick-stats-pill">
+            <span id="activeClassName">7/İ Sınıfı</span>
+            <strong id="activeClassStats">0 + / 0 -</strong>
+          </div>
+          <button class="logout-btn" onclick="handleLogout()" title="Oturumu Kapat">
+            <span>🚪</span>
+            <span>Çıkış</span>
           </button>
         </div>
       </div>
 
-      <div class="settings-card">
-        <div class="settings-title">
-          <span>💾</span>
-          <span>Veri Yedekleme ve Geri Yükleme</span>
+      <!-- TABS -->
+      <nav class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('7-i')">
+          <span>7/İ</span>
+          <span class="tab-badge" id="badge-7-i">32</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('7-j')">
+          <span>7/J</span>
+          <span class="tab-badge" id="badge-7-j">33</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('7-k')">
+          <span>7/K</span>
+          <span class="tab-badge" id="badge-7-k">33</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('clubs')">
+          <span>🏆 Kulüpler</span>
+          <span class="tab-badge">20</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('settings')">
+          <span>⚙️ Ayar / Güvenlik</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- CONTROLS & SEARCH BAR -->
+    <div class="controls-bar" id="controlsBar">
+      <div class="search-row">
+        <div class="search-box">
+          <span class="search-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="text" id="searchInput" placeholder="Öğrenci adı, soyadı veya okul no ile ara..." oninput="handleSearch(this.value)">
+          <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
         </div>
-        <p class="settings-desc">
-          Telefonunuzu değiştirirseniz veya verilerinizi yedeklemek isterseniz tek tıkla yedek dosyası (.json) indirebilir ve dilediğiniz zaman geri yükleyebilirsiniz.
-        </p>
-        <div class="btn-group">
-          <button class="btn btn-secondary" onclick="downloadBackup()">
-            <span>⬇️</span> Yedeği Telefona İndir
-          </button>
-          <label class="btn btn-secondary" style="cursor: pointer;">
-            <span>⬆️</span> Yedekten Geri Yükle
-            <input type="file" id="backupFileInput" accept=".json" style="display: none;" onchange="restoreBackup(event)">
-          </label>
-        </div>
+        <button class="view-toggle-btn" id="viewToggleBtn" onclick="toggleViewMode()" title="Görünüm Değiştir">
+          <span id="viewIcon">📱</span>
+          <span id="viewLabel">Kartlar</span>
+        </button>
       </div>
 
-      <div class="settings-card">
-        <div class="settings-title">
-          <span>🖨️</span>
-          <span>Yazdır / PDF Olarak Kaydet</span>
+      <div class="sub-controls" id="subControls">
+        <div class="filter-pills">
+          <button class="filter-pill active" onclick="setFilter('all', this)">Tümü (<span id="count-all">0</span>)</button>
+          <button class="filter-pill" onclick="setFilter('plus', this)">Artı Alanlar (<span id="count-plus">0</span>)</button>
+          <button class="filter-pill" onclick="setFilter('minus', this)">Eksi Alanlar (<span id="count-minus">0</span>)</button>
+          <button class="filter-pill" onclick="setFilter('empty', this)">Notu Olmayanlar (<span id="count-empty">0</span>)</button>
         </div>
-        <p class="settings-desc">
-          Mevcut sınıfın artı/eksi listesini resmi okul evrakı formatında temiz ve düzenli bir şekilde yazıcıya gönderebilir veya PDF yapabilirsiniz.
-        </p>
-        <div class="btn-group">
-          <button class="btn btn-secondary" onclick="window.print()">
-            <span>🖨️</span> Bu Sınıfı Yazdır / PDF Yap
-          </button>
-        </div>
+        <div style="font-weight: 600; white-space: nowrap;" id="showingCount">32 öğrenci</div>
       </div>
+    </div>
 
-      <div class="settings-card" style="border-color: #fca5a5;">
-        <div class="settings-title" style="color: #b91c1c;">
-          <span>⚠️</span>
-          <span>Sınıf Verilerini Sıfırla</span>
+    <!-- MAIN VIEW CONTAINER -->
+    <main>
+      <!-- TAB: 7/İ -->
+      <section id="panel-7-i" class="tab-panel active">
+        <div class="summary-card" id="summary-7-i"></div>
+        <div id="content-7-i"></div>
+      </section>
+
+      <!-- TAB: 7/J -->
+      <section id="panel-7-j" class="tab-panel">
+        <div class="summary-card" id="summary-7-j"></div>
+        <div id="content-7-j"></div>
+      </section>
+
+      <!-- TAB: 7/K -->
+      <section id="panel-7-k" class="tab-panel">
+        <div class="summary-card" id="summary-7-k"></div>
+        <div id="content-7-k"></div>
+      </section>
+
+      <!-- TAB: KULÜP LİSTESİ -->
+      <section id="panel-clubs" class="tab-panel">
+        <div class="club-header-banner">
+          <div>
+            <h2 style="font-size: 17px; font-weight: 800; margin-bottom: 2px;">7/İ Şubesi Öğrenci Sosyal Kulüp Dağılımı</h2>
+            <p style="font-size: 12px; opacity: 0.9;">Rebii Karatekin Ortaokulu Sosyal Etkinlik ve Kulüp Listesi</p>
+          </div>
+          <div style="text-align: right; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 10px;">
+            <span style="font-size: 11px; display: block;">Toplam Kulüp</span>
+            <strong style="font-size: 18px;">20</strong>
+          </div>
         </div>
-        <p class="settings-desc">
-          Sadece bu sınıfa ait tüm haftalık artı ve eksileri temizlemek isterseniz kullanabilirsiniz. Bu işlem geri alınamaz.
-        </p>
-        <div class="btn-group">
-          <button class="btn btn-danger" onclick="resetCurrentClassData()">
-            <span>🗑️</span> Bu Sınıfın Notlarını Sıfırla
+        <div class="club-cards-container" id="clubCardsContainer"></div>
+      </section>
+
+      <!-- TAB: AYARLAR & GÜVENLİK & YEDEKLEME -->
+      <section id="panel-settings" class="tab-panel">
+        <div class="settings-card">
+          <div class="settings-title">
+            <span>🔐</span>
+            <span>Giriş Şifresi ve Kullanıcı Adı Ayarları</span>
+          </div>
+          <p class="settings-desc">
+            Sisteme giriş yaparken kullanılan kullanıcı adı ve şifreyi buradan istediğiniz zaman değiştirebilirsiniz.
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 500px; margin-bottom: 12px;">
+            <div>
+              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">YENİ KULLANICI ADI</label>
+              <input type="text" id="newUsername" class="form-input" style="height: 38px; font-size: 13px;" placeholder="Yeni kullanıcı adı">
+            </div>
+            <div>
+              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">YENİ ŞİFRE</label>
+              <input type="password" id="newPassword" class="form-input" style="height: 38px; font-size: 13px;" placeholder="Yeni şifre">
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="updateCredentials()">
+            <span>💾</span> Şifreyi Güncelle ve Kaydet
           </button>
         </div>
-      </div>
-    </section>
-  </main>
+
+        <div class="settings-card">
+          <div class="settings-title">
+            <span>📊</span>
+            <span>Excel (CSV) Olarak İndir</span>
+          </div>
+          <p class="settings-desc">
+            Tüm sınıfların 24 haftalık artı/eksi değerlendirmelerini ve toplam skorlarını Excel'de açılabilir CSV dosyası olarak cihazınıza kaydedin.
+          </p>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="exportToCSV('current')">
+              <span>📥</span> Bu Sınıfı Excel'e Aktar
+            </button>
+            <button class="btn btn-secondary" onclick="exportToCSV('all')">
+              <span>📁</span> Tüm Sınıfları Tek Excel'e Aktar
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-title">
+            <span>💾</span>
+            <span>Veri Yedekleme ve Geri Yükleme</span>
+          </div>
+          <p class="settings-desc">
+            Telefonunuzu değiştirirseniz veya verilerinizi yedeklemek isterseniz tek tıkla yedek dosyası (.json) indirebilir ve dilediğiniz zaman geri yükleyebilirsiniz.
+          </p>
+          <div class="btn-group">
+            <button class="btn btn-secondary" onclick="downloadBackup()">
+              <span>⬇️</span> Yedeği Telefona İndir
+            </button>
+            <label class="btn btn-secondary" style="cursor: pointer;">
+              <span>⬆️</span> Yedekten Geri Yükle
+              <input type="file" id="backupFileInput" accept=".json" style="display: none;" onchange="restoreBackup(event)">
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-title">
+            <span>🖨️</span>
+            <span>Yazdır / PDF Olarak Kaydet</span>
+          </div>
+          <p class="settings-desc">
+            Mevcut sınıfın artı/eksi listesini resmi okul evrakı formatında temiz ve düzenli bir şekilde yazıcıya gönderebilir veya PDF yapabilirsiniz.
+          </p>
+          <div class="btn-group">
+            <button class="btn btn-secondary" onclick="window.print()">
+              <span>🖨️</span> Bu Sınıfı Yazdır / PDF Yap
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-card" style="border-color: #fca5a5;">
+          <div class="settings-title" style="color: #b91c1c;">
+            <span>⚠️</span>
+            <span>Sınıf Verilerini Sıfırla</span>
+          </div>
+          <p class="settings-desc">
+            Sadece bu sınıfa ait tüm haftalık artı ve eksileri temizlemek isterseniz kullanabilirsiniz. Bu işlem geri alınamaz.
+          </p>
+          <div class="btn-group">
+            <button class="btn btn-danger" onclick="resetCurrentClassData()">
+              <span>🗑️</span> Bu Sınıfın Notlarını Sıfırla
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
   <!-- POPUP EVALUATION MODAL -->
   <div class="modal-overlay" id="evalModal" onclick="handleModalOverlayClick(event)">
@@ -1220,7 +1575,100 @@
 
   <!-- JAVASCRIPT APPLICATION LOGIC -->
   <script>
-    // 1. DATA DEFINITIONS (Extracted with 100% precision from images)
+    // AUTHENTICATION CONFIGURATION
+    const DEFAULT_AUTH = {
+      username: "mervehacer",
+      password: "123"
+    };
+
+    const AUTH_KEY = "mervehacer_auth_cfg_v1";
+    const SESSION_KEY = "mervehacer_session_active_v1";
+
+    function getAuthCredentials() {
+      try {
+        const stored = localStorage.getItem(AUTH_KEY);
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return DEFAULT_AUTH;
+    }
+
+    function checkExistingSession() {
+      const active = localStorage.getItem(SESSION_KEY);
+      if (active === "true") {
+        unlockPortal();
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const uInput = document.getElementById('usernameInput').value.trim().toLowerCase();
+      const pInput = document.getElementById('passwordInput').value.trim();
+      const remember = document.getElementById('rememberMe').checked;
+      const errorElem = document.getElementById('loginError');
+
+      const creds = getAuthCredentials();
+
+      if (uInput === creds.username.toLowerCase() && pInput === creds.password) {
+        errorElem.style.display = 'none';
+        if (remember) {
+          localStorage.setItem(SESSION_KEY, "true");
+        }
+        showToast("Giriş başarılı! Hoş geldiniz.");
+        unlockPortal();
+      } else {
+        errorElem.style.display = 'block';
+        if (window.navigator && window.navigator.vibrate) window.navigator.vibrate([60, 50, 60]);
+      }
+    }
+
+    function unlockPortal() {
+      const loginScreen = document.getElementById('loginScreen');
+      const appContainer = document.getElementById('appContainer');
+
+      loginScreen.classList.add('hidden');
+      appContainer.style.display = 'flex';
+
+      // Load app data
+      loadGradesFromStorage();
+      updateViewToggleUI();
+      renderAllClasses();
+      renderClubsList();
+      updateHeaderStats();
+    }
+
+    function handleLogout() {
+      const confirmed = confirm("Oturumu kapatmak istediğinize emin misiniz?");
+      if (confirmed) {
+        localStorage.removeItem(SESSION_KEY);
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('appContainer').style.display = 'none';
+        document.getElementById('loginScreen').classList.remove('hidden');
+        showToast("Çıkış yapıldı.");
+      }
+    }
+
+    function togglePasswordVisibility() {
+      const input = document.getElementById('passwordInput');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    function updateCredentials() {
+      const newU = document.getElementById('newUsername').value.trim();
+      const newP = document.getElementById('newPassword').value.trim();
+
+      if (!newU || !newP) {
+        alert("Lütfen hem yeni kullanıcı adı hem de yeni şifre giriniz!");
+        return;
+      }
+
+      const creds = { username: newU, password: newP };
+      localStorage.setItem(AUTH_KEY, JSON.stringify(creds));
+      document.getElementById('newUsername').value = '';
+      document.getElementById('newPassword').value = '';
+      showToast("Kullanıcı adı ve şifre güncellendi!");
+    }
+
+    // 1. DATA DEFINITIONS
     const STUDENTS_DATA = {
       '7-i': {
         name: "7/İ",
@@ -1368,12 +1816,11 @@
 
     // 2. STATE MANAGEMENT
     let currentTab = '7-i';
-    let viewMode = window.innerWidth < 768 ? 'cards' : 'table'; // Auto-select card view on mobile!
+    let viewMode = window.innerWidth < 768 ? 'cards' : 'table';
     let searchQuery = '';
-    let currentFilter = 'all'; // 'all', 'plus', 'minus', 'empty'
-    let gradesData = {}; // structure: { [classId]: { [studentNo]: { [weekIndex]: '+' | '-' } } }
+    let currentFilter = 'all';
+    let gradesData = {};
 
-    // Active Modal Target
     let activeModalTarget = {
       classId: null,
       studentNo: null,
@@ -1383,11 +1830,7 @@
 
     // 3. INITIALIZATION
     window.addEventListener('DOMContentLoaded', () => {
-      loadGradesFromStorage();
-      updateViewToggleUI();
-      renderAllClasses();
-      renderClubsList();
-      updateHeaderStats();
+      checkExistingSession();
     });
 
     function loadGradesFromStorage() {
@@ -1399,7 +1842,6 @@
       } catch (e) {
         console.error("Local storage okuma hatası:", e);
       }
-      // Ensure all classes exist in structure
       ['7-i', '7-j', '7-k'].forEach(cId => {
         if (!gradesData[cId]) gradesData[cId] = {};
       });
@@ -1416,9 +1858,7 @@
     // 4. TAB & VIEW NAVIGATION
     function switchTab(tabId) {
       currentTab = tabId;
-      document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
 
       const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
@@ -1470,7 +1910,7 @@
         return;
       }
       if (currentTab === 'settings') {
-        activeNameElem.textContent = "Ayar & Yedek";
+        activeNameElem.textContent = "Ayar & Güvenlik";
         activeStatsElem.textContent = "Merve Hacer SEVER";
         return;
       }
@@ -1561,7 +2001,6 @@
       let countWithMinus = 0;
       let countEmpty = 0;
 
-      // Filter and count
       const filteredStudents = cData.students.filter(std => {
         const stats = getStudentStats(classId, std.no);
         totalPlus += stats.plus;
@@ -1571,12 +2010,10 @@
         if (stats.minus > 0) countWithMinus++;
         if (stats.totalEvaluations === 0) countEmpty++;
 
-        // Filter check
         if (currentFilter === 'plus' && stats.plus === 0) return false;
         if (currentFilter === 'minus' && stats.minus === 0) return false;
         if (currentFilter === 'empty' && stats.totalEvaluations > 0) return false;
 
-        // Search check
         if (searchQuery) {
           const fullName = `${std.ad} ${std.soyad}`.toLowerCase();
           const noStr = std.no.toString();
@@ -1585,7 +2022,6 @@
         return true;
       });
 
-      // Update Filter Pill Counts
       if (classId === currentTab) {
         document.getElementById('count-all').textContent = cData.students.length;
         document.getElementById('count-plus').textContent = countWithPlus;
@@ -1594,7 +2030,6 @@
         document.getElementById('showingCount').textContent = `${filteredStudents.length} / ${cData.students.length} öğrenci`;
       }
 
-      // Render Summary Card
       const summaryElem = document.getElementById(`summary-${classId}`);
       if (summaryElem) {
         summaryElem.innerHTML = `
@@ -1617,7 +2052,6 @@
         `;
       }
 
-      // Render Table or Cards
       const containerElem = document.getElementById(`content-${classId}`);
       if (!containerElem) return;
 
@@ -1707,7 +2141,7 @@
       return html;
     }
 
-    // CARDS VIEW GENERATION (MOBILE FRIENDLY)
+    // CARDS VIEW GENERATION
     function renderCardsView(classId, students, classGrades) {
       let html = `<div class="cards-grid">`;
 
@@ -1762,7 +2196,7 @@
       return html;
     }
 
-    // 7. CLUBS MODULE GENERATION
+    // 7. CLUBS MODULE
     function renderClubsList() {
       const container = document.getElementById('clubCardsContainer');
       if (!container) return;
@@ -1789,7 +2223,7 @@
       }
 
       let html = '';
-      filteredClubs.forEach((club, idx) => {
+      filteredClubs.forEach(club => {
         html += `
           <div class="club-card">
             <div class="club-card-title">
@@ -1941,9 +2375,8 @@
     // 10. EXPORT / BACKUP / RESTORE
     function exportToCSV(scope) {
       const classesToExport = scope === 'all' ? ['7-i', '7-j', '7-k'] : [currentTab];
-      let csvContent = "\uFEFF"; // UTF-8 BOM for Excel Turkish character support
+      let csvContent = "\uFEFF";
 
-      // Header row
       csvContent += "Sınıf;Okul No;Adı;Soyadı;";
       for (let w = 1; w <= TOTAL_WEEKS; w++) {
         csvContent += `Hafta ${w};`;
