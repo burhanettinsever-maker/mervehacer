@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#047857">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Din Kültürü">
+  <title>Rebii Karatekin Ortaokulu | Din Kültürü ve Ahlak Bilgisi - Merve Hacer SEVER</title>
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #047857;
+      --primary-light: #ecfdf5;
+      --primary-border: #a7f3d0;
+      --accent: #0284c7;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+      --plus-color: #10b981;
+      --plus-bg: #d1fae5;
+      --plus-border: #34d399;
+      --minus-color: #ef4444;
+      --minus-bg: #fee2e2;
+      --minus-border: #f87171;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 70px;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #065f46 0%, #047857 50%, #0d9488 100%);
+      color: white;
+      padding: 16px 16px 12px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .school-info {
+      flex: 1;
+    }
+
+    .school-name {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+
+    .lesson-title {
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-top: 2px;
+    }
+
+    .teacher-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .quick-stats-pill {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      text-align: right;
+      font-size: 11px;
+      min-width: 80px;
+    }
+
+    .quick-stats-pill strong {
+      font-size: 14px;
+      display: block;
+      color: #a7f3d0;
+    }
+
+    /* NAVIGATION TABS */
+    nav.tab-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 4px 0 2px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    nav.tab-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 78px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: var(--surface);
+      color: var(--primary-dark);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .tab-badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.2);
+    }
+    .tab-btn.active .tab-badge {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    /* CONTROLS BAR (SEARCH & ACTIONS) */
+    .controls-bar {
+      background: var(--surface);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 102px;
+      z-index: 30;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+
+    .search-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 42px;
+      padding: 0 38px 0 36px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: var(--bg);
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      display: flex;
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 16px;
+      padding: 4px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .view-toggle-btn {
+      height: 42px;
+      padding: 0 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .sub-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .filter-pill {
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      color: var(--text-muted);
+    }
+
+    .filter-pill.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    /* MAIN CONTENT CONTAINER */
+    main {
+      flex: 1;
+      padding: 12px 16px;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* SECTION / TAB PANELS */
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* STATS SUMMARY BAR */
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 6px 4px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+    }
+
+    .stat-val {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .stat-val.green { color: var(--plus-color); }
+    .stat-val.red { color: var(--minus-color); }
+
+    .stat-lbl {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-top: 2px;
+    }
+
+    /* TABLE VIEW */
+    .table-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table.grade-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .grade-table th, .grade-table td {
+      padding: 8px 6px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .grade-table th {
+      background: #f8fafc;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 11px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    /* STICKY COLUMNS FOR STUDENT INFO */
+    .col-no {
+      width: 44px;
+      min-width: 44px;
+      max-width: 48px;
+      position: sticky;
+      left: 0;
+      background: var(--surface);
+      z-index: 5;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .grade-table th.col-no {
+      z-index: 15;
+      background: #f1f5f9;
+    }
+
+    .col-name {
+      width: 170px;
+      min-width: 150px;
+      max-width: 200px;
+      position: sticky;
+      left: 44px;
+      background: var(--surface);
+      z-index: 5;
+      text-align: left !important;
+      padding-left: 10px !important;
+      font-weight: 600;
+      border-right: 2px solid #cbd5e1 !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .grade-table th.col-name {
+      z-index: 15;
+      background: #f1f5f9;
+    }
+
+    .grade-table tr:hover td.col-no,
+    .grade-table tr:hover td.col-name {
+      background: #f8fafc;
+    }
+
+    /* WEEK HEADERS & CELLS */
+    .col-week {
+      width: 36px;
+      min-width: 36px;
+      padding: 6px 2px !important;
+    }
+
+    .cell-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      border: 1px dashed #cbd5e1;
+      background: #f8fafc;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s, background-color 0.15s, border-color 0.15s;
+    }
+
+    .cell-btn:active {
+      transform: scale(0.9);
+    }
+
+    .cell-btn.status-plus {
+      background: var(--plus-bg);
+      border: 1.5px solid var(--plus-border);
+      color: #065f46;
+    }
+
+    .cell-btn.status-minus {
+      background: var(--minus-bg);
+      border: 1.5px solid var(--minus-border);
+      color: #991b1b;
+    }
+
+    /* TOTALS COLUMN */
+    .col-total {
+      min-width: 76px;
+      background: #fdfdfd;
+      font-weight: 700;
+      border-left: 2px solid #cbd5e1;
+    }
+
+    .total-badge-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .badge-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 22px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 0 6px;
+    }
+    .badge-count.plus {
+      background: var(--plus-bg);
+      color: #047857;
+      border: 1px solid var(--plus-border);
+    }
+    .badge-count.minus {
+      background: var(--minus-bg);
+      color: #b91c1c;
+      border: 1px solid var(--minus-border);
+    }
+
+    /* CARD VIEW (MOBILE OPTIMIZED) */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1100px) {
+      .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .student-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .student-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-student-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .student-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .card-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .card-no {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .card-totals {
+      display: flex;
+      gap: 4px;
+    }
+
+    /* 24-GRID IN CARD */
+    .card-weeks-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 6px;
+    }
+
+    @media (max-width: 480px) {
+      .card-weeks-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    .card-week-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .card-week-box .w-lbl {
+      font-size: 9px;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .card-week-box .cell-btn {
+      width: 100%;
+      height: 36px;
+      font-size: 16px;
+    }
+
+    /* CLUB LIST DESIGN */
+    .club-header-banner {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .club-cards-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .club-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .club-cards-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .club-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .club-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0369a1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.3;
+    }
+
+    .club-index-badge {
+      background: #e0f2fe;
+      color: #0284c7;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 8px;
+    }
+
+    .club-student-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--bg);
+      padding: 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .club-student-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+
+    .club-student-pill .std-no {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* ACTION MODAL (BOTTOM SHEET ON MOBILE, CENTERED DIALOG ON DESKTOP) */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+      z-index: 100;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      animation: fadeIn 0.15s ease-out;
+    }
+
+    @media (min-width: 640px) {
+      .modal-overlay {
+        align-items: center;
+      }
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-sheet {
+      background: var(--surface);
+      width: 100%;
+      max-width: 440px;
+      border-radius: 20px 20px 0 0;
+      padding: 20px 20px 28px;
+      box-shadow: var(--shadow-lg);
+      animation: slideUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    @media (min-width: 640px) {
+      .modal-sheet {
+        border-radius: 20px;
+        padding: 24px;
+        animation: zoomIn 0.2s ease-out;
+      }
+    }
+
+    .modal-drag-handle {
+      width: 40px;
+      height: 4px;
+      background: #cbd5e1;
+      border-radius: 2px;
+      margin: 0 auto 14px;
+    }
+    @media (min-width: 640px) {
+      .modal-drag-handle {
+        display: none;
+      }
+    }
+
+    .modal-header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .modal-student-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .modal-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .modal-current-state {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .action-buttons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .btn-action {
+      height: 64px;
+      border-radius: 14px;
+      border: 2px solid transparent;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      transition: all 0.15s;
+    }
+
+    .btn-action span.symbol {
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .btn-action.btn-plus {
+      background: var(--plus-bg);
+      color: #065f46;
+      border-color: var(--plus-border);
+    }
+
+    .btn-action.btn-plus:active {
+      background: #a7f3d0;
+      transform: scale(0.97);
+    }
+
+    .btn-action.btn-minus {
+      background: var(--minus-bg);
+      color: #991b1b;
+      border-color: var(--minus-border);
+    }
+
+    .btn-action.btn-minus:active {
+      background: #fecaca;
+      transform: scale(0.97);
+    }
+
+    .btn-action.btn-clear {
+      grid-column: span 2;
+      height: 48px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+      border-color: var(--border);
+      font-size: 14px;
+    }
+
+    .btn-action.btn-clear:active {
+      background: #e2e8f0;
+      transform: scale(0.98);
+    }
+
+    .modal-nav-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .modal-nav-btn {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .modal-nav-btn:hover {
+      background: var(--primary-light);
+    }
+
+    /* BACKUP & SETTINGS PANEL */
+    .settings-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .settings-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .settings-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-color: #fca5a5;
+    }
+    .btn-danger:hover {
+      background: #fecaca;
+    }
+
+    /* TOAST NOTIFICATION */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1e293b;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      z-index: 200;
+      opacity: 0;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      header, .controls-bar, .modal-overlay, .tab-bar, .btn-group, .settings-card, .toast {
+        display: none !important;
+      }
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+      }
+      .table-container {
+        border: 1px solid #000;
+        box-shadow: none;
+        overflow: visible;
+      }
+      table.grade-table {
+        font-size: 10px;
+      }
+      .col-no, .col-name {
+        position: static;
+        background: none !important;
+      }
+      .cell-btn {
+        border: 1px solid #ccc;
+        font-size: 11px;
+      }
+      .cell-btn.status-plus { background: #eee !important; color: #000 !important; }
+      .cell-btn.status-minus { background: #ddd !important; color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="school-info">
+        <div class="school-name">Selçuklu Rebii Karatekin Ortaokulu</div>
+        <div class="lesson-title">Din Kültürü ve Ahlak Bilgisi</div>
+        <div class="teacher-badge">
+          <span>👩‍🏫</span>
+          <span>Öğretmen: Merve Hacer SEVER</span>
+        </div>
+      </div>
+      <div class="quick-stats-pill">
+        <span id="activeClassName">7/İ Sınıfı</span>
+        <strong id="activeClassStats">0 + / 0 -</strong>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <nav class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('7-i')">
+        <span>7/İ</span>
+        <span class="tab-badge" id="badge-7-i">32</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('7-j')">
+        <span>7/J</span>
+        <span class="tab-badge" id="badge-7-j">33</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('7-k')">
+        <span>7/K</span>
+        <span class="tab-badge" id="badge-7-k">33</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('clubs')">
+        <span>🏆 Kulüpler</span>
+        <span class="tab-badge">20</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('settings')">
+        <span>⚙️ Ayar / Yedek</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- CONTROLS & SEARCH BAR -->
+  <div class="controls-bar" id="controlsBar">
+    <div class="search-row">
+      <div class="search-box">
+        <span class="search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="text" id="searchInput" placeholder="Öğrenci adı, soyadı veya okul no ile ara..." oninput="handleSearch(this.value)">
+        <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
+      </div>
+      <button class="view-toggle-btn" id="viewToggleBtn" onclick="toggleViewMode()" title="Görünüm Değiştir">
+        <span id="viewIcon">📱</span>
+        <span id="viewLabel">Kartlar</span>
+      </button>
+    </div>
+
+    <div class="sub-controls" id="subControls">
+      <div class="filter-pills">
+        <button class="filter-pill active" onclick="setFilter('all', this)">Tümü (<span id="count-all">0</span>)</button>
+        <button class="filter-pill" onclick="setFilter('plus', this)">Artı Alanlar (<span id="count-plus">0</span>)</button>
+        <button class="filter-pill" onclick="setFilter('minus', this)">Eksi Alanlar (<span id="count-minus">0</span>)</button>
+        <button class="filter-pill" onclick="setFilter('empty', this)">Notu Olmayanlar (<span id="count-empty">0</span>)</button>
+      </div>
+      <div style="font-weight: 600; white-space: nowrap;" id="showingCount">32 öğrenci</div>
+    </div>
+  </div>
+
+  <!-- MAIN VIEW CONTAINER -->
+  <main>
+    <!-- TAB: 7/İ -->
+    <section id="panel-7-i" class="tab-panel active">
+      <div class="summary-card" id="summary-7-i"></div>
+      <div id="content-7-i"></div>
+    </section>
+
+    <!-- TAB: 7/J -->
+    <section id="panel-7-j" class="tab-panel">
+      <div class="summary-card" id="summary-7-j"></div>
+      <div id="content-7-j"></div>
+    </section>
+
+    <!-- TAB: 7/K -->
+    <section id="panel-7-k" class="tab-panel">
+      <div class="summary-card" id="summary-7-k"></div>
+      <div id="content-7-k"></div>
+    </section>
+
+    <!-- TAB: KULÜP LİSTESİ -->
+    <section id="panel-clubs" class="tab-panel">
+      <div class="club-header-banner">
+        <div>
+          <h2 style="font-size: 17px; font-weight: 800; margin-bottom: 2px;">7/İ Şubesi Öğrenci Sosyal Kulüp Dağılımı</h2>
+          <p style="font-size: 12px; opacity: 0.9;">Rebii Karatekin Ortaokulu Sosyal Etkinlik ve Kulüp Listesi</p>
+        </div>
+        <div style="text-align: right; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 10px;">
+          <span style="font-size: 11px; display: block;">Toplam Kulüp</span>
+          <strong style="font-size: 18px;">20</strong>
+        </div>
+      </div>
+      <div class="club-cards-container" id="clubCardsContainer"></div>
+    </section>
+
+    <!-- TAB: AYARLAR & YEDEKLEME -->
+    <section id="panel-settings" class="tab-panel">
+      <div class="settings-card">
+        <div class="settings-title">
+          <span>📊</span>
+          <span>Excel (CSV) Olarak İndir</span>
+        </div>
+        <p class="settings-desc">
+          Tüm sınıfların 24 haftalık artı/eksi değerlendirmelerini ve toplam skorlarını Excel'de açılabilir CSV dosyası olarak cihazınıza kaydedin.
+        </p>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="exportToCSV('current')">
+            <span>📥</span> Bu Sınıfı Excel'e Aktar
+          </button>
+          <button class="btn btn-secondary" onclick="exportToCSV('all')">
+            <span>📁</span> Tüm Sınıfları Tek Excel'e Aktar
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="settings-title">
+          <span>💾</span>
+          <span>Veri Yedekleme ve Geri Yükleme</span>
+        </div>
+        <p class="settings-desc">
+          Telefonunuzu değiştirirseniz veya verilerinizi yedeklemek isterseniz tek tıkla yedek dosyası (.json) indirebilir ve dilediğiniz zaman geri yükleyebilirsiniz.
+        </p>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="downloadBackup()">
+            <span>⬇️</span> Yedeği Telefona İndir
+          </button>
+          <label class="btn btn-secondary" style="cursor: pointer;">
+            <span>⬆️</span> Yedekten Geri Yükle
+            <input type="file" id="backupFileInput" accept=".json" style="display: none;" onchange="restoreBackup(event)">
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="settings-title">
+          <span>🖨️</span>
+          <span>Yazdır / PDF Olarak Kaydet</span>
+        </div>
+        <p class="settings-desc">
+          Mevcut sınıfın artı/eksi listesini resmi okul evrakı formatında temiz ve düzenli bir şekilde yazıcıya gönderebilir veya PDF yapabilirsiniz.
+        </p>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="window.print()">
+            <span>🖨️</span> Bu Sınıfı Yazdır / PDF Yap
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-card" style="border-color: #fca5a5;">
+        <div class="settings-title" style="color: #b91c1c;">
+          <span>⚠️</span>
+          <span>Sınıf Verilerini Sıfırla</span>
+        </div>
+        <p class="settings-desc">
+          Sadece bu sınıfa ait tüm haftalık artı ve eksileri temizlemek isterseniz kullanabilirsiniz. Bu işlem geri alınamaz.
+        </p>
+        <div class="btn-group">
+          <button class="btn btn-danger" onclick="resetCurrentClassData()">
+            <span>🗑️</span> Bu Sınıfın Notlarını Sıfırla
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- POPUP EVALUATION MODAL -->
+  <div class="modal-overlay" id="evalModal" onclick="handleModalOverlayClick(event)">
+    <div class="modal-sheet" id="modalSheet">
+      <div class="modal-drag-handle"></div>
+      <div class="modal-header">
+        <div class="modal-student-name" id="modalStudentName">Ahmet Yılmaz</div>
+        <div class="modal-meta" id="modalMeta">7/İ Sınıfı • No: 304 • Hafta 1</div>
+        <div id="modalCurrentStateBadge"></div>
+      </div>
+
+      <div class="action-buttons-grid">
+        <button class="btn-action btn-plus" onclick="setStudentGrade('+')">
+          <span class="symbol">➕</span>
+          <span>ART (+1)</span>
+        </button>
+        <button class="btn-action btn-minus" onclick="setStudentGrade('-')">
+          <span class="symbol">➖</span>
+          <span>EKSİ (-1)</span>
+        </button>
+        <button class="btn-action btn-clear" onclick="setStudentGrade(null)">
+          <span>⚪ Notu Temizle (Boş Yap)</span>
+        </button>
+      </div>
+
+      <div class="modal-nav-row">
+        <button class="modal-nav-btn" onclick="navigateStudent(-1)">◀ Önceki Öğrenci</button>
+        <button class="modal-nav-btn" style="color: var(--text-muted);" onclick="closeEvalModal()">Kapat (✕)</button>
+        <button class="modal-nav-btn" onclick="navigateStudent(1)">Sonraki Öğrenci ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toastMessage">
+    <span>✅</span>
+    <span id="toastText">Kaydedildi</span>
+  </div>
+
+  <!-- JAVASCRIPT APPLICATION LOGIC -->
+  <script>
+    // 1. DATA DEFINITIONS (Extracted with 100% precision from images)
+    const STUDENTS_DATA = {
+      '7-i': {
+        name: "7/İ",
+        teacher: "Ayşe BÜKÇE",
+        students: [
+          { no: 30, ad: "AYŞE GÜLER", soyad: "UĞUR" },
+          { no: 74, ad: "RAŞİT", soyad: "AYAZ" },
+          { no: 80, ad: "DURU", soyad: "YILDIZBAŞ" },
+          { no: 114, ad: "BEHLÜL UMUT", soyad: "KAYA" },
+          { no: 130, ad: "DOĞAN EREN", soyad: "GENÇ" },
+          { no: 179, ad: "AYŞE BETÜL", soyad: "ŞAHİN" },
+          { no: 273, ad: "ALİ İLKER", soyad: "AKSOY" },
+          { no: 282, ad: "ALİ", soyad: "ÖZER" },
+          { no: 304, ad: "AHMET RAFİ", soyad: "KARATEKİN" },
+          { no: 348, ad: "AZRA NUR", soyad: "SABAN" },
+          { no: 371, ad: "BERRE", soyad: "UYAR" },
+          { no: 522, ad: "ELİF SENA", soyad: "ÖZKIŞ" },
+          { no: 748, ad: "KAZIM MİRZA", soyad: "ARSLAN" },
+          { no: 773, ad: "MEHMET EREN", soyad: "KORTEL" },
+          { no: 796, ad: "MELİS", soyad: "BAĞCI" },
+          { no: 814, ad: "MUHAMMED EMİN", soyad: "BİLGE" },
+          { no: 816, ad: "MUHAMMED EMİR", soyad: "ŞAHİN" },
+          { no: 841, ad: "MUHAMMET BURAK", soyad: "ÖZDEN" },
+          { no: 843, ad: "MUSA BERAT", soyad: "ARAS" },
+          { no: 856, ad: "MUZAFFER EMİR", soyad: "ARAS" },
+          { no: 883, ad: "ÖMER FARUK", soyad: "TATAL" },
+          { no: 945, ad: "ZEYNEP ERVA", soyad: "KÖKLÜ" },
+          { no: 957, ad: "ZÜLEYHA", soyad: "BAŞODA" },
+          { no: 976, ad: "EFEHAN AYAZ", soyad: "ARICI" },
+          { no: 1056, ad: "MUSTAFA", soyad: "CİRİT" },
+          { no: 1106, ad: "TÜRKAN NAZLI", soyad: "KESKEN" },
+          { no: 1118, ad: "ŞÜKRİYE", soyad: "ÖZAL" },
+          { no: 1152, ad: "ŞERİFE ERVA", soyad: "BOZKURT" },
+          { no: 1210, ad: "MEHMET AKİF", soyad: "EFE" },
+          { no: 1430, ad: "SUDENAZ", soyad: "KARACA" },
+          { no: 1432, ad: "YUNUS EMRE", soyad: "TÜRKMEN" },
+          { no: 1493, ad: "HAYDAR AZİZ", soyad: "ARIKAN" }
+        ]
+      },
+      '7-j': {
+        name: "7/J",
+        teacher: "Yalçın TETİK",
+        students: [
+          { no: 8, ad: "EYMEN", soyad: "TUNÇ" },
+          { no: 35, ad: "IRMAK", soyad: "ALKARANLI" },
+          { no: 52, ad: "İBRAHİM EFE", soyad: "BERRAK" },
+          { no: 127, ad: "ABDULSAMET", soyad: "KILINÇ" },
+          { no: 257, ad: "ALİ EREN", soyad: "BAŞARAN" },
+          { no: 280, ad: "RECEP AKİF", soyad: "GÖKÇE" },
+          { no: 288, ad: "ALİRİZA", soyad: "ANLAŞ" },
+          { no: 311, ad: "ASAF", soyad: "YİĞİT" },
+          { no: 317, ad: "AYŞE HÜMEYRA", soyad: "İNAL" },
+          { no: 363, ad: "BERAT", soyad: "DİNÇER" },
+          { no: 368, ad: "BEREN", soyad: "BOZOĞLU" },
+          { no: 406, ad: "ENES EGE", soyad: "YALÇINKAYA" },
+          { no: 413, ad: "DÜNYA", soyad: "KARA" },
+          { no: 430, ad: "ECRİN", soyad: "KOÇ" },
+          { no: 450, ad: "MUSTAFA METE", soyad: "KARLI" },
+          { no: 519, ad: "ELİF RANA", soyad: "KARAKUŞ" },
+          { no: 622, ad: "FAZIL SAMET", soyad: "NAZLUM" },
+          { no: 641, ad: "HASAN ALİ", soyad: "DONAT" },
+          { no: 667, ad: "HAVVA RANA", soyad: "KÖKEN" },
+          { no: 674, ad: "HİLMİ CEM", soyad: "YAVUZ" },
+          { no: 739, ad: "İREM", soyad: "YELBOĞA" },
+          { no: 791, ad: "MEHMET UTKU", soyad: "SİPAHİOĞLU" },
+          { no: 829, ad: "MUHAMMED TALHA", soyad: "TEKTAŞ" },
+          { no: 875, ad: "NİHAN BERRİN", soyad: "BAYKAL" },
+          { no: 993, ad: "YİĞİT EYMEN", soyad: "CANBOY" },
+          { no: 1045, ad: "FEHMİ ENES", soyad: "KENDİRCİ" },
+          { no: 1190, ad: "SEMA NUR", soyad: "ÖZTÜRK" },
+          { no: 1203, ad: "SULTAN", soyad: "KARA" },
+          { no: 1284, ad: "MUZAFFER EMİN", soyad: "SUSAM" },
+          { no: 1499, ad: "RAVZA", soyad: "KOÇ" },
+          { no: 1786, ad: "ERVA", soyad: "MANAV" },
+          { no: 2004, ad: "HİRA", soyad: "CANDAN" },
+          { no: 2027, ad: "ZEYNEP", soyad: "TUNA" }
+        ]
+      },
+      '7-k': {
+        name: "7/K",
+        teacher: "Erkan YORGANCILLAR",
+        students: [
+          { no: 95, ad: "HANZADE", soyad: "BAĞCI" },
+          { no: 166, ad: "BELİNAY", soyad: "UÇLUSOY" },
+          { no: 169, ad: "MUHAMMED MUSTAFA", soyad: "BAĞCI" },
+          { no: 213, ad: "ADA", soyad: "YILDIZ" },
+          { no: 216, ad: "AMMAR", soyad: "İYŞE" },
+          { no: 237, ad: "AHMET EREN", soyad: "ÖZKAN" },
+          { no: 239, ad: "AHMET EYMEN", soyad: "DOĞAN" },
+          { no: 252, ad: "YUSUF EYMEN", soyad: "GÜDEMEN" },
+          { no: 259, ad: "ALİ EYMEN", soyad: "ÇİFCİ" },
+          { no: 290, ad: "ALPARSLAN KÜRŞAT", soyad: "KADAN" },
+          { no: 382, ad: "CEMRE", soyad: "KARAKAN" },
+          { no: 385, ad: "CENGİZHAN", soyad: "KIRICI" },
+          { no: 395, ad: "DORUK", soyad: "BAŞARAN" },
+          { no: 448, ad: "EGE", soyad: "HIZLI" },
+          { no: 457, ad: "AYŞE", soyad: "GÜMÜŞTAŞ" },
+          { no: 510, ad: "ŞAHADET", soyad: "SERT" },
+          { no: 607, ad: "FARUK", soyad: "GÜÇBİLMEZ" },
+          { no: 633, ad: "GÜLPERİ NUR", soyad: "ÇELİK" },
+          { no: 692, ad: "HİRA", soyad: "KÜÇÜKKÖSE" },
+          { no: 711, ad: "İBRAHİM", soyad: "DADAK" },
+          { no: 790, ad: "HALİD", soyad: "HACİ SELAME" },
+          { no: 795, ad: "HATİCE ESMA", soyad: "ÖZTÜRK" },
+          { no: 819, ad: "MUHAMMED EREN", soyad: "ARSLAN" },
+          { no: 825, ad: "MUHAMMED FETTAH", soyad: "DEVECİ" },
+          { no: 837, ad: "MUHAMMET AYHAN", soyad: "ÜNLÜ" },
+          { no: 853, ad: "MUSTAFA UTKU", soyad: "KUMRU" },
+          { no: 891, ad: "ÖYKÜ GAMZE", soyad: "AYDIN" },
+          { no: 1021, ad: "YUSUF MERT", soyad: "YÜKSEK" },
+          { no: 1050, ad: "ELİF NİSA", soyad: "TEKİN" },
+          { no: 1145, ad: "ŞERİFE SERRA", soyad: "ÇIRACI" },
+          { no: 1408, ad: "GÜLSÜN", soyad: "YİĞİT" },
+          { no: 1421, ad: "MUSTAFA", soyad: "ÇETİN" },
+          { no: 2026, ad: "REYYAN", soyad: "AŞIK" }
+        ]
+      }
+    };
+
+    const CLUBS_DATA = [
+      { id: 1, name: "Bilim-Fen ve Teknoloji Kulübü", icon: "🔬", students: [{ no: 1106, name: "Türkan Nazlı KESKEN" }] },
+      { id: 2, name: "Kültür Edebiyat Kulübü", icon: "📚", students: [{ no: 30, name: "Ayşe Güler UĞUR" }] },
+      { id: 3, name: "Afet Hazırlık Kulübü", icon: "🚨", students: [{ no: 371, name: "Berre UYAR" }] },
+      { id: 4, name: "Sağlıklı Yaşam ve Fiziksel Aktivite Kulübü", icon: "⚽", students: [{ no: 748, name: "Kazım Mirza ARSLAN" }, { no: 304, name: "Ahmet Rafi KARATEKİN" }] },
+      { id: 5, name: "Müzik Kulübü", icon: "🎵", students: [{ no: 945, name: "Zeynep Erva KÖKLÜ" }, { no: 348, name: "Azra Nur SABAN" }] },
+      { id: 6, name: "Sağlık, Temizlik ve Beslenme Kulübü", icon: "🍎", students: [{ no: 814, name: "M. Emin BİLGE" }, { no: 282, name: "Ali ÖZER" }] },
+      { id: 7, name: "e-Twinning Kulübü", icon: "🌍", students: [{ no: 114, name: "Behlül Umut KAYA" }, { no: 1493, name: "Haydar Aziz ARIKAN" }] },
+      { id: 8, name: "ÇEDES (Değerler) Kulübü", icon: "🤝", students: [{ no: 179, name: "Ayşe Betül ŞAHİN" }, { no: 1152, name: "Şerife Erva BOZKURT" }] },
+      { id: 9, name: "Kızılay ve Kan Bağışı Kulübü", icon: "🩸", students: [{ no: 522, name: "Elif Sena ÖZKIŞ" }] },
+      { id: 10, name: "SEDEP / Sevap Kulübü", icon: "🕊️", students: [{ no: 1430, name: "Sudenaz KARACA" }, { no: 796, name: "Melis BAĞCI" }] },
+      { id: 11, name: "Beyaz Ay Kulübü", icon: "🌙", students: [{ no: 773, name: "Mehmet Eren KORTEL" }, { no: 1432, name: "Yunus Emre TÜRKMEN" }] },
+      { id: 12, name: "Tabiat ve Yaşanabilir Çevre Kulübü", icon: "🌱", students: [{ no: 80, name: "Duru YILDIZBAŞ" }] },
+      { id: 13, name: "Yeşilay Kulübü", icon: "🌿", students: [{ no: 957, name: "Züleyha BAŞODA" }, { no: 1056, name: "Mustafa CİRİT" }] },
+      { id: 14, name: "Tarih ve Kültürel Miras Kulübü", icon: "🏛️", students: [{ no: 841, name: "M. Burak ÖZDEN" }] },
+      { id: 15, name: "Gezi, Tanıtma ve Turizm Kulübü", icon: "🧭", students: [{ no: 1210, name: "Mehmet Akif EFE" }, { no: 816, name: "Muhammed Emir ŞAHİN" }] },
+      { id: 16, name: "Demokrasi ve İnsan Hakları Kulübü", icon: "⚖️", students: [{ no: 883, name: "Ömer Faruk TATAL" }, { no: 74, name: "Raşit AYAZ" }] },
+      { id: 17, name: "Sosyal Yardımlaşma ve Dayanışma Kulübü", icon: "🤲", students: [{ no: 1118, name: "Şükriye ÖZAL" }, { no: 976, name: "Efehan Ayaz ARICI" }] },
+      { id: 18, name: "Trafik Güvenliği ve İlk Yardım Kulübü", icon: "🚦", students: [{ no: 273, name: "Ali İlker AKSOY" }] },
+      { id: 19, name: "Siberay Kulübü", icon: "💻", students: [{ no: 843, name: "Musa Berat ARAS" }, { no: 856, name: "Muzaffer Emir ARAS" }] },
+      { id: 20, name: "Yaşam Becerileri Kulübü", icon: "🎯", students: [{ no: 130, name: "Doğan Eren GENÇ" }] }
+    ];
+
+    const TOTAL_WEEKS = 24;
+    const STORAGE_KEY = "mervehacer_grading_data_v1";
+
+    // 2. STATE MANAGEMENT
+    let currentTab = '7-i';
+    let viewMode = window.innerWidth < 768 ? 'cards' : 'table'; // Auto-select card view on mobile!
+    let searchQuery = '';
+    let currentFilter = 'all'; // 'all', 'plus', 'minus', 'empty'
+    let gradesData = {}; // structure: { [classId]: { [studentNo]: { [weekIndex]: '+' | '-' } } }
+
+    // Active Modal Target
+    let activeModalTarget = {
+      classId: null,
+      studentNo: null,
+      studentIndex: null,
+      weekIndex: null
+    };
+
+    // 3. INITIALIZATION
+    window.addEventListener('DOMContentLoaded', () => {
+      loadGradesFromStorage();
+      updateViewToggleUI();
+      renderAllClasses();
+      renderClubsList();
+      updateHeaderStats();
+    });
+
+    function loadGradesFromStorage() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          gradesData = JSON.parse(saved);
+        }
+      } catch (e) {
+        console.error("Local storage okuma hatası:", e);
+      }
+      // Ensure all classes exist in structure
+      ['7-i', '7-j', '7-k'].forEach(cId => {
+        if (!gradesData[cId]) gradesData[cId] = {};
+      });
+    }
+
+    function saveGradesToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gradesData));
+      } catch (e) {
+        console.error("Local storage kayıt hatası:", e);
+      }
+    }
+
+    // 4. TAB & VIEW NAVIGATION
+    function switchTab(tabId) {
+      currentTab = tabId;
+      document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+        btn.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+      const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const targetPanel = document.getElementById(`panel-${tabId}`);
+      if (targetPanel) targetPanel.classList.add('active');
+
+      const controlsBar = document.getElementById('controlsBar');
+      if (tabId === 'settings' || tabId === 'clubs') {
+        controlsBar.style.display = tabId === 'clubs' ? 'block' : 'none';
+        document.getElementById('viewToggleBtn').style.display = 'none';
+        document.getElementById('subControls').style.display = 'none';
+      } else {
+        controlsBar.style.display = 'block';
+        document.getElementById('viewToggleBtn').style.display = 'flex';
+        document.getElementById('subControls').style.display = 'flex';
+      }
+
+      updateHeaderStats();
+      clearSearch();
+    }
+
+    function toggleViewMode() {
+      viewMode = viewMode === 'table' ? 'cards' : 'table';
+      updateViewToggleUI();
+      renderCurrentClass();
+    }
+
+    function updateViewToggleUI() {
+      const icon = document.getElementById('viewIcon');
+      const label = document.getElementById('viewLabel');
+      if (viewMode === 'table') {
+        icon.textContent = '📋';
+        label.textContent = 'Tablo';
+      } else {
+        icon.textContent = '📱';
+        label.textContent = 'Kartlar';
+      }
+    }
+
+    function updateHeaderStats() {
+      const activeNameElem = document.getElementById('activeClassName');
+      const activeStatsElem = document.getElementById('activeClassStats');
+
+      if (currentTab === 'clubs') {
+        activeNameElem.textContent = "Sosyal Kulüpler";
+        activeStatsElem.textContent = "20 Kulüp (7/İ)";
+        return;
+      }
+      if (currentTab === 'settings') {
+        activeNameElem.textContent = "Ayar & Yedek";
+        activeStatsElem.textContent = "Merve Hacer SEVER";
+        return;
+      }
+
+      const cData = STUDENTS_DATA[currentTab];
+      if (!cData) return;
+
+      activeNameElem.textContent = `${cData.name} Sınıfı`;
+
+      let totalPlus = 0;
+      let totalMinus = 0;
+      const classGrades = gradesData[currentTab] || {};
+
+      cData.students.forEach(std => {
+        const stdGrades = classGrades[std.no] || {};
+        for (let w = 1; w <= TOTAL_WEEKS; w++) {
+          if (stdGrades[w] === '+') totalPlus++;
+          else if (stdGrades[w] === '-') totalMinus++;
+        }
+      });
+
+      activeStatsElem.innerHTML = `<span style="color: #a7f3d0;">+${totalPlus}</span> / <span style="color: #fca5a5;">-${totalMinus}</span>`;
+    }
+
+    // 5. SEARCH & FILTERING
+    function handleSearch(query) {
+      searchQuery = query.trim().toLowerCase();
+      document.getElementById('clearSearchBtn').style.display = searchQuery ? 'block' : 'none';
+
+      if (currentTab === 'clubs') {
+        renderClubsList();
+      } else {
+        renderCurrentClass();
+      }
+    }
+
+    function clearSearch() {
+      searchQuery = '';
+      const input = document.getElementById('searchInput');
+      if (input) input.value = '';
+      document.getElementById('clearSearchBtn').style.display = 'none';
+      if (currentTab === 'clubs') {
+        renderClubsList();
+      } else {
+        renderCurrentClass();
+      }
+    }
+
+    function setFilter(filterType, elem) {
+      currentFilter = filterType;
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      if (elem) elem.classList.add('active');
+      renderCurrentClass();
+    }
+
+    // 6. RENDER LOGIC
+    function renderAllClasses() {
+      ['7-i', '7-j', '7-k'].forEach(cId => {
+        renderClassContent(cId);
+      });
+    }
+
+    function renderCurrentClass() {
+      if (['7-i', '7-j', '7-k'].includes(currentTab)) {
+        renderClassContent(currentTab);
+      }
+    }
+
+    function getStudentStats(classId, studentNo) {
+      const stdGrades = (gradesData[classId] && gradesData[classId][studentNo]) || {};
+      let plus = 0;
+      let minus = 0;
+      for (let w = 1; w <= TOTAL_WEEKS; w++) {
+        if (stdGrades[w] === '+') plus++;
+        else if (stdGrades[w] === '-') minus++;
+      }
+      return { plus, minus, totalEvaluations: plus + minus };
+    }
+
+    function renderClassContent(classId) {
+      const cData = STUDENTS_DATA[classId];
+      if (!cData) return;
+
+      const classGrades = gradesData[classId] || {};
+      let totalPlus = 0;
+      let totalMinus = 0;
+      let countWithPlus = 0;
+      let countWithMinus = 0;
+      let countEmpty = 0;
+
+      // Filter and count
+      const filteredStudents = cData.students.filter(std => {
+        const stats = getStudentStats(classId, std.no);
+        totalPlus += stats.plus;
+        totalMinus += stats.minus;
+
+        if (stats.plus > 0) countWithPlus++;
+        if (stats.minus > 0) countWithMinus++;
+        if (stats.totalEvaluations === 0) countEmpty++;
+
+        // Filter check
+        if (currentFilter === 'plus' && stats.plus === 0) return false;
+        if (currentFilter === 'minus' && stats.minus === 0) return false;
+        if (currentFilter === 'empty' && stats.totalEvaluations > 0) return false;
+
+        // Search check
+        if (searchQuery) {
+          const fullName = `${std.ad} ${std.soyad}`.toLowerCase();
+          const noStr = std.no.toString();
+          return fullName.includes(searchQuery) || noStr.includes(searchQuery);
+        }
+        return true;
+      });
+
+      // Update Filter Pill Counts
+      if (classId === currentTab) {
+        document.getElementById('count-all').textContent = cData.students.length;
+        document.getElementById('count-plus').textContent = countWithPlus;
+        document.getElementById('count-minus').textContent = countWithMinus;
+        document.getElementById('count-empty').textContent = countEmpty;
+        document.getElementById('showingCount').textContent = `${filteredStudents.length} / ${cData.students.length} öğrenci`;
+      }
+
+      // Render Summary Card
+      const summaryElem = document.getElementById(`summary-${classId}`);
+      if (summaryElem) {
+        summaryElem.innerHTML = `
+          <div class="stat-item">
+            <div class="stat-val">${cData.students.length}</div>
+            <div class="stat-lbl">Öğrenci Sayısı</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val green">+${totalPlus}</div>
+            <div class="stat-lbl">Toplam Artı</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val red">-${totalMinus}</div>
+            <div class="stat-lbl">Toplam Eksi</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">${TOTAL_WEEKS}</div>
+            <div class="stat-lbl">Değerlendirme Bölmesi</div>
+          </div>
+        `;
+      }
+
+      // Render Table or Cards
+      const containerElem = document.getElementById(`content-${classId}`);
+      if (!containerElem) return;
+
+      if (filteredStudents.length === 0) {
+        containerElem.innerHTML = `
+          <div style="text-align: center; padding: 40px 16px; background: white; border-radius: 12px; border: 1px solid var(--border);">
+            <div style="font-size: 36px; margin-bottom: 8px;">🔍</div>
+            <div style="font-size: 16px; font-weight: 700; color: var(--text);">Aramaya Uygun Öğrenci Bulunamadı</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Filtreleri veya arama terimini temizleyip tekrar deneyin.</div>
+            <button class="btn btn-secondary" style="margin-top: 12px;" onclick="clearSearch()">Filtreyi Temizle</button>
+          </div>
+        `;
+        return;
+      }
+
+      if (viewMode === 'table') {
+        containerElem.innerHTML = renderTableView(classId, filteredStudents, classGrades);
+      } else {
+        containerElem.innerHTML = renderCardsView(classId, filteredStudents, classGrades);
+      }
+    }
+
+    // TABLE VIEW GENERATION
+    function renderTableView(classId, students, classGrades) {
+      let html = `
+        <div class="table-container">
+          <table class="grade-table">
+            <thead>
+              <tr>
+                <th class="col-no">No</th>
+                <th class="col-name">Öğrenci Adı Soyadı</th>
+      `;
+
+      for (let w = 1; w <= TOTAL_WEEKS; w++) {
+        html += `<th class="col-week">${w}</th>`;
+      }
+
+      html += `
+                <th class="col-total">Toplam</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+
+      students.forEach(std => {
+        const stats = getStudentStats(classId, std.no);
+        const stdGrades = classGrades[std.no] || {};
+
+        html += `
+          <tr>
+            <td class="col-no">${std.no}</td>
+            <td class="col-name" title="${std.ad} ${std.soyad}">${std.ad} ${std.soyad}</td>
+        `;
+
+        for (let w = 1; w <= TOTAL_WEEKS; w++) {
+          const val = stdGrades[w];
+          let statusClass = '';
+          let text = '';
+          if (val === '+') { statusClass = 'status-plus'; text = '+'; }
+          else if (val === '-') { statusClass = 'status-minus'; text = '−'; }
+
+          html += `
+            <td class="col-week">
+              <button class="cell-btn ${statusClass}" onclick="openEvalModal('${classId}', ${std.no}, ${w})" title="${std.ad} ${std.soyad} - Bölme ${w}">
+                ${text}
+              </button>
+            </td>
+          `;
+        }
+
+        html += `
+            <td class="col-total">
+              <div class="total-badge-group">
+                <span class="badge-count plus">+${stats.plus}</span>
+                <span class="badge-count minus">-${stats.minus}</span>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+
+      html += `
+            </tbody>
+          </table>
+        </div>
+      `;
+      return html;
+    }
+
+    // CARDS VIEW GENERATION (MOBILE FRIENDLY)
+    function renderCardsView(classId, students, classGrades) {
+      let html = `<div class="cards-grid">`;
+
+      students.forEach(std => {
+        const stats = getStudentStats(classId, std.no);
+        const stdGrades = classGrades[std.no] || {};
+        const initials = (std.ad[0] || '') + (std.soyad[0] || '');
+
+        html += `
+          <div class="student-card">
+            <div class="card-header">
+              <div class="card-student-info">
+                <div class="student-avatar">${initials}</div>
+                <div>
+                  <div class="card-name">${std.ad} ${std.soyad}</div>
+                  <div class="card-no">Okul No: <strong>${std.no}</strong></div>
+                </div>
+              </div>
+              <div class="card-totals">
+                <span class="badge-count plus" title="Toplam Artı">+${stats.plus}</span>
+                <span class="badge-count minus" title="Toplam Eksi">-${stats.minus}</span>
+              </div>
+            </div>
+
+            <div class="card-weeks-grid">
+        `;
+
+        for (let w = 1; w <= TOTAL_WEEKS; w++) {
+          const val = stdGrades[w];
+          let statusClass = '';
+          let text = '';
+          if (val === '+') { statusClass = 'status-plus'; text = '+'; }
+          else if (val === '-') { statusClass = 'status-minus'; text = '−'; }
+
+          html += `
+            <div class="card-week-box">
+              <span class="w-lbl">${w}</span>
+              <button class="cell-btn ${statusClass}" onclick="openEvalModal('${classId}', ${std.no}, ${w})">
+                ${text}
+              </button>
+            </div>
+          `;
+        }
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      return html;
+    }
+
+    // 7. CLUBS MODULE GENERATION
+    function renderClubsList() {
+      const container = document.getElementById('clubCardsContainer');
+      if (!container) return;
+
+      const query = searchQuery;
+      let filteredClubs = CLUBS_DATA;
+
+      if (query) {
+        filteredClubs = CLUBS_DATA.filter(club => {
+          const clubMatch = club.name.toLowerCase().includes(query);
+          const studentMatch = club.students.some(s => s.name.toLowerCase().includes(query) || s.no.toString().includes(query));
+          return clubMatch || studentMatch;
+        });
+      }
+
+      if (filteredClubs.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: white; border-radius: 12px; border: 1px solid var(--border);">
+            <div style="font-size: 32px;">🔍</div>
+            <div style="font-weight: 700; margin-top: 8px;">Aramaya Uygun Kulüp veya Öğrenci Bulunamadı</div>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      filteredClubs.forEach((club, idx) => {
+        html += `
+          <div class="club-card">
+            <div class="club-card-title">
+              <span class="club-index-badge">${club.id}</span>
+              <span>${club.icon} ${club.name}</span>
+            </div>
+            <div class="club-student-list">
+        `;
+
+        club.students.forEach(s => {
+          html += `
+            <div class="club-student-pill">
+              <span>👤 ${s.name}</span>
+              <span class="std-no">No: ${s.no}</span>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    // 8. MODAL EVALUATION ACTIONS
+    function openEvalModal(classId, studentNo, weekIndex) {
+      const cData = STUDENTS_DATA[classId];
+      if (!cData) return;
+
+      const stdIdx = cData.students.findIndex(s => s.no === studentNo);
+      if (stdIdx === -1) return;
+
+      const student = cData.students[stdIdx];
+
+      activeModalTarget = {
+        classId,
+        studentNo,
+        studentIndex: stdIdx,
+        weekIndex
+      };
+
+      const stdGrades = (gradesData[classId] && gradesData[classId][studentNo]) || {};
+      const currentVal = stdGrades[weekIndex];
+
+      document.getElementById('modalStudentName').textContent = `${student.ad} ${student.soyad}`;
+      document.getElementById('modalMeta').textContent = `${cData.name} Sınıfı • Okul No: ${student.no} • Hafta / Bölme ${weekIndex}`;
+
+      const stateBadge = document.getElementById('modalCurrentStateBadge');
+      if (currentVal === '+') {
+        stateBadge.innerHTML = `<span style="background: var(--plus-bg); color: #047857; padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; border: 1px solid var(--plus-border);">Şu anki Durum: ART (+)</span>`;
+      } else if (currentVal === '-') {
+        stateBadge.innerHTML = `<span style="background: var(--minus-bg); color: #b91c1c; padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; border: 1px solid var(--minus-border);">Şu anki Durum: EKSİ (-)</span>`;
+      } else {
+        stateBadge.innerHTML = `<span style="background: #f1f5f9; color: var(--text-muted); padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">Şu anki Durum: Not Verilmedi (Boş)</span>`;
+      }
+
+      const modal = document.getElementById('evalModal');
+      modal.classList.add('active');
+    }
+
+    function handleModalOverlayClick(e) {
+      if (e.target.id === 'evalModal') {
+        closeEvalModal();
+      }
+    }
+
+    function closeEvalModal() {
+      document.getElementById('evalModal').classList.remove('active');
+    }
+
+    function setStudentGrade(value) {
+      const { classId, studentNo, weekIndex } = activeModalTarget;
+      if (!classId || !studentNo || !weekIndex) return;
+
+      if (!gradesData[classId]) gradesData[classId] = {};
+      if (!gradesData[classId][studentNo]) gradesData[classId][studentNo] = {};
+
+      if (value === null) {
+        delete gradesData[classId][studentNo][weekIndex];
+        showToast("Not temizlendi");
+      } else {
+        gradesData[classId][studentNo][weekIndex] = value;
+        showToast(value === '+' ? "Artı (+) verildi" : "Eksi (-) verildi");
+      }
+
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(value === null ? 20 : 35);
+      }
+
+      saveGradesToStorage();
+      renderCurrentClass();
+      updateHeaderStats();
+      closeEvalModal();
+    }
+
+    function navigateStudent(direction) {
+      const { classId, studentIndex, weekIndex } = activeModalTarget;
+      const cData = STUDENTS_DATA[classId];
+      if (!cData) return;
+
+      let newIdx = studentIndex + direction;
+      if (newIdx < 0) newIdx = cData.students.length - 1;
+      if (newIdx >= cData.students.length) newIdx = 0;
+
+      const nextStudent = cData.students[newIdx];
+      openEvalModal(classId, nextStudent.no, weekIndex);
+    }
+
+    // Modal Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('evalModal');
+      if (!modal || !modal.classList.contains('active')) return;
+
+      if (e.key === '+' || e.key === '1') {
+        e.preventDefault();
+        setStudentGrade('+');
+      } else if (e.key === '-' || e.key === '2') {
+        e.preventDefault();
+        setStudentGrade('-');
+      } else if (e.key === '0' || e.key === 'Delete' || e.key === 'Backspace') {
+        e.preventDefault();
+        setStudentGrade(null);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        navigateStudent(-1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        navigateStudent(1);
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        closeEvalModal();
+      }
+    });
+
+    // 9. TOAST NOTIFICATIONS
+    function showToast(text) {
+      const toast = document.getElementById('toastMessage');
+      const toastText = document.getElementById('toastText');
+      toastText.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 1600);
+    }
+
+    // 10. EXPORT / BACKUP / RESTORE
+    function exportToCSV(scope) {
+      const classesToExport = scope === 'all' ? ['7-i', '7-j', '7-k'] : [currentTab];
+      let csvContent = "\uFEFF"; // UTF-8 BOM for Excel Turkish character support
+
+      // Header row
+      csvContent += "Sınıf;Okul No;Adı;Soyadı;";
+      for (let w = 1; w <= TOTAL_WEEKS; w++) {
+        csvContent += `Hafta ${w};`;
+      }
+      csvContent += "Toplam Artı;Toplam Eksi;Net Skor\n";
+
+      classesToExport.forEach(cId => {
+        const cData = STUDENTS_DATA[cId];
+        const classGrades = gradesData[cId] || {};
+
+        cData.students.forEach(std => {
+          const stats = getStudentStats(cId, std.no);
+          const stdGrades = classGrades[std.no] || {};
+
+          let row = `${cData.name};${std.no};"${std.ad}";"${std.soyad}";`;
+          for (let w = 1; w <= TOTAL_WEEKS; w++) {
+            const val = stdGrades[w] || '';
+            row += `${val};`;
+          }
+          const net = stats.plus - stats.minus;
+          row += `${stats.plus};${stats.minus};${net}\n`;
+          csvContent += row;
+        });
+      });
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const fileName = scope === 'all' 
+        ? `Rebii_Karatekin_Din_Kulturu_Tum_Siniflar_${new Date().toISOString().slice(0,10)}.csv`
+        : `Rebii_Karatekin_Din_Kulturu_${STUDENTS_DATA[currentTab].name}_${new Date().toISOString().slice(0,10)}.csv`;
+      a.download = fileName;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("Excel (CSV) dosyası indirildi");
+    }
+
+    function downloadBackup() {
+      const backupData = {
+        app: "Rebii Karatekin Ortaokulu Din Kültürü Takip Sistemi",
+        teacher: "Merve Hacer SEVER",
+        exportedAt: new Date().toISOString(),
+        grades: gradesData
+      };
+
+      const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Merve_Hacer_Sever_Din_Kulturu_Yedek_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("Yedek dosyası indirildi");
+    }
+
+    function restoreBackup(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (data && data.grades) {
+            gradesData = data.grades;
+            saveGradesToStorage();
+            renderAllClasses();
+            updateHeaderStats();
+            showToast("Yedek başarıyla yüklendi!");
+          } else {
+            alert("Geçersiz yedek dosyası formatı!");
+          }
+        } catch (err) {
+          alert("Dosya okunurken bir hata oluştu: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function resetCurrentClassData() {
+      const cData = STUDENTS_DATA[currentTab];
+      if (!cData) return;
+
+      const confirmed = confirm(`${cData.name} sınıfının tüm artı ve eksi notlarını silmek istediğinize emin misiniz? Bu işlem geri alınamaz.`);
+      if (confirmed) {
+        gradesData[currentTab] = {};
+        saveGradesToStorage();
+        renderCurrentClass();
+        updateHeaderStats();
+        showToast(`${cData.name} sınıfı verileri sıfırlandı`);
+      }
+    }
+  </script>
+</body>
+</html>
