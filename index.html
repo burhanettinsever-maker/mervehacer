@@ -300,6 +300,7 @@
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
       height: 100vh;
+      height: 100dvh;
       position: sticky;
       top: 0;
     }
@@ -341,6 +342,7 @@
     .sidebar-nav {
       flex: 1;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       padding: 12px 10px;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.2) transparent;
@@ -520,6 +522,7 @@
       flex-direction: column;
       min-width: 0;
       min-height: 100vh;
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* TOP BAR (MOBILE & DESKTOP) */
@@ -571,6 +574,14 @@
       font-size: 11px;
       color: var(--text-muted);
       font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    @media (max-width: 480px) {
+      .current-view-subtitle {
+        display: none;
+      }
     }
 
     .top-right {
@@ -1698,9 +1709,14 @@
     /* DASHBOARD PLANS CARDS */
     .plans-dashboard-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
       margin-bottom: 28px;
+    }
+    @media (max-width: 480px) {
+      .plans-dashboard-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .plans-classes-grid {
