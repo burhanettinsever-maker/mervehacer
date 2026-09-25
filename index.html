@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
@@ -1634,7 +1634,360 @@
         font-size: 11px;
       }
     }
+    /* YILLIK PLANLAR NAVIGATION & STYLES */
+    .nav-nested-title {
+      font-size: 10px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 0.6px;
+      padding: 10px 14px 4px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .plan-header-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      border: 1px solid var(--primary-border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .plan-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .plan-title-block h2 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plan-title-block p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .plan-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .plan-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #e2e8f0;
+      color: #334155;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .plan-tag.maarif {
+      background: #e0e7ff;
+      color: #3730a3;
+      border: 1px solid #c7d2fe;
+    }
+
+    .plan-tag.grade {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .plan-tag.lesson {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .plan-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn-export-excel {
+      background: #107c41;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(16, 124, 65, 0.2);
+    }
+    .btn-export-excel:hover {
+      background: #0b5a2f;
+      transform: translateY(-1px);
+    }
+
+    .btn-export-word {
+      background: #2b579a;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(43, 87, 154, 0.2);
+    }
+    .btn-export-word:hover {
+      background: #1e3e6d;
+      transform: translateY(-1px);
+    }
+
+    .btn-download-orig {
+      background: white;
+      color: #334155;
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-download-orig:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .btn-print-plan {
+      background: white;
+      color: #334155;
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-print-plan:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .plan-search-bar {
+      background: white;
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .plan-search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface-alt);
+      border-radius: var(--radius-sm);
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+    }
+
+    .plan-search-input-wrap input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .plan-filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .plan-filter-pill {
+      font-size: 11.5px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-weight: 600;
+    }
+    .plan-filter-pill.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .plan-table-container {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+      margin-bottom: 24px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .plan-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }
+
+    .plan-data-table thead th {
+      background: #f8fafc;
+      color: #334155;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--border);
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .plan-data-table thead th:last-child {
+      border-right: none;
+    }
+
+    .plan-data-table tbody td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      color: #1e293b;
+      line-height: 1.45;
+      vertical-align: top;
+    }
+
+    .plan-data-table tbody td:last-child {
+      border-right: none;
+    }
+
+    .plan-data-table tbody tr:hover {
+      background: #f0fdf4;
+    }
+
+    .plan-unit-card {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .plan-unit-header {
+      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+      color: white;
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .plan-badge-month {
+      background: #dbeafe;
+      color: #1e40af;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .plan-badge-week {
+      font-weight: 700;
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+
+    .plan-badge-theme {
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .plans-dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    @media print {
+      body { background: white !important; color: black !important; }
+      #sidebar, .sidebar-backdrop, .top-bar, .controls-bar, .plan-actions-row, .plan-search-bar, .toast, .hamburger-btn, .cloud-pill {
+        display: none !important;
+      }
+      .main-wrapper { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+      .content-area { padding: 0 !important; }
+      .view-panel { display: none !important; }
+      .view-panel.active { display: block !important; }
+      .plan-header-card { border: none !important; box-shadow: none !important; background: transparent !important; color: black !important; padding: 0 0 10px 0 !important; }
+      .plan-table-container { box-shadow: none !important; border: 1px solid #000 !important; overflow: visible !important; }
+      .plan-data-table { font-size: 8.5pt !important; }
+      .plan-data-table th, .plan-data-table td { border: 1px solid #444 !important; padding: 4px 6px !important; }
+      .plan-unit-card { box-shadow: none !important; border: 1px solid #444 !important; break-inside: avoid; }
+      .plan-unit-header { background: #eee !important; color: black !important; border-bottom: 1px solid #444 !important; }
+    }
   </style>
+  <script src="plansData.js"></script>
 </head>
 <body>
 
@@ -1909,6 +2262,92 @@
             <div class="stat-item">
               <div class="stat-val" style="color: var(--primary);">24</div>
               <div class="stat-lbl">Haftalık Bölme Sayısı</div>
+            </div>
+          </div>
+
+          <!-- YILLIK PLANLAR DASHBOARD SECTION -->
+          <div class="section-heading">
+            <span>ðŸ“…</span>
+            <span>YÄ±llÄ±k Planlar & MÃ¼fredat (9 Plan)</span>
+          </div>
+
+          <div class="plans-dashboard-grid">
+            <!-- Ã‡ERÃ‡EVE PLAN CARD -->
+            <div class="course-card">
+              <div class="course-card-top">
+                <div class="course-title-group">
+                  <div class="course-icon-badge" style="background: #e0e7ff; color: #3730a3;">ðŸ“œ</div>
+                  <div>
+                    <div class="course-card-name">Ã–zel EÄŸitim Ã‡erÃ§eve YÄ±llÄ±k PlanÄ±</div>
+                    <div class="course-card-sub">TÃ¼rkiye YÃ¼zyÄ±lÄ± Maarif Modeli (I-II-III. Kademe)</div>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="navigateToPlan('cerceve')" style="white-space: nowrap; padding: 6px 12px; font-size: 12px;">PlanÄ± AÃ§ âž”</button>
+              </div>
+            </div>
+
+            <!-- DIN KULTURU BEP CARD -->
+            <div class="course-card">
+              <div class="course-card-top">
+                <div class="course-title-group">
+                  <div class="course-icon-badge">ðŸ“–</div>
+                  <div>
+                    <div class="course-card-name">Din KÃ¼ltÃ¼rÃ¼ ve Ahlak Bilgisi BEP</div>
+                    <div class="course-card-sub">5, 6, 7 ve 8. SÄ±nÄ±f BireyselleÅŸtirilmiÅŸ Planlar</div>
+                  </div>
+                </div>
+                <span class="badge-count plus">4 SÄ±nÄ±f</span>
+              </div>
+              <div class="course-classes-row">
+                <div class="class-quick-btn" onclick="navigateToPlan('dkab', 5)">
+                  <div class="class-quick-name">5. SÄ±nÄ±f</div>
+                  <div class="class-quick-stats">BEP PlanÄ±</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToPlan('dkab', 6)">
+                  <div class="class-quick-name">6. SÄ±nÄ±f</div>
+                  <div class="class-quick-stats">BEP PlanÄ±</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToPlan('dkab', 7)">
+                  <div class="class-quick-name">7. SÄ±nÄ±f</div>
+                  <div class="class-quick-stats">BEP PlanÄ±</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToPlan('dkab', 8)">
+                  <div class="class-quick-name">8. SÄ±nÄ±f</div>
+                  <div class="class-quick-stats">BEP PlanÄ±</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PEYGAMBERIMIZIN HAYATI BEP CARD -->
+            <div class="course-card">
+              <div class="course-card-top">
+                <div class="course-title-group">
+                  <div class="course-icon-badge" style="background: #fef3c7; color: #b45309;">ðŸ•Œ</div>
+                  <div>
+                    <div class="course-card-name">Peygamber Efendimizin HayatÄ± BEP</div>
+                    <div class="course-card-sub">5, 6, 7 ve 8. SÄ±nÄ±f BireyselleÅŸtirilmiÅŸ Planlar</div>
+                  </div>
+                </div>
+                <span class="badge-count plus">4 SÄ±nÄ±f</span>
+              </div>
+              <div class="course-classes-row">
+                <div class="class-quick-btn" onclick="navigateToPlan('peh', 5)">
+                  <div class="class-quick-name">5. SÄ±nÄ±f</div>
+                  <div class="class-quick-stats">BEP PlanÄ±</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToPlan('peh', 6)">
+                  <div class="class-quick-name">6. SÄ±nÄ±f</div>
+                  <div class="class-quick-stats">BEP PlanÄ±</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToPlan('peh', 7)">
+                  <div class="class-quick-name">7. SÄ±nÄ±f</div>
+                  <div class="class-quick-stats">BEP PlanÄ±</div>
+                </div>
+                <div class="class-quick-btn" onclick="navigateToPlan('peh', 8)">
+                  <div class="class-quick-name">8. SÄ±nÄ±f</div>
+                  <div class="class-quick-stats">BEP PlanÄ±</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -3102,6 +3541,478 @@
         toast.classList.remove('show');
       }, 1600);
     }
+
+        // YILLIK PLANLAR STATE
+    let currentPlanCategory = 'cerceve'; // 'cerceve', 'dkab', 'peh'
+    let currentPlanGrade = null; // 5, 6, 7, 8
+    let currentPlanSearch = '';
+    let currentPlanFilter = 'all';
+
+    function getCurrentPlanData() {
+      if (!window.PLANS_DATA) return null;
+      if (currentPlanCategory === 'cerceve') return window.PLANS_DATA.cerceve;
+      if (currentPlanCategory === 'dkab') return window.PLANS_DATA.dkab[currentPlanGrade];
+      if (currentPlanCategory === 'peh') return window.PLANS_DATA.peh[currentPlanGrade];
+      return null;
+    }
+
+    function navigateToPlan(category, grade = null) {
+      currentView = 'plans-view';
+      currentPlanCategory = category;
+      currentPlanGrade = grade;
+      currentPlanSearch = '';
+      currentPlanFilter = 'all';
+      closeSidebar();
+
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      clearActiveNavStyles();
+
+      document.getElementById('panel-plans-view').classList.add('active');
+      const controlsBar = document.getElementById('classControlsBar');
+      if (controlsBar) controlsBar.style.display = 'none';
+
+      const navId = category === 'cerceve' ? 'nav-plan-cerceve' : `nav-plan-${category}-${grade}`;
+      const activeNav = document.getElementById(navId);
+      if (activeNav) activeNav.classList.add('active');
+
+      const plan = getCurrentPlanData();
+      if (plan) {
+        document.getElementById('pageTitle').textContent = `ðŸ“… ${plan.title}`;
+        document.getElementById('pageSubtitle').textContent = `SelÃ§uklu Rebii Karatekin OO â€¢ Ã–ÄŸretmen: Merve Hacer SEVER`;
+      }
+
+      const searchInput = document.getElementById('planSearchInput');
+      if (searchInput) searchInput.value = '';
+      const clearBtn = document.getElementById('clearPlanSearchBtn');
+      if (clearBtn) clearBtn.style.display = 'none';
+
+      renderCurrentPlan();
+    }
+
+    function handlePlanSearch(val) {
+      currentPlanSearch = (val || '').trim().toLowerCase();
+      const clearBtn = document.getElementById('clearPlanSearchBtn');
+      if (clearBtn) clearBtn.style.display = currentPlanSearch ? 'block' : 'none';
+      renderCurrentPlan();
+    }
+
+    function clearPlanSearch() {
+      currentPlanSearch = '';
+      const searchInput = document.getElementById('planSearchInput');
+      if (searchInput) searchInput.value = '';
+      const clearBtn = document.getElementById('clearPlanSearchBtn');
+      if (clearBtn) clearBtn.style.display = 'none';
+      renderCurrentPlan();
+    }
+
+    function setPlanFilter(filterVal, elem) {
+      currentPlanFilter = filterVal;
+      document.querySelectorAll('.plan-filter-pill').forEach(p => p.classList.remove('active'));
+      if (elem) elem.classList.add('active');
+      renderCurrentPlan();
+    }
+
+    function renderCurrentPlan() {
+      const plan = getCurrentPlanData();
+      if (!plan) return;
+
+      // 1. Header Card
+      const headerCard = document.getElementById('planHeaderCard');
+      let typeBadge = '';
+      if (plan.type === 'cerceve') {
+        typeBadge = '<span class="plan-tag maarif">â­ TÃ¼rkiye YÃ¼zyÄ±lÄ± Maarif Modeli</span>';
+      } else {
+        typeBadge = `<span class="plan-tag grade">ðŸ« ${plan.grade}</span><span class="plan-tag lesson">ðŸ“– ${plan.lesson}</span>`;
+      }
+
+      headerCard.innerHTML = `
+        <div class="plan-header-top">
+          <div class="plan-title-block">
+            <h2><span>ðŸ“…</span> <span>${plan.title}</span></h2>
+            <p>${plan.fullTitle}</p>
+            <div class="plan-badges-row">
+              ${typeBadge}
+              <span class="plan-tag">ðŸ‘©â€ðŸ« Merve Hacer SEVER</span>
+              <span class="plan-tag">ðŸ« SelÃ§uklu Rebii Karatekin OO</span>
+              <span class="plan-tag">ðŸ“Š Toplam: ${plan.items.length} Plan KaydÄ±</span>
+            </div>
+          </div>
+          <div class="plan-actions-row">
+            <button class="btn-export-excel" onclick="exportCurrentPlan('excel')" title="Bu planÄ± tÃ¼m sÃ¼tunlarÄ±yla Excel dosyasÄ± olarak indir">
+              <span>ðŸ“Š</span> Excel'e Aktar
+            </button>
+            <button class="btn-export-word" onclick="exportCurrentPlan('word')" title="Bu planÄ± resmi evrak formatÄ±nda Word belgesi olarak indir">
+              <span>ðŸ“</span> Word'e Aktar
+            </button>
+            <button class="btn-download-orig" onclick="downloadCurrentPlanFile()" title="Orijinal dosyasÄ±nÄ± indir">
+              <span>ðŸ’¾</span> Orijinal DosyayÄ± Ä°ndir
+            </button>
+            <button class="btn-print-plan" onclick="window.print()" title="Bu planÄ± yazdÄ±r veya PDF olarak kaydet">
+              <span>ðŸ–¨ï¸</span> YazdÄ±r / PDF
+            </button>
+          </div>
+        </div>
+      `;
+
+      // 2. Filter Pills
+      const pillsContainer = document.getElementById('planFilterPills');
+      let pillsHtml = `<button class="plan-filter-pill ${currentPlanFilter === 'all' ? 'active' : ''}" onclick="setPlanFilter('all', this)">TÃ¼mÃ¼</button>`;
+
+      if (plan.type === 'cerceve') {
+        const months = ['EylÃ¼l', 'Ekim', 'KasÄ±m', 'AralÄ±k', 'Ocak', 'Åžubat', 'Mart', 'Nisan', 'MayÄ±s', 'Haziran'];
+        months.forEach(m => {
+          const isActive = currentPlanFilter.toLowerCase() === m.toLowerCase();
+          pillsHtml += `<button class="plan-filter-pill ${isActive ? 'active' : ''}" onclick="setPlanFilter('${m}', this)">${m}</button>`;
+        });
+      } else if (plan.type === 'peh_bep') {
+        // Collect units
+        const units = [];
+        plan.items.forEach(it => {
+          if (it.unite && !units.includes(it.unite)) units.push(it.unite);
+        });
+        units.forEach((u, i) => {
+          const shortName = `${i + 1}. Ãœnite`;
+          const isActive = currentPlanFilter === u;
+          pillsHtml += `<button class="plan-filter-pill ${isActive ? 'active' : ''}" onclick="setPlanFilter('${u.replace(/'/g, "\\'")}', this)">${shortName}</button>`;
+        });
+      } else if (plan.type === 'din_bep') {
+        pillsHtml += `<button class="plan-filter-pill ${currentPlanFilter === '1. dÃ¶nem' ? 'active' : ''}" onclick="setPlanFilter('1. dÃ¶nem', this)">1. DÃ¶nem</button>`;
+        pillsHtml += `<button class="plan-filter-pill ${currentPlanFilter === '2. dÃ¶nem' ? 'active' : ''}" onclick="setPlanFilter('2. dÃ¶nem', this)">2. DÃ¶nem</button>`;
+        pillsHtml += `<button class="plan-filter-pill ${currentPlanFilter === 'yÄ±l sonu' ? 'active' : ''}" onclick="setPlanFilter('yÄ±l sonu', this)">YÄ±l Sonu</button>`;
+      }
+
+      pillsContainer.innerHTML = pillsHtml;
+
+      // 3. Filter Items
+      const filtered = plan.items.filter(item => {
+        // Search query check
+        if (currentPlanSearch) {
+          const text = JSON.stringify(item).toLowerCase();
+          if (!text.includes(currentPlanSearch)) return false;
+        }
+
+        // Category filter check
+        if (currentPlanFilter !== 'all') {
+          if (plan.type === 'cerceve') {
+            const m = (item.ay || '').toLowerCase();
+            if (!m.includes(currentPlanFilter.toLowerCase())) return false;
+          } else if (plan.type === 'peh_bep') {
+            if (item.unite !== currentPlanFilter) return false;
+          } else if (plan.type === 'din_bep') {
+            const dt = (item.degerlendirmeTarihi || '').toLowerCase();
+            if (!dt.includes(currentPlanFilter.toLowerCase())) return false;
+          }
+        }
+        return true;
+      });
+
+      document.getElementById('planItemsCount').textContent = `${filtered.length} / ${plan.items.length} kayÄ±t gÃ¶steriliyor`;
+
+      // 4. Render Table
+      const container = document.getElementById('planContentContainer');
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px 16px; background: white; border-radius: 12px; border: 1px solid var(--border);">
+            <div style="font-size: 32px; margin-bottom: 8px;">ðŸ”</div>
+            <div style="font-size: 15px; font-weight: 700;">Aramaya Uygun KayÄ±t BulunamadÄ±</div>
+            <button class="btn btn-secondary" style="margin-top: 10px;" onclick="clearPlanSearch()">AramayÄ± Temizle</button>
+          </div>
+        `;
+        return;
+      }
+
+      if (plan.type === 'cerceve') {
+        container.innerHTML = renderCerceveTable(filtered);
+      } else if (plan.type === 'din_bep') {
+        container.innerHTML = renderDinBepTable(filtered);
+      } else if (plan.type === 'peh_bep') {
+        container.innerHTML = renderPehTable(filtered);
+      }
+    }
+
+    function renderCerceveTable(items) {
+      let html = `
+        <div class="plan-table-container">
+          <table class="plan-data-table">
+            <thead>
+              <tr>
+                <th style="width: 75px;">Ay</th>
+                <th style="width: 130px;">Hafta / Tarih</th>
+                <th style="width: 45px; text-align: center;">Saat</th>
+                <th style="width: 170px;">Ãœnite / Tema</th>
+                <th style="width: 180px;">Konu</th>
+                <th style="width: 240px;">Ã–ÄŸrenme Ã‡Ä±ktÄ±larÄ±</th>
+                <th style="width: 220px;">SÃ¼reÃ§ BileÅŸenleri</th>
+                <th style="width: 220px;">Ã–lÃ§me ve DeÄŸerlendirme</th>
+                <th style="width: 180px;">DeÄŸerler & Beceriler</th>
+                <th style="width: 160px;">Belirli GÃ¼n ve Haftalar</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+
+      items.forEach(it => {
+        const ayBadge = it.ay ? `<span class="plan-badge-month">${it.ay}</span>` : '';
+        const haftaBadge = it.hafta ? `<span class="plan-badge-week">${it.hafta.replace(/\n/g, '<br>')}</span>` : '';
+        const uniteBadge = it.unite ? `<span class="plan-badge-theme">${it.unite}</span>` : '';
+
+        html += `
+          <tr>
+            <td>${ayBadge}</td>
+            <td>${haftaBadge}</td>
+            <td style="text-align: center; font-weight: 700;">${it.saat || '2'}</td>
+            <td>${uniteBadge}</td>
+            <td style="font-weight: 600;">${it.konu || ''}</td>
+            <td>${it.ogrenmeCiktilari || ''}</td>
+            <td style="font-size: 12px; color: #475569;">${it.surecBilesenleri || ''}</td>
+            <td style="font-size: 12px; color: #475569;">${it.olcmeDegerlendirme || ''}</td>
+            <td style="font-size: 11.5px;">
+              ${it.degerler ? `<div><strong>DeÄŸerler:</strong> ${it.degerler}</div>` : ''}
+              ${it.sosyalDuygusal ? `<div><strong>Beceriler:</strong> ${it.sosyalDuygusal}</div>` : ''}
+              ${it.okuryazarlik ? `<div><strong>OkuryazarlÄ±k:</strong> ${it.okuryazarlik}</div>` : ''}
+            </td>
+            <td style="font-weight: 600; color: #b45309;">${it.belirliGunHaftalar ? it.belirliGunHaftalar.replace(/\n/g, '<br>') : ''}</td>
+          </tr>
+        `;
+      });
+
+      html += `</tbody></table></div>`;
+      return html;
+    }
+
+    function renderDinBepTable(items) {
+      let html = `
+        <div class="plan-table-container">
+          <table class="plan-data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Uzun DÃ¶nemli AmaÃ§ (UDA)</th>
+                <th style="width: 23%;">KÄ±sa DÃ¶nemli AmaÃ§ (KDA)</th>
+                <th style="width: 80px; text-align: center;">Ã–lÃ§Ã¼t</th>
+                <th style="width: 15%;">YÃ¶ntem ve Teknik</th>
+                <th style="width: 15%;">Materyaller</th>
+                <th style="width: 140px;">BaÅŸlama - BitiÅŸ</th>
+                <th style="width: 15%;">Ã–lÃ§me ve DeÄŸerlendirme</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+
+      items.forEach(it => {
+        html += `
+          <tr>
+            <td style="font-weight: 700; color: #065f46;">${it.uzunDonemliAmac ? it.uzunDonemliAmac.replace(/\n/g, '<br>') : ''}</td>
+            <td style="font-weight: 600;">${it.kisaDonemliAmac || ''}</td>
+            <td style="text-align: center;"><span class="badge" style="background:#e0e7ff; color:#3730a3;">${it.olcut || '%80'}</span></td>
+            <td>${it.yontemTeknik || ''}</td>
+            <td>${it.materyal || ''}</td>
+            <td style="font-size: 12px; white-space: nowrap;">
+              <div>ðŸŸ¢ <strong>BaÅŸlama:</strong> ${it.baslamaTarihi || ''}</div>
+              <div>ðŸ”´ <strong>BitiÅŸ:</strong> ${it.bitisTarihi || ''}</div>
+            </td>
+            <td style="font-size: 12px;">
+              <div><strong>KayÄ±t:</strong> ${it.olcmeDegerlendirme || ''}</div>
+              <div><strong>YÃ¶ntem:</strong> ${it.degerlendirmeYontemi || ''}</div>
+              <div style="color: var(--primary-dark); font-weight: 600; margin-top: 3px;">ðŸ“… ${it.degerlendirmeTarihi || ''}</div>
+            </td>
+          </tr>
+        `;
+      });
+
+      html += `</tbody></table></div>`;
+      return html;
+    }
+
+    function renderPehTable(items) {
+      // Group by Unit
+      const unitGroups = {};
+      items.forEach(it => {
+        const u = it.unite || 'Genel AmaÃ§lar';
+        if (!unitGroups[u]) unitGroups[u] = [];
+        unitGroups[u].push(it);
+      });
+
+      let html = '';
+      Object.keys(unitGroups).forEach(unitTitle => {
+        const uItems = unitGroups[unitTitle];
+        html += `
+          <div class="plan-unit-card">
+            <div class="plan-unit-header">
+              <span>ðŸ•Œ</span>
+              <span>${unitTitle}</span>
+              <span class="badge" style="margin-left: auto; background: rgba(255,255,255,0.25); color: white;">${uItems.length} KazanÄ±m</span>
+            </div>
+            <div class="plan-table-container" style="margin-bottom: 0; border: none; border-radius: 0;">
+              <table class="plan-data-table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">KÄ±sa DÃ¶nemli AmaÃ§</th>
+                    <th style="width: 25%;">DavranÄ±ÅŸlar</th>
+                    <th style="width: 18%;">AraÃ§ ve GereÃ§ler</th>
+                    <th style="width: 100px; text-align: center;">Tarih</th>
+                    <th style="width: 70px; text-align: center;">Ã–lÃ§Ã¼t</th>
+                    <th style="width: 17%;">Ã–ÄŸretim YÃ¶ntem & Teknik</th>
+                    <th style="width: 17%;">DeÄŸerlendirme YÃ¶ntemleri</th>
+                  </tr>
+                </thead>
+                <tbody>
+        `;
+
+        uItems.forEach(it => {
+          html += `
+            <tr>
+              <td style="font-weight: 700; color: #92400e;">${it.kisaDonemliAmac || ''}</td>
+              <td style="font-weight: 500;">${it.davranislar || ''}</td>
+              <td style="font-size: 12px; color: #475569;">${it.aracGerecler || ''}</td>
+              <td style="text-align: center; font-weight: 700; color: var(--primary-dark); white-space: nowrap;">${it.tarih || ''}</td>
+              <td style="text-align: center;"><span class="badge" style="background:#fef3c7; color:#92400e;">${it.olcut || ''}</span></td>
+              <td style="font-size: 12px;">${it.yontemTeknik || ''}</td>
+              <td style="font-size: 12px;">${it.degerlendirme || ''}</td>
+            </tr>
+          `;
+        });
+
+        html += `</tbody></table></div></div>`;
+      });
+
+      return html;
+    }
+
+    // EXPORT FUNCTIONS FOR PLANS
+    function downloadCurrentPlanFile() {
+      const plan = getCurrentPlanData();
+      if (!plan || !plan.originalFile) return;
+
+      const a = document.createElement('a');
+      a.href = encodeURI(plan.originalFile);
+      a.download = plan.originalFile;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast(`${plan.originalFile} indiriliyor...`);
+    }
+
+    function exportCurrentPlan(format) {
+      const plan = getCurrentPlanData();
+      if (!plan) return;
+
+      const safeTitle = plan.title.replace(/[^a-zA-Z0-9Ã§Ã‡ÄŸÄžÄ±Ä°Ã¶Ã–ÅŸÅžÃ¼Ãœ]/g, '_');
+
+      if (format === 'excel') {
+        let tableHtml = '<table border="1">';
+        if (plan.type === 'cerceve') {
+          tableHtml += '<thead><tr style="background:#e2e8f0; font-weight:bold;"><th>Ay</th><th>Hafta</th><th>Ders Saati</th><th>Ãœnite / Tema</th><th>Konu</th><th>Ã–ÄŸrenme Ã‡Ä±ktÄ±larÄ±</th><th>SÃ¼reÃ§ BileÅŸenleri</th><th>Ã–lÃ§me ve DeÄŸerlendirme</th><th>DeÄŸerler</th><th>Beceriler</th><th>Belirli GÃ¼n ve Haftalar</th></tr></thead><tbody>';
+          plan.items.forEach(it => {
+            tableHtml += `<tr><td>${it.ay || ''}</td><td>${it.hafta || ''}</td><td>${it.saat || '2'}</td><td>${it.unite || ''}</td><td>${it.konu || ''}</td><td>${it.ogrenmeCiktilari || ''}</td><td>${it.surecBilesenleri || ''}</td><td>${it.olcmeDegerlendirme || ''}</td><td>${it.degerler || ''}</td><td>${it.sosyalDuygusal || ''}</td><td>${it.belirliGunHaftalar || ''}</td></tr>`;
+          });
+          tableHtml += '</tbody>';
+        } else if (plan.type === 'din_bep') {
+          tableHtml += '<thead><tr style="background:#e2e8f0; font-weight:bold;"><th>Uzun DÃ¶nemli AmaÃ§</th><th>KÄ±sa DÃ¶nemli AmaÃ§</th><th>Ã–lÃ§Ã¼t</th><th>YÃ¶ntem ve Teknik</th><th>Materyaller</th><th>BaÅŸlama Tarihi</th><th>BitiÅŸ Tarihi</th><th>Ã–lÃ§me-DeÄŸerlendirme</th><th>DeÄŸerlendirme YÃ¶ntemi</th><th>DeÄŸerlendirme Tarihi</th></tr></thead><tbody>';
+          plan.items.forEach(it => {
+            tableHtml += `<tr><td>${it.uzunDonemliAmac || ''}</td><td>${it.kisaDonemliAmac || ''}</td><td>${it.olcut || ''}</td><td>${it.yontemTeknik || ''}</td><td>${it.materyal || ''}</td><td>${it.baslamaTarihi || ''}</td><td>${it.bitisTarihi || ''}</td><td>${it.olcmeDegerlendirme || ''}</td><td>${it.degerlendirmeYontemi || ''}</td><td>${it.degerlendirmeTarihi || ''}</td></tr>`;
+          });
+          tableHtml += '</tbody>';
+        } else if (plan.type === 'peh_bep') {
+          tableHtml += '<thead><tr style="background:#e2e8f0; font-weight:bold;"><th>Ãœnite</th><th>KÄ±sa DÃ¶nemli AmaÃ§</th><th>DavranÄ±ÅŸlar</th><th>AraÃ§ GereÃ§ler</th><th>Tarih</th><th>Ã–lÃ§Ã¼t</th><th>YÃ¶ntem ve Teknikler</th><th>DeÄŸerlendirme YÃ¶ntemleri</th></tr></thead><tbody>';
+          plan.items.forEach(it => {
+            tableHtml += `<tr><td>${it.unite || ''}</td><td>${it.kisaDonemliAmac || ''}</td><td>${it.davranislar || ''}</td><td>${it.aracGerecler || ''}</td><td>${it.tarih || ''}</td><td>${it.olcut || ''}</td><td>${it.yontemTeknik || ''}</td><td>${it.degerlendirme || ''}</td></tr>`;
+          });
+          tableHtml += '</tbody>';
+        }
+        tableHtml += '</table>';
+
+        const excelDoc = `
+          <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+          <head>
+            <meta charset="utf-8">
+            <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Yillik Plan</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
+            <style>th, td { font-family: Arial; font-size: 10pt; padding: 4px; }</style>
+          </head>
+          <body>
+            <h2>T.C. KONYA VALÄ°LÄ°ÄžÄ° SELÃ‡UKLU REBÄ°Ä° KARATEKÄ°N ORTAOKULU</h2>
+            <h3>${plan.fullTitle}</h3>
+            <p>Ã–ÄŸretmen: Merve Hacer SEVER | 2026-2027 EÄŸitim Ã–ÄŸretim YÄ±lÄ±</p>
+            ${tableHtml}
+          </body>
+          </html>
+        `;
+
+        const blob = new Blob(['\uFEFF' + excelDoc], { type: 'application/vnd.ms-excel;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Merve_Hacer_SEVER_${safeTitle}.xls`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast("Excel dosyasÄ± indirildi ðŸ“Š");
+      } else if (format === 'word') {
+        let tableHtml = '<table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse; width:100%;">';
+        if (plan.type === 'cerceve') {
+          tableHtml += '<thead><tr style="background:#f2f2f2; font-weight:bold;"><th>Ay</th><th>Hafta</th><th>Saat</th><th>Ãœnite</th><th>Konu</th><th>Ã–ÄŸrenme Ã‡Ä±ktÄ±larÄ±</th><th>SÃ¼reÃ§</th><th>Ã–lÃ§me</th><th>DeÄŸerler</th><th>Belirli GÃ¼nler</th></tr></thead><tbody>';
+          plan.items.forEach(it => {
+            tableHtml += `<tr><td>${it.ay || ''}</td><td>${it.hafta || ''}</td><td>${it.saat || '2'}</td><td>${it.unite || ''}</td><td>${it.konu || ''}</td><td>${it.ogrenmeCiktilari || ''}</td><td>${it.surecBilesenleri || ''}</td><td>${it.olcmeDegerlendirme || ''}</td><td>${it.degerler || ''}</td><td>${it.belirliGunHaftalar || ''}</td></tr>`;
+          });
+          tableHtml += '</tbody>';
+        } else if (plan.type === 'din_bep') {
+          tableHtml += '<thead><tr style="background:#f2f2f2; font-weight:bold;"><th>Uzun DÃ¶nemli AmaÃ§</th><th>KÄ±sa DÃ¶nemli AmaÃ§</th><th>Ã–lÃ§Ã¼t</th><th>YÃ¶ntem</th><th>Materyal</th><th>Tarih</th><th>DeÄŸerlendirme</th></tr></thead><tbody>';
+          plan.items.forEach(it => {
+            tableHtml += `<tr><td>${it.uzunDonemliAmac || ''}</td><td>${it.kisaDonemliAmac || ''}</td><td>${it.olcut || ''}</td><td>${it.yontemTeknik || ''}</td><td>${it.materyal || ''}</td><td>${it.baslamaTarihi || ''} - ${it.bitisTarihi || ''}</td><td>${it.olcmeDegerlendirme || ''} (${it.degerlendirmeTarihi || ''})</td></tr>`;
+          });
+          tableHtml += '</tbody>';
+        } else if (plan.type === 'peh_bep') {
+          tableHtml += '<thead><tr style="background:#f2f2f2; font-weight:bold;"><th>Ãœnite</th><th>KÄ±sa DÃ¶nemli AmaÃ§</th><th>DavranÄ±ÅŸlar</th><th>Tarih</th><th>Ã–lÃ§Ã¼t</th><th>YÃ¶ntem</th><th>DeÄŸerlendirme</th></tr></thead><tbody>';
+          plan.items.forEach(it => {
+            tableHtml += `<tr><td>${it.unite || ''}</td><td>${it.kisaDonemliAmac || ''}</td><td>${it.davranislar || ''}</td><td>${it.tarih || ''}</td><td>${it.olcut || ''}</td><td>${it.yontemTeknik || ''}</td><td>${it.degerlendirme || ''}</td></tr>`;
+          });
+          tableHtml += '</tbody>';
+        }
+        tableHtml += '</table>';
+
+        const wordDoc = `
+          <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+          <head>
+            <meta charset="utf-8">
+            <!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:DoNotOptimizeForBrowser/></w:WordDocument></xml><![endif]-->
+            <style>
+              body { font-family: 'Calibri', 'Times New Roman', sans-serif; font-size: 10pt; }
+              h2 { font-size: 13pt; text-align: center; margin: 0 0 4px 0; }
+              h3 { font-size: 11pt; text-align: center; color: #333; margin: 0 0 10px 0; }
+              p { text-align: center; font-size: 9.5pt; color: #555; margin-bottom: 15px; }
+              th, td { font-size: 9pt; vertical-align: top; border: 1px solid #333; padding: 5px; }
+              th { background-color: #f2f2f2; font-weight: bold; }
+            </style>
+          </head>
+          <body>
+            <h2>T.C. KONYA VALÄ°LÄ°ÄžÄ° - SELÃ‡UKLU REBÄ°Ä° KARATEKÄ°N ORTAOKULU MÃœDÃœRLÃœÄžÃœ</h2>
+            <h3>${plan.fullTitle}</h3>
+            <p>Ders Ã–ÄŸretmeni: Merve Hacer SEVER | 2026-2027 EÄŸitim Ã–ÄŸretim YÄ±lÄ±</p>
+            ${tableHtml}
+            <br><br>
+            <table style="border: none; width: 100%;">
+              <tr style="border: none;">
+                <td style="border: none; text-align: center; width: 50%;"><strong>Merve Hacer SEVER</strong><br>Ders Ã–ÄŸretmeni</td>
+                <td style="border: none; text-align: center; width: 50%;"><strong>UYGUNDUR</strong><br>â€¦ / â€¦ / 2026<br>Okul MÃ¼dÃ¼rÃ¼</td>
+              </tr>
+            </table>
+          </body>
+          </html>
+        `;
+
+        const blob = new Blob(['\uFEFF' + wordDoc], { type: 'application/msword;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Merve_Hacer_SEVER_${safeTitle}.doc`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast("Word dosyasÄ± indirildi ðŸ“");
+      }
+    }
+
 
     // 13. EXPORT / BACKUP / RESTORE
     function exportToCSV(scope) {
