@@ -2168,8 +2168,541 @@
       .plan-unit-header { background: #eee !important; color: black !important; border-bottom: 1px solid #444 !important; }
     }
 
+    /* =========================================================================
+       ÖZEL EĞİTİM ETKİNLİK & BOYAMA HAVUZU STİLLERİ
+       ========================================================================= */
+    .activity-welcome-banner {
+      background: linear-gradient(135deg, #be185d 0%, #db2777 50%, #f43f5e 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 4px 14px rgba(190, 24, 93, 0.25);
+    }
+    .activity-welcome-banner .banner-left {
+      flex: 1;
+    }
+    .activity-welcome-banner .banner-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .activity-welcome-banner h2 {
+      font-size: 21px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .activity-welcome-banner p {
+      font-size: 13.5px;
+      opacity: 0.95;
+      line-height: 1.5;
+      max-width: 680px;
+    }
+    .activity-welcome-banner .banner-stats {
+      display: flex;
+      gap: 12px;
+    }
+    .activity-welcome-banner .stat-box {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 10px 16px;
+      text-align: center;
+      min-width: 85px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .activity-welcome-banner .stat-num {
+      display: block;
+      font-size: 22px;
+      font-weight: 900;
+    }
+    .activity-welcome-banner .stat-txt {
+      font-size: 11px;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+
+    .activity-controls-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .activity-search-box {
+      position: relative;
+      margin-bottom: 12px;
+    }
+    .activity-search-box input {
+      width: 100%;
+      height: 42px;
+      padding: 0 40px 0 38px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      background: var(--bg);
+      outline: none;
+      transition: all 0.2s;
+    }
+    .activity-search-box input:focus {
+      border-color: #ec4899;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
+    }
+    .activity-search-box .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 15px;
+      opacity: 0.7;
+    }
+    .activity-filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .act-filter-pill {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .act-filter-pill:hover {
+      border-color: #ec4899;
+      color: #be185d;
+      background: #fdf2f8;
+    }
+    .act-filter-pill.active {
+      background: #be185d;
+      border-color: #be185d;
+      color: white;
+      box-shadow: 0 2px 6px rgba(190, 24, 93, 0.3);
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 18px;
+    }
+    .activity-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+    .activity-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: #f472b6;
+    }
+    .activity-card-preview {
+      height: 200px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .activity-card-preview svg {
+      max-width: 100%;
+      max-height: 100%;
+      transition: transform 0.25s ease;
+    }
+    .activity-card:hover .activity-card-preview svg {
+      transform: scale(1.04);
+    }
+    .activity-card-body {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .activity-card-badges {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .badge-act-cat {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1px solid #fbcfe8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .badge-act-grade {
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .activity-card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .activity-card-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .activity-card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .btn-act-view {
+      flex: 1;
+      height: 36px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-act-view:hover {
+      background: var(--border);
+    }
+    .btn-act-print {
+      flex: 1.2;
+      height: 36px;
+      background: #be185d;
+      border: none;
+      color: white;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.15s;
+      box-shadow: 0 2px 5px rgba(190, 24, 93, 0.25);
+    }
+    .btn-act-print:hover {
+      background: #9d174d;
+      transform: translateY(-1px);
+    }
+
+    /* ACTIVITY MODAL */
+    .activity-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .activity-modal-overlay.active {
+      display: flex;
+    }
+    .activity-modal-card {
+      background: white;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 960px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+    }
+    .activity-modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .activity-modal-header .modal-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin-top: 4px;
+    }
+    .modal-badge-row {
+      display: flex;
+      gap: 8px;
+    }
+    .modal-cat-badge {
+      background: #fdf2f8;
+      color: #be185d;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .modal-grade-badge {
+      background: #f0fdf4;
+      color: #15803d;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .modal-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .modal-close-btn:hover {
+      background: #fee2e2;
+      color: #ef4444;
+      border-color: #fca5a5;
+    }
+    .activity-modal-body {
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    .modal-svg-container {
+      flex: 1.4;
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+    .modal-svg-container svg {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+    }
+    .modal-sidebar-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .info-section {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .info-section h4 {
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .info-section p {
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+    .info-section.print-tip {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+    .info-section.print-tip h4 {
+      color: #166534;
+    }
+    .info-section.print-tip p {
+      color: #15803d;
+    }
+    .btn-modal-print {
+      margin-top: auto;
+      height: 46px;
+      background: #be185d;
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(190, 24, 93, 0.3);
+      transition: all 0.2s;
+    }
+    .btn-modal-print:hover {
+      background: #9d174d;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .activity-welcome-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .activity-welcome-banner .banner-stats {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .activity-modal-body {
+        flex-direction: column;
+      }
+      .modal-svg-container {
+        min-height: 260px;
+      }
+    }
+
+    /* DEDICATED PRINT STYLES */
+    @media print {
+      body.activity-printing * {
+        visibility: hidden !important;
+      }
+      body.activity-printing #activityPrintSheet,
+      body.activity-printing #activityPrintSheet * {
+        visibility: visible !important;
+      }
+      body.activity-printing #activityPrintSheet {
+        display: block !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+      }
+      body.activity-printing #appContainer,
+      body.activity-printing #loginScreen,
+      body.activity-printing .activity-modal-overlay,
+      body.activity-printing #toast {
+        display: none !important;
+      }
+      .print-page {
+        width: 100%;
+        box-sizing: border-box;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .print-header {
+        text-align: center;
+        border-bottom: 2px solid #000;
+        padding-bottom: 6px;
+        margin-bottom: 8px;
+      }
+      .print-school-gov {
+        font-family: Arial, sans-serif;
+        font-size: 11pt;
+        font-weight: bold;
+      }
+      .print-school-name {
+        font-family: Arial, sans-serif;
+        font-size: 13.5pt;
+        font-weight: bold;
+        margin: 2px 0;
+      }
+      .print-doc-title {
+        font-family: Arial, sans-serif;
+        font-size: 10.5pt;
+        font-weight: bold;
+        color: #222;
+      }
+      .print-student-info {
+        border: 1.5px solid #000;
+        border-radius: 6px;
+        padding: 8px 12px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+        font-size: 10.5pt;
+      }
+      .print-info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4px;
+      }
+      .print-instructions {
+        font-size: 9.5pt;
+        border-top: 1px dashed #999;
+        padding-top: 4px;
+        margin-top: 4px;
+        color: #333;
+      }
+      .print-svg-wrapper {
+        width: 100%;
+        height: 660px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+      }
+      .print-svg-wrapper svg {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 660px !important;
+      }
+      .print-footer {
+        border-top: 1.5px solid #000;
+        padding-top: 6px;
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 10mm 12mm 10mm 12mm;
+      }
+    }
   </style>
   <script src="plansData.js"></script>
+  <script src="activitiesData.js"></script>
 </head>
 <body>
 
@@ -2379,6 +2912,11 @@
           <span>Sosyal Kulüpler</span>
           <span class="badge">20</span>
         </div>
+        <div class="nav-item" id="nav-activities" onclick="navigateTo('activities')">
+          <span class="icon">🎨</span>
+          <span>Özel Eğitim Etkinlikleri</span>
+          <span class="badge" style="background: #ec4899; color: white;">20</span>
+        </div>
 
         <!-- 5. AYARLAR & GÜVENLİK -->
         <div class="nav-group-title">SİSTEM</div>
@@ -2517,6 +3055,26 @@
             <div class="stat-item">
               <div class="stat-val" style="color: var(--primary);">24</div>
               <div class="stat-lbl">Haftalık Bölme Sayısı</div>
+            </div>
+          </div>
+
+          <!-- ÖZEL EĞİTİM ETKİNLİK HAVUZU DASHBOARD SECTION -->
+          <div class="section-heading">
+            <span>🎨</span>
+            <span>Özel Eğitim Dini & Manevi Değerler Etkinlik Havuzu</span>
+          </div>
+          <div class="course-card" style="background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 100%); border: 1.5px solid #fbcfe8; margin-bottom: 24px;">
+            <div class="course-card-top" style="align-items: center;">
+              <div class="course-title-group">
+                <div class="course-icon-badge" style="background: #fce7f3; color: #be185d;">🎨</div>
+                <div>
+                  <div class="course-card-name" style="color: #9d174d;">7. Sınıf Özel Eğitim Boyama & Çalışma Yaprakları</div>
+                  <div class="course-card-sub">20 Adet Dini Semboller, Manevi Değerler, Hadis Hat Yazıları ve A4 Çıktı Alınabilir Çalışma Yaprakları</div>
+                </div>
+              </div>
+              <button class="btn btn-primary" onclick="navigateTo('activities')" style="background: #be185d; border-color: #be185d; padding: 8px 16px; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer;">
+                Etkinlik Havuzuna Git ➔
+              </button>
             </div>
           </div>
 
@@ -2715,6 +3273,48 @@
           <div class="club-cards-container" id="clubCardsContainer"></div>
         </section>
 
+        <!-- 4. ÖZEL EĞİTİM ETKİNLİK & BOYAMA PANELİ -->
+        <section id="panel-activities" class="view-panel">
+          <!-- WELCOME BANNER -->
+          <div class="activity-welcome-banner">
+            <div class="banner-left">
+              <div class="banner-badge">🎨 ÖZEL EĞİTİM & BEP MATERYAL HAVUZU</div>
+              <h2>Dini ve Manevi Değerler Etkinlik & Boyama Arşivi</h2>
+              <p>7. Sınıf Özel Eğitim öğrencilerine özel kalın konturlu boyama sayfaları, hadis yazıları, çizgi/labirent ve kes-yapıştır etkinlikleri. İster inceleyin, ister tek tıkla resmi A4 çıktısı alın.</p>
+            </div>
+            <div class="banner-stats">
+              <div class="stat-box">
+                <span class="stat-num" id="totalActivitiesCount">20</span>
+                <span class="stat-txt">Materyal</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-num">A4</span>
+                <span class="stat-txt">Yazdırılabilir</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTROLS & FILTER ROW -->
+          <div class="activity-controls-card">
+            <div class="activity-search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="activitySearchInput" placeholder="Etkinlik adı, dini değer veya konu ara..." oninput="handleActivitySearch(this.value)">
+              <button class="clear-search-btn" id="clearActivitySearchBtn" onclick="clearActivitySearch()" style="display:none;">✕</button>
+            </div>
+            <div class="activity-filter-pills" id="activityFilterPills">
+              <button class="act-filter-pill active" onclick="setActivityFilter('all', this)">✨ Tümü (<span id="count-act-all">20</span>)</button>
+              <button class="act-filter-pill" onclick="setActivityFilter('boyama', this)">🕌 Dini Semboller (<span id="count-act-boyama">5</span>)</button>
+              <button class="act-filter-pill" onclick="setActivityFilter('degerler', this)">🤝 Manevi Değerler (<span id="count-act-degerler">5</span>)</button>
+              <button class="act-filter-pill" onclick="setActivityFilter('yazi', this)">✍️ Hadis & Hat (<span id="count-act-yazi">4</span>)</button>
+              <button class="act-filter-pill" onclick="setActivityFilter('labirent', this)">🧩 Çizgi & Labirent (<span id="count-act-labirent">3</span>)</button>
+              <button class="act-filter-pill" onclick="setActivityFilter('kes-yapistir', this)">✂️ Kes - Yapıştır (<span id="count-act-kes-yapistir">3</span>)</button>
+            </div>
+          </div>
+
+          <!-- ACTIVITIES GRID CONTAINER -->
+          <div class="activities-grid" id="activitiesGrid"></div>
+        </section>
+
         <!-- 4. SETTINGS & BACKUP PANEL -->
         <section id="panel-settings" class="view-panel">
           <div class="settings-card">
@@ -2845,6 +3445,46 @@
       </div>
     </div>
   </div>
+
+  <!-- ACTIVITY PREVIEW MODAL -->
+  <div class="activity-modal-overlay" id="activityModalOverlay" onclick="closeActivityModal()">
+    <div class="activity-modal-card" onclick="event.stopPropagation()">
+      <div class="activity-modal-header">
+        <div class="modal-header-info">
+          <div class="modal-badge-row">
+            <span class="modal-cat-badge" id="modalCatBadge">Dini Semboller</span>
+            <span class="modal-grade-badge">7. Sınıf Özel Eğitim (BEP)</span>
+          </div>
+          <h2 class="modal-title" id="modalTitle">Şirin Mahalle Camisi Boyama</h2>
+        </div>
+        <button class="modal-close-btn" onclick="closeActivityModal()" title="Kapat">✕</button>
+      </div>
+      <div class="activity-modal-body">
+        <div class="modal-svg-container" id="modalSvgContainer"></div>
+        <div class="modal-sidebar-info">
+          <div class="info-section">
+            <h4>💡 Pedagojik Kazanım & Açıklama</h4>
+            <p id="modalDesc"></p>
+          </div>
+          <div class="info-section">
+            <h4>✏️ Etkinlik Yönergesi</h4>
+            <p id="modalInstructions" style="color: #0f766e; font-weight: 600;"></p>
+          </div>
+          <div class="info-section print-tip">
+            <h4>🖨️ A4 Yazdırma Bilgisi</h4>
+            <p>Selçuklu Rebii Karatekin Ortaokulu antetli, öğrenci isimli ve değerlendirme yıldızlı resmi A4 çalışma yaprağı olarak yazdırılır.</p>
+          </div>
+          <button class="btn-modal-print" id="btnModalPrint" onclick="printCurrentModalActivity()">
+            <span>🖨️</span>
+            <span>Resmi A4 Çıktı Al / Yazdır</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEDICATED A4 PRINT CONTAINER (ONLY VISIBLE DURING PRINT) -->
+  <div id="activityPrintSheet" style="display:none;"></div>
 
   <!-- TOAST NOTIFICATION -->
   <div class="toast" id="toastMessage">
@@ -3365,6 +4005,13 @@
         document.getElementById('pageSubtitle').textContent = "Rebii Karatekin Ortaokulu 20 Kulüp Dağılımı";
         controlsBar.style.display = 'none';
         renderClubsList();
+      } else if (viewName === 'activities') {
+        document.getElementById('panel-activities').classList.add('active');
+        document.getElementById('nav-activities').classList.add('active');
+        document.getElementById('pageTitle').textContent = "🎨 Özel Eğitim Etkinlik & Boyama Havuzu";
+        document.getElementById('pageSubtitle').textContent = "7. Sınıf Dini & Manevi Değerler Materyal Arşivi • A4 Yazdırılabilir";
+        controlsBar.style.display = 'none';
+        renderActivities();
       } else if (viewName === 'settings') {
         document.getElementById('panel-settings').classList.add('active');
         document.getElementById('nav-settings').classList.add('active');
@@ -3738,6 +4385,191 @@
       });
 
       container.innerHTML = html;
+    }
+
+    // =========================================================================
+    // 10B. ÖZEL EĞİTİM ETKİNLİK & BOYAMA HAVUZU LOGIC
+    // =========================================================================
+    let currentActivityFilter = 'all';
+    let activitySearchQuery = '';
+    let currentModalActivityId = null;
+
+    function renderActivities() {
+      const container = document.getElementById('activitiesGrid');
+      if (!container) return;
+
+      const activities = window.ACTIVITIES_DATA || [];
+      const query = (activitySearchQuery || '').toLowerCase().trim();
+
+      // Kategori Sayaçları
+      let counts = { all: activities.length, boyama: 0, degerler: 0, yazi: 0, labirent: 0, 'kes-yapistir': 0 };
+      activities.forEach(act => {
+        if (counts[act.category] !== undefined) counts[act.category]++;
+      });
+
+      const countAllEl = document.getElementById('count-act-all');
+      if (countAllEl) countAllEl.textContent = counts.all;
+      const countBoyamaEl = document.getElementById('count-act-boyama');
+      if (countBoyamaEl) countBoyamaEl.textContent = counts.boyama;
+      const countDegerlerEl = document.getElementById('count-act-degerler');
+      if (countDegerlerEl) countDegerlerEl.textContent = counts.degerler;
+      const countYaziEl = document.getElementById('count-act-yazi');
+      if (countYaziEl) countYaziEl.textContent = counts.yazi;
+      const countLabirentEl = document.getElementById('count-act-labirent');
+      if (countLabirentEl) countLabirentEl.textContent = counts.labirent;
+      const countKesEl = document.getElementById('count-act-kes-yapistir');
+      if (countKesEl) countKesEl.textContent = counts['kes-yapistir'];
+
+      const totalCountEl = document.getElementById('totalActivitiesCount');
+      if (totalCountEl) totalCountEl.textContent = activities.length;
+
+      // Filtreleme
+      const filtered = activities.filter(act => {
+        if (currentActivityFilter !== 'all' && act.category !== currentActivityFilter) return false;
+        if (query) {
+          const matchTitle = (act.title || '').toLowerCase().includes(query);
+          const matchDesc = (act.desc || '').toLowerCase().includes(query);
+          const matchCat = (act.categoryName || '').toLowerCase().includes(query);
+          return matchTitle || matchDesc || matchCat;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; background: white; border-radius: 14px; border: 1.5px dashed var(--border);">
+            <div style="font-size: 42px; margin-bottom: 10px;">🔍</div>
+            <div style="font-size: 16px; font-weight: 800; color: var(--text);">Aradığınız Kriterde Etkinlik Bulunamadı</div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Farklı bir arama terimi deneyebilir veya kategoriyi 'Tümü' yapabilirsiniz.</p>
+            <button class="btn btn-secondary" style="margin-top: 14px;" onclick="clearActivitySearch()">Aramayı Sıfırla</button>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      filtered.forEach(act => {
+        html += `
+          <div class="activity-card" id="card-${act.id}">
+            <div class="activity-card-preview" onclick="openActivityModal('${act.id}')" title="Büyük Boy İncelemek İçin Tıklayın">
+              ${act.svgContent}
+            </div>
+            <div class="activity-card-body">
+              <div class="activity-card-badges">
+                <span class="badge-act-cat">${act.icon} ${act.categoryName}</span>
+                <span class="badge-act-grade">${act.grade}</span>
+              </div>
+              <h3 class="activity-card-title">${act.title}</h3>
+              <p class="activity-card-desc">${act.desc}</p>
+              <div class="activity-card-actions">
+                <button class="btn-act-view" onclick="openActivityModal('${act.id}')" title="Büyük Boyutta İncele">
+                  <span>👁️</span> <span>İncele</span>
+                </button>
+                <button class="btn-act-print" onclick="printActivity('${act.id}')" title="A4 Resmi Çıktı Al">
+                  <span>🖨️</span> <span>A4 Yazdır</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function setActivityFilter(category, btn) {
+      currentActivityFilter = category;
+      document.querySelectorAll('.act-filter-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderActivities();
+    }
+
+    function handleActivitySearch(query) {
+      activitySearchQuery = query;
+      const clearBtn = document.getElementById('clearActivitySearchBtn');
+      if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
+      renderActivities();
+    }
+
+    function clearActivitySearch() {
+      activitySearchQuery = '';
+      const input = document.getElementById('activitySearchInput');
+      if (input) input.value = '';
+      const clearBtn = document.getElementById('clearActivitySearchBtn');
+      if (clearBtn) clearBtn.style.display = 'none';
+      renderActivities();
+    }
+
+    function openActivityModal(actId) {
+      const activities = window.ACTIVITIES_DATA || [];
+      const act = activities.find(a => a.id === actId);
+      if (!act) return;
+
+      currentModalActivityId = actId;
+      document.getElementById('modalCatBadge').textContent = `${act.icon} ${act.categoryName}`;
+      document.getElementById('modalTitle').textContent = act.title;
+      document.getElementById('modalDesc').textContent = act.desc;
+      document.getElementById('modalInstructions').textContent = act.instructions;
+      document.getElementById('modalSvgContainer').innerHTML = act.svgContent;
+
+      const overlay = document.getElementById('activityModalOverlay');
+      if (overlay) overlay.classList.add('active');
+    }
+
+    function closeActivityModal() {
+      currentModalActivityId = null;
+      const overlay = document.getElementById('activityModalOverlay');
+      if (overlay) overlay.classList.remove('active');
+    }
+
+    function printCurrentModalActivity() {
+      if (currentModalActivityId) {
+        printActivity(currentModalActivityId);
+      }
+    }
+
+    function printActivity(actId) {
+      const activities = window.ACTIVITIES_DATA || [];
+      const act = activities.find(a => a.id === actId);
+      if (!act) return;
+
+      const printSheet = document.getElementById('activityPrintSheet');
+      if (!printSheet) return;
+
+      printSheet.innerHTML = `
+        <div class="print-page">
+          <div class="print-header">
+            <div class="print-school-gov">T.C. KONYA VALİLİĞİ &bull; SELÇUKLU İLÇE MİLLİ EĞİTİM MÜDÜRLÜĞÜ</div>
+            <div class="print-school-name">SELÇUKLU REBİİ KARATEKİN ORTAOKULU MÜDÜRLÜĞÜ</div>
+            <div class="print-doc-title">ÖZEL EĞİTİM DİN KÜLTÜRÜ VE AHLAK BİLGİSİ DERSİ ÇALIŞMA FORMU</div>
+          </div>
+          <div class="print-student-info">
+            <div class="print-info-row">
+              <div><strong>Öğrencinin Adı Soyadı:</strong> ..............................................................</div>
+              <div><strong>Sınıfı / Şubesi:</strong> 7/........</div>
+            </div>
+            <div class="print-info-row">
+              <div><strong>Etkinlik Konusu:</strong> ${act.title}</div>
+              <div><strong>Tarih:</strong> ..... / ..... / 202...</div>
+              <div><strong>Öğretmen Puanı:</strong> ⭐ ⭐ ⭐ ⭐ ⭐</div>
+            </div>
+            <div class="print-instructions"><strong>Yönerge:</strong> ${act.instructions}</div>
+          </div>
+          <div class="print-svg-wrapper">
+            ${act.svgContent}
+          </div>
+          <div class="print-footer">
+            <div>Ders Öğretmeni: <strong>Merve Hacer SEVER</strong></div>
+            <div>Selçuklu Rebii Karatekin Ortaokulu &bull; Din Kültürü ve Ahlak Bilgisi</div>
+          </div>
+        </div>
+      `;
+
+      document.body.classList.add('activity-printing');
+      window.print();
+      setTimeout(() => {
+        document.body.classList.remove('activity-printing');
+      }, 1200);
     }
 
     // 11. EVALUATION MODAL ACTIONS
